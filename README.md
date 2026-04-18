@@ -9,7 +9,7 @@ Lives at **[teach.mrbsocialstudies.org](https://teaching.mrbsocialstudies.org)**
 One folder per resource. The root `index.html` is the directory that points at them.
 
 ```
-teaching/
+teach/
 ├── index.html          ← landing page / directory
 ├── README.md           ← you are here
 ├── CNAME               ← teaching.mrbsocialstudies.org
@@ -49,8 +49,8 @@ See the existing `index.html` and `discussion/*.html` for the full vocabulary.
 ## GitHub Pages setup
 
 - Repo: public, source = `main` branch, `/ (root)` folder.
-- `CNAME` at the root contains exactly one line: `teaching.mrbsocialstudies.org` &mdash; no quotes, no protocol, no trailing slash.
-- DNS: `teaching` CNAME pointed at `shiebenaderet.github.io` (or whichever GitHub account hosts this repo).
+- `CNAME` at the root contains exactly one line: `teach.mrbsocialstudies.org` &mdash; no quotes, no protocol, no trailing slash.
+- DNS: `teach` CNAME pointed at `shiebenaderet.github.io` (or whichever GitHub account hosts this repo).
 
 Pages rebuilds automatically on every push to `main`.
 
