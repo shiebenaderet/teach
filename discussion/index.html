@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Classroom Discussion &mdash; Room 1610</title>
+<meta name="description" content="A research-backed, path-tailored guide to meaningful academic discussion in middle school Social Studies.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #FAF6EC; --cream-dark: #F2ECD9; --paper: #FFFEF9;
+  --ink: #2A2018; --ink-muted: #665A4B; --ink-subtle: #8B7F6F;
+  --maroon: #8B2E2E; --maroon-dark: #6B1F1F; --maroon-soft: rgba(139, 46, 46, 0.08);
+  --gold: #B8862F; --gold-light: #E5CF8F; --gold-pale: #F2E8C9;
+  --green: #3d7a3d; --border: #E5DDC8; --border-dark: #D4C99E;
+  --shadow-sm: 0 1px 2px rgba(42, 32, 24, 0.04);
+  --shadow-md: 0 4px 16px rgba(42, 32, 24, 0.06);
+  --shadow-lg: 0 12px 32px rgba(42, 32, 24, 0.08);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w: 1120px; --reading-w: 720px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-body); font-size: 17px; line-height: 1.65;
+  color: var(--ink); background: var(--cream);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(184, 134, 47, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(139, 46, 46, 0.03) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+a { color: var(--maroon); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color 0.2s ease; }
+a:hover { color: var(--maroon-dark); text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
+ul, ol { padding-left: 1.5em; margin-bottom: 1em; }
+li { margin-bottom: 0.4em; }
+
+/* Path-gated visibility */
+[data-path-only] { display: none; }
+body[data-path="A"] [data-path-only~="A"],
+body[data-path="B"] [data-path-only~="B"],
+body[data-path="C"] [data-path-only~="C"],
+body[data-path="D"] [data-path-only~="D"] { display: block; }
+body:not([data-path]) [data-no-path] { display: block; }
+body[data-path] [data-no-path] { display: none; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 246, 236, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav-brand { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--maroon); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.nav-brand:hover { color: var(--maroon-dark); text-decoration: none; }
+.nav-brand em { font-style: italic; color: var(--gold); font-weight: 400; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-links { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+.nav-links li { margin: 0; }
+.nav-links a { color: var(--ink-muted); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.02em; padding: 4px 0; border-bottom: 2px solid transparent; transition: all 0.2s ease; }
+.nav-links a:hover, .nav-links a.active { color: var(--maroon); border-bottom-color: var(--gold); }
+.nav-path-badge {
+  display: none; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink); background: var(--gold-pale);
+  padding: 5px 12px; border-radius: 20px; cursor: pointer;
+  border: 1px solid var(--border-dark);
+  font-family: var(--font-body); white-space: nowrap; transition: all 0.2s ease;
+}
+body[data-path] .nav-path-badge { display: inline-flex; }
+.nav-path-badge:hover { background: var(--gold-light); color: var(--maroon); }
+.nav-path-badge .tag { color: var(--gold); }
+.nav-toggle { display: none; background: none; border: 1px solid var(--border-dark); padding: 6px 12px; font-family: var(--font-body); font-size: 13px; color: var(--ink-muted); cursor: pointer; border-radius: 3px; }
+@media (max-width: 980px) {
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); flex-direction: column; padding: 20px 32px; gap: 14px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+}
+
+/* Layout */
+.section { padding: 96px 32px; position: relative; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section + .section { border-top: 1px solid var(--border); }
+.eyebrow { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+
+/* Path selector */
+.path-selector { padding: 96px 32px 80px; position: relative; overflow: hidden; }
+.path-selector::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 0%, rgba(245, 232, 201, 0.2) 100%); pointer-events: none; }
+.path-inner { max-width: var(--max-w); margin: 0 auto; position: relative; }
+.path-header { max-width: 760px; margin-bottom: 56px; }
+.path-header h1 { font-size: clamp(40px, 5.5vw, 64px); line-height: 1.08; font-weight: 900; margin-bottom: 20px; letter-spacing: -0.02em; }
+.path-header h1 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.path-header p { font-size: 19px; color: var(--ink-muted); line-height: 1.55; }
+.path-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.path-card {
+  background: var(--paper); border: 1.5px solid var(--border); border-radius: 6px;
+  padding: 32px; cursor: pointer; transition: all 0.25s ease; position: relative;
+  text-align: left; font-family: var(--font-body); color: var(--ink);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.path-card:hover { border-color: var(--maroon); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.path-card:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+.path-card-num { font-family: var(--font-display); font-size: 36px; font-weight: 900; line-height: 1; color: var(--gold); font-style: italic; }
+.path-card h3 { font-size: 22px; line-height: 1.2; margin-bottom: 0; }
+.path-card p { font-size: 14.5px; color: var(--ink-muted); line-height: 1.55; margin-bottom: 0; }
+.path-card-cta { margin-top: auto; padding-top: 12px; color: var(--maroon); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; display: flex; align-items: center; gap: 8px; }
+.path-card-cta::after { content: '→'; transition: transform 0.2s ease; }
+.path-card:hover .path-card-cta::after { transform: translateX(4px); }
+.path-skip { margin-top: 40px; text-align: center; font-size: 14px; color: var(--ink-subtle); }
+.path-skip button { background: none; border: none; color: var(--ink-muted); text-decoration: underline; cursor: pointer; font-family: var(--font-body); font-size: 14px; padding: 4px 8px; }
+.path-skip button:hover { color: var(--maroon); }
+
+/* Hero */
+.hero { padding: 120px 32px 80px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(180deg, transparent 0%, rgba(245, 232, 201, 0.3) 100%); pointer-events: none; }
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 80px; align-items: start; }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+.hero h1 { font-size: clamp(38px, 5.5vw, 64px); line-height: 1.08; font-weight: 900; margin-bottom: 24px; letter-spacing: -0.02em; }
+.hero h1 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.hero-lede { font-size: 19px; line-height: 1.55; color: var(--ink-muted); margin-bottom: 32px; max-width: 620px; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+.btn { display: inline-block; padding: 14px 28px; font-family: var(--font-body); font-weight: 700; font-size: 15px; letter-spacing: 0.02em; text-decoration: none; border: 1.5px solid transparent; border-radius: 3px; transition: all 0.2s ease; cursor: pointer; }
+.btn-primary { background: var(--maroon); color: var(--cream); }
+.btn-primary:hover { background: var(--maroon-dark); color: var(--cream); text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--border-dark); }
+.btn-ghost:hover { background: var(--paper); color: var(--maroon); text-decoration: none; border-color: var(--maroon); }
+.hero-aside { background: var(--paper); border: 1px solid var(--border); padding: 32px; border-radius: 4px; box-shadow: var(--shadow-sm); position: relative; }
+.hero-aside::before { content: ''; position: absolute; top: -1px; left: -1px; width: 48px; height: 4px; background: var(--gold); }
+.hero-aside h3 { font-size: 20px; margin-bottom: 16px; color: var(--maroon); }
+.hero-aside p { font-size: 15px; color: var(--ink-muted); line-height: 1.55; }
+.hero-aside .aside-meta { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 8px; font-family: var(--font-body); }
+
+.section-head { margin-bottom: 56px; max-width: 760px; }
+.section-head h2 { font-size: clamp(32px, 4vw, 48px); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
+.section-head h2 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.section-head .section-lede { font-size: 19px; line-height: 1.55; color: var(--ink-muted); }
+
+.plan-intro { background: var(--paper); border: 1px solid var(--border); padding: 28px 36px; margin-bottom: 48px; border-radius: 4px; border-left: 4px solid var(--gold); }
+.plan-intro p { color: var(--ink-muted); }
+.plan-intro p + p { margin-top: 12px; }
+
+.phase { display: grid; grid-template-columns: 180px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid var(--border); position: relative; }
+.phase:last-child { border-bottom: 1px solid var(--border); }
+@media (max-width: 760px) { .phase { grid-template-columns: 1fr; gap: 24px; } }
+.phase-marker { position: sticky; top: 100px; align-self: start; }
+.phase-number { font-family: var(--font-display); font-size: 84px; font-weight: 900; line-height: 1; color: var(--maroon); letter-spacing: -0.04em; }
+.phase-weeks { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--gold); display: inline-block; }
+@media (max-width: 760px) { .phase-marker { position: static; } .phase-number { font-size: 56px; } .phase-number, .phase-weeks { display: inline-block; } .phase-weeks { margin-left: 16px; padding-top: 0; border-top: none; border-left: 2px solid var(--gold); padding-left: 16px; vertical-align: 20px; } }
+.phase-body h3 { font-size: 28px; line-height: 1.2; margin-bottom: 8px; }
+.phase-body h3 em { font-style: italic; color: var(--maroon); font-weight: 600; }
+.phase-tagline { font-size: 17px; font-style: italic; color: var(--ink-muted); margin-bottom: 20px; font-family: var(--font-display); }
+.phase-section { margin-top: 20px; }
+.phase-section h4 { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--maroon); margin-bottom: 10px; }
+.phase-install { background: var(--gold-pale); padding: 18px 22px; border-radius: 4px; border-left: 3px solid var(--gold); }
+.phase-install ul { margin-bottom: 0; }
+.phase-prompts { background: var(--paper); border: 1px solid var(--border); padding: 18px 22px; border-radius: 4px; }
+.phase-prompts ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+.phase-prompts li { padding: 8px 0; border-bottom: 1px dashed var(--border); font-style: italic; color: var(--ink); }
+.phase-prompts li:last-child { border-bottom: none; }
+.phase-prompts li::before { content: '"'; color: var(--gold); font-family: var(--font-display); font-size: 20px; margin-right: 4px; }
+.phase-prompts li::after { content: '"'; color: var(--gold); font-family: var(--font-display); font-size: 20px; margin-left: 4px; }
+.phase-signs, .phase-pitfalls, .phase-mvp { background: var(--paper); border: 1px solid var(--border); padding: 18px 22px; border-radius: 4px; }
+.phase-signs { border-left: 3px solid var(--green); }
+.phase-pitfalls { border-left: 3px solid var(--maroon); }
+.phase-mvp { border-left: 3px solid var(--gold); background: var(--cream-dark); }
+.phase-signs h4 { color: var(--green); }
+.phase-pitfalls h4 { color: var(--maroon); }
+.phase-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+@media (max-width: 600px) { .phase-grid-2 { grid-template-columns: 1fr; } }
+
+/* Strategy cards */
+.strategy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 24px; margin-top: 32px; }
+.strategy { background: var(--paper); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: box-shadow 0.25s ease, transform 0.25s ease; position: relative; }
+.strategy:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.strategy-head { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%); }
+.strategy-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.strategy-level { display: inline-block; font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; }
+.strategy-level.foundational { background: var(--gold-pale); color: var(--gold); }
+.strategy-level.intermediate { background: var(--maroon-soft); color: var(--maroon); }
+.strategy-level.advanced { background: var(--ink); color: var(--cream); }
+.strategy-start { display: none; font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; background: var(--green); color: var(--paper); }
+body[data-path="A"] .strategy[data-start-for~="A"] .strategy-start,
+body[data-path="B"] .strategy[data-start-for~="B"] .strategy-start,
+body[data-path="C"] .strategy[data-start-for~="C"] .strategy-start,
+body[data-path="D"] .strategy[data-start-for~="D"] .strategy-start { display: inline-block; }
+.strategy h3 { font-size: 23px; line-height: 1.2; margin-bottom: 8px; }
+.strategy-summary { font-size: 15px; color: var(--ink-muted); line-height: 1.5; margin-bottom: 0; }
+.strategy details { border-top: 1px solid var(--border); }
+.strategy details:first-of-type { border-top: none; }
+.strategy summary { padding: 14px 28px; cursor: pointer; font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--maroon); list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background 0.15s ease; user-select: none; }
+.strategy summary::-webkit-details-marker { display: none; }
+.strategy summary:hover { background: var(--cream); }
+.strategy summary::after { content: '+'; font-size: 18px; font-weight: 400; color: var(--gold); transition: transform 0.2s ease; }
+.strategy details[open] summary::after { content: '−'; }
+.strategy-body { padding: 0 28px 20px; font-size: 15px; line-height: 1.6; color: var(--ink); }
+.strategy-body h5 { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 14px 0 6px; }
+.strategy-body h5:first-child { margin-top: 0; }
+.strategy-body ol, .strategy-body ul { padding-left: 1.4em; }
+.strategy-body p, .strategy-body li { font-size: 14px; }
+.strategy-body cite { display: block; font-size: 12px; color: var(--ink-subtle); font-style: italic; margin-top: 8px; }
+
+/* Resources list */
+.resource-list { list-style: none; padding-left: 0; margin-top: 8px; }
+.resource-list li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: 14px; }
+.resource-list li:last-child { border-bottom: none; }
+.resource-icon { flex-shrink: 0; width: 20px; text-align: center; font-size: 13px; font-weight: 700; line-height: 1.6; }
+.resource-icon.video { color: var(--maroon); }
+.resource-icon.book { color: var(--gold); }
+.resource-icon.article { color: var(--ink-muted); }
+.resource-icon.handout { color: var(--green); }
+.resource-meta { color: var(--ink-subtle); font-size: 12px; display: block; margin-top: 2px; }
+
+/* Principles */
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+.principle { padding: 28px; background: var(--paper); border: 1px solid var(--border); border-radius: 4px; position: relative; }
+.principle-num { font-family: var(--font-display); font-style: italic; font-size: 56px; line-height: 1; color: var(--gold-light); position: absolute; top: 16px; right: 20px; font-weight: 900; }
+.principle h4 { font-size: 19px; margin-bottom: 10px; padding-right: 44px; line-height: 1.3; }
+.principle p { font-size: 14px; color: var(--ink-muted); margin: 0; }
+
+/* References */
+.references-list { display: grid; gap: 14px; margin-top: 32px; }
+.reference { padding: 16px 20px; background: var(--paper); border: 1px solid var(--border); border-radius: 3px; font-size: 14px; line-height: 1.5; }
+.reference-title { font-weight: 700; color: var(--ink); }
+.reference-meta { color: var(--ink-muted); font-style: italic; }
+
+/* Footer */
+.footer { padding: 56px 32px; border-top: 1px solid var(--border); background: var(--cream-dark); text-align: center; font-size: 14px; color: var(--ink-muted); }
+.footer p { margin-bottom: 8px; }
+.footer-mark { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--maroon); margin-bottom: 16px; display: block; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.hero h1, .hero-lede, .hero-buttons, .hero-aside,
+.path-header h1, .path-header p, .path-card { animation: fadeUp 0.6s ease-out backwards; }
+.hero-lede { animation-delay: 0.1s; } .hero-buttons { animation-delay: 0.2s; } .hero-aside { animation-delay: 0.15s; }
+.path-header p { animation-delay: 0.1s; }
+.path-card:nth-child(1) { animation-delay: 0.15s; }
+.path-card:nth-child(2) { animation-delay: 0.2s; }
+.path-card:nth-child(3) { animation-delay: 0.25s; }
+.path-card:nth-child(4) { animation-delay: 0.3s; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+@media print { .nav, .hero-buttons, .footer, .path-selector { display: none; } .strategy details { display: block; } .strategy summary { display: none; } .strategy-body { display: block !important; padding: 8px 28px 20px; } }
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Room 1610 &middot; <em>Discussion Hub</em></a>
+    <div class="nav-right">
+      <button class="nav-path-badge" id="changePathBtn" aria-label="Change path">
+        <span class="tag">Path:</span>
+        <span id="currentPathLabel">—</span>
+      </button>
+      <button class="nav-toggle" aria-label="Toggle menu">Menu</button>
+      <ul class="nav-links">
+        <li><a href="#plan">Your Plan</a></li>
+        <li><a href="#openings">Openings</a></li>
+        <li><a href="#pairs">Pairs &amp; Groups</a></li>
+        <li><a href="#whole-class">Whole Class</a></li>
+        <li><a href="#closings">Closings</a></li>
+        <li><a href="walkthrus.html">WalkThrus</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PATH SELECTOR -->
+<section class="path-selector" id="top" data-no-path>
+  <div class="path-inner">
+    <div class="path-header">
+      <span class="eyebrow">Step One</span>
+      <h1>What are you <em>trying to do?</em></h1>
+      <p>This hub tailors its plan, strategies, and resources to where you're starting from. Pick the path that matches your situation &mdash; you can switch anytime.</p>
+    </div>
+    <div class="path-cards">
+      <button class="path-card" data-select-path="A">
+        <span class="path-card-num">01</span>
+        <h3>Building from scratch</h3>
+        <p>A new course, a new grade level, or a deliberate pivot in how you teach. You have a full semester or year to build a discussion culture from day one.</p>
+        <span class="path-card-cta">Start an 18-week build</span>
+      </button>
+      <button class="path-card" data-select-path="B">
+        <span class="path-card-num">02</span>
+        <h3>Refreshing mid-year</h3>
+        <p>Routines have drifted or never fully took hold. You want to reset before the year ends &mdash; honestly, with students who already know you.</p>
+        <span class="path-card-cta">Start a 10-week reset</span>
+      </button>
+      <button class="path-card" data-select-path="C">
+        <span class="path-card-num">03</span>
+        <h3>Adding to what's working</h3>
+        <p>Your classroom already talks. You want more variety, deeper protocols, and structures that stretch students who are ready for more.</p>
+        <span class="path-card-cta">Start a protocol rotation</span>
+      </button>
+      <button class="path-card" data-select-path="D">
+        <span class="path-card-num">04</span>
+        <h3>Planning for next year</h3>
+        <p>Summer or late-spring planning mode. You want a full-year arc, starting with a strong first week that sets up everything that follows.</p>
+        <span class="path-card-cta">Start a full-year plan</span>
+      </button>
+    </div>
+    <div class="path-skip"><button type="button" id="skipPathBtn">Or browse everything without picking a path &rarr;</button></div>
+  </div>
+</section>
+
+<!-- HEROES (tailored per path) -->
+<section class="hero" data-path-only="A">
+  <div class="hero-inner"><div class="hero-grid">
+    <div>
+      <span class="eyebrow">Your Path &middot; Building from scratch</span>
+      <h1>A full semester to <em>build a discussion culture.</em></h1>
+      <p class="hero-lede">Start with norms, then habits, then structures. The research is clear: discussion culture is built by slow, deliberate layering &mdash; not by announcing protocols. This 18-week arc gives you time to do it right.</p>
+      <div class="hero-buttons">
+        <a href="#plan" class="btn btn-primary">See the 18-week plan</a>
+        <a href="#openings" class="btn btn-ghost">Browse strategies</a>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <div class="aside-meta">Your core bet</div>
+      <h3>Go slow to go fast.</h3>
+      <p>The biggest failure mode for a new discussion-based classroom is introducing three protocols in week one. Install one habit, let it become automatic, then add the next.</p>
+    </aside>
+  </div></div>
+</section>
+
+<section class="hero" data-path-only="B">
+  <div class="hero-inner"><div class="hero-grid">
+    <div>
+      <span class="eyebrow">Your Path &middot; Refreshing mid-year</span>
+      <h1>Ten weeks to <em>turn it around.</em></h1>
+      <p class="hero-lede">You're not starting from scratch &mdash; and you shouldn't pretend to. Use spring break as a natural inflection point. Be honest with students about the shift. Layer in one habit at a time, anchored to the content you're actually teaching.</p>
+      <div class="hero-buttons">
+        <a href="#plan" class="btn btn-primary">See the 10-week plan</a>
+        <a href="#openings" class="btn btn-ghost">Browse strategies</a>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <div class="aside-meta">Your core bet</div>
+      <h3>Rehearsal before performance.</h3>
+      <p>The single most replicable finding in the research: no student should be asked to speak publicly without first rehearsing in writing or with a partner.</p>
+    </aside>
+  </div></div>
+</section>
+
+<section class="hero" data-path-only="C">
+  <div class="hero-inner"><div class="hero-grid">
+    <div>
+      <span class="eyebrow">Your Path &middot; Adding to what's working</span>
+      <h1>Depth <em>over breadth.</em></h1>
+      <p class="hero-lede">Your foundational routines are already in place. This path focuses on the protocols that stretch students: Fishbowl, Structured Academic Controversy, Socratic Seminar, and student-led variants. One protocol per month, refined over time.</p>
+      <div class="hero-buttons">
+        <a href="#plan" class="btn btn-primary">See the rotation</a>
+        <a href="#whole-class" class="btn btn-ghost">Jump to advanced</a>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <div class="aside-meta">Your core bet</div>
+      <h3>Protocols are training wheels that stay on.</h3>
+      <p>The goal isn't to abandon structure for &ldquo;real&rdquo; discussion. Research consistently finds well-structured protocols produce better talk than unstructured ones &mdash; even with adults.</p>
+    </aside>
+  </div></div>
+</section>
+
+<section class="hero" data-path-only="D">
+  <div class="hero-inner"><div class="hero-grid">
+    <div>
+      <span class="eyebrow">Your Path &middot; Planning next year</span>
+      <h1>A discussion-centered year <em>from day one.</em></h1>
+      <p class="hero-lede">Next year's students are arriving without your current ones' baggage &mdash; that's the gift. This full-year arc starts with a strong first week, builds foundational habits over the first quarter, and progresses toward student-led discussion by year's end.</p>
+      <div class="hero-buttons">
+        <a href="#plan" class="btn btn-primary">See the full-year arc</a>
+        <a href="#openings" class="btn btn-ghost">Browse strategies</a>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <div class="aside-meta">Your core bet</div>
+      <h3>The first week sets the whole year.</h3>
+      <p>Don't wait until October to establish discussion norms. The first five days are when students form their model of what this class is for &mdash; build around that.</p>
+    </aside>
+  </div></div>
+</section>
+
+<section class="hero" data-no-path>
+  <div class="hero-inner"><div class="hero-grid">
+    <div>
+      <span class="eyebrow">A Research-Backed Guide</span>
+      <h1>Building a classroom that <em>actually</em> talks.</h1>
+      <p class="hero-lede">A field guide to meaningful academic discourse in middle school Social Studies &mdash; organized around the four moments of a class. Anchored in research from Applebee, Zwiers, Himmele, Project Zero, and OCDE Project GLAD.</p>
+      <div class="hero-buttons">
+        <a href="#openings" class="btn btn-primary">Browse strategies</a>
+        <a href="#references" class="btn btn-ghost">Research foundation</a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- PATH A PLAN: 18-week build -->
+<section class="section" id="plan" data-path-only="A">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Your 18-Week Build</span>
+      <h2>Building a <em>discussion culture from scratch.</em></h2>
+      <p class="section-lede">Six phases across an 18-week semester. Start with norms (not protocols), install foundational habits in the first month, and layer toward student-led discussion by week eighteen.</p>
+    </div>
+    <div class="plan-intro">
+      <p><strong>The hardest part is not the first week &mdash; it's resisting the urge to skip ahead.</strong> The evidence is consistent: teachers who rush past foundational habits get shallow Socratic Seminars in November. Teachers who go slow in September have rich ones in January.</p>
+      <p><strong>What to say on day one.</strong> &ldquo;In this class, we learn by talking to each other about hard questions. That means I'll be asking you to listen, write, and share ideas more than memorize facts. It takes practice, and we'll work up to it together.&rdquo;</p>
+    </div>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">01</div><div class="phase-weeks">Weeks 1–2 &middot; Norms</div></div>
+      <div class="phase-body">
+        <h3>Set the <em>classroom culture</em> before any content.</h3>
+        <p class="phase-tagline">Norms first. Content second. Protocols third.</p>
+        <p>The first two weeks are about establishing what kind of classroom this is. Co-create norms with students. Practice warm-calling without academic pressure. Introduce the quick-write habit using low-stakes prompts.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Co-created discussion norms</strong> in week one. Students list what makes a good discussion, what kills one. Post them.</li>
+            <li><strong>Warm-calling practice</strong> with get-to-know-you prompts. Students experience the structure before the stakes are academic.</li>
+            <li><strong>Daily quick-write</strong> (even 2 minutes) with social-topic prompts: &ldquo;What does a fair classroom look like?&rdquo;</li>
+          </ul></div>
+        </div>
+        <div class="phase-mvp"><h4>If you only do one thing</h4><p>Get the norms posted and refer to them. Every other move in this plan depends on them being visible.</p></div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">02</div><div class="phase-weeks">Weeks 3–5 &middot; Foundation</div></div>
+      <div class="phase-body">
+        <h3>Install the <em>rehearsal habit.</em></h3>
+        <p class="phase-tagline">Quick-write, turn-and-talk, exit ticket. Every day.</p>
+        <p>Now academic content enters the picture. Every day begins with a quick-write, includes at least one turn-and-talk, and ends with an exit ticket you actually read.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Quick-write → turn-and-talk</strong> as the default opener.</li>
+            <li><strong>Exit tickets read the same evening</strong>, used to open the next day.</li>
+            <li><strong>Warm-calling</strong> on academic content now.</li>
+            <li><strong>Two sentence frames</strong> introduced in week five: &ldquo;I want to build on…&rdquo; and &ldquo;I see it differently because…&rdquo;</li>
+          </ul></div>
+        </div>
+        <div class="phase-signs"><h4>Signs it's working</h4><ul><li>Previously silent students speaking in pairs</li><li>Students writing full time without prompting</li><li>Exit tickets showing substantive thought</li></ul></div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">03</div><div class="phase-weeks">Weeks 6–9 &middot; Structure</div></div>
+      <div class="phase-body">
+        <h3>Layer <em>accountability</em> and visual thinking.</h3>
+        <p class="phase-tagline">Trios with roles, more sentence frames, See-Think-Wonder.</p>
+        <p>Small groups get structure. Document analysis becomes a trio task with assigned roles. Visual sources get See-Think-Wonder. Sentence frames expand.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Trios with assigned roles</strong> (Sourcer, Evidencer, Connector) for at least one doc analysis per week.</li>
+            <li><strong>See-Think-Wonder</strong> as the visual-source opener.</li>
+            <li><strong>Two more sentence frames:</strong> asking for evidence; paraphrasing.</li>
+            <li><strong>Paraphrase accountability:</strong> after pair talks, call on students to share what their <em>partner</em> said.</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">04</div><div class="phase-weeks">Weeks 10–13 &middot; First Protocols</div></div>
+      <div class="phase-body">
+        <h3>Your first <em>real protocols.</em></h3>
+        <p class="phase-tagline">Fishbowl, Chalkboard Splash, Connect-Extend-Challenge.</p>
+        <p>With foundation in place, introduce structured protocols. Start with Fishbowl &mdash; it lets students watch discussion get modeled by peers. Run it 2–3 times over these four weeks.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>First Fishbowl</strong> on a genuinely contested historical question.</li>
+            <li><strong>Chalkboard Splash</strong> for whole-class formative assessment.</li>
+            <li><strong>Connect-Extend-Challenge</strong> as an opener on day 2+ of a unit.</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">05</div><div class="phase-weeks">Weeks 14–17 &middot; Synthesis</div></div>
+      <div class="phase-body">
+        <h3>Structured Academic Controversy &amp; <em>conceptual change.</em></h3>
+        <p class="phase-tagline">Argue both sides. Change your mind on purpose.</p>
+        <p>Now add SAC for content with legitimate multiple perspectives. The switch-sides step is what distinguishes SAC from debate. Pair with &ldquo;I Used to Think&hellip; Now I Think&hellip;&rdquo; reflections.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Your first full SAC</strong> over 2–3 class periods.</li>
+            <li><strong>&ldquo;I Used to Think&hellip; Now I Think&hellip;&rdquo;</strong> as a closing reflection.</li>
+            <li><strong>Student-generated questions</strong> for discussions, not only teacher-generated ones.</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">06</div><div class="phase-weeks">Week 18 &middot; Seminar</div></div>
+      <div class="phase-body">
+        <h3>First <em>Socratic Seminar.</em></h3>
+        <p class="phase-tagline">Teacher silent. Students facilitating. A text worth sitting with.</p>
+        <p>Seventeen weeks of scaffolded rehearsal has built the conditions for real student-led seminar. Pick a text with moral weight and ambiguity. Pull your chair outside the circle and say as little as humanly possible. Close the semester with written reflection on growth.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PATH B PLAN: 10-week reset -->
+<section class="section" id="plan" data-path-only="B">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Your 10-Week Reset</span>
+      <h2>A ramp-up starting <em>the Monday after spring break.</em></h2>
+      <p class="section-lede">Your students already have norms, relationships, and habits &mdash; some productive, some not. This plan uses spring break as a natural inflection point to layer in one habit at a time, anchored to the content you're actually teaching.</p>
+    </div>
+    <div class="plan-intro">
+      <p><strong>Be honest with students on day one back.</strong> Try something close to: <em>&ldquo;Over the break I've been reading research on how to make our class discussions richer. A lot of what I read said I've been putting you on the spot without giving you enough time to think. I want to try some new routines with you for the rest of the year.&rdquo;</em></p>
+      <p><strong>Pick one phase at a time.</strong> If a week gets eaten by assemblies, testing, or snow days, hold steady on the current phase. The point is habit formation, not coverage.</p>
+    </div>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">01</div><div class="phase-weeks">Weeks 1–2 &middot; Reset</div></div>
+      <div class="phase-body">
+        <h3>Install the <em>rehearsal habit.</em></h3>
+        <p class="phase-tagline">Three moves, every day, no exceptions.</p>
+        <p>The goal isn't to roll out new protocols. It's to make three practices automatic: a silent quick-write to open, a partner talk before any whole-class share, and an exit ticket to close.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Daily quick-write → turn-and-talk</strong> (3 min write, 2 min pair).</li>
+            <li><strong>Warm-calling reframe</strong> on day one back: ask the question first, pause 5–10 seconds, <em>then</em> name a student.</li>
+            <li><strong>Daily exit ticket.</strong> Read them. Open the next day with what you found.</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Content anchor &middot; Age of Jackson</h4>
+          <p>Indian Removal is one of the most discussion-rich topics in 8th grade US history and a natural fit for the reset phase.</p>
+        </div>
+        <div class="phase-section"><h4>Sample prompts</h4>
+          <div class="phase-prompts"><ul>
+            <li>What does it mean to be a &ldquo;common man&rdquo; in 1828? Who gets left out?</li>
+            <li>If you were a Cherokee leader in 1830, what would you do after the Indian Removal Act?</li>
+            <li>Was Jackson a democrat, a tyrant, or both? One sentence, one piece of evidence.</li>
+            <li>Whose voice is missing from today's lesson?</li>
+          </ul></div>
+        </div>
+        <div class="phase-grid-2">
+          <div class="phase-signs"><h4>Signs it's working</h4><ul>
+            <li>Students writing the full 2–3 minutes without prompting.</li>
+            <li>Pair talk audible across the room.</li>
+            <li>Exit tickets showing substantive thought.</li>
+            <li>Previously silent students contributing in pairs.</li>
+          </ul></div>
+          <div class="phase-pitfalls"><h4>Watch out for</h4><ul>
+            <li>Skipping the write step when rushed. <em>Don't.</em></li>
+            <li>Reverting to &ldquo;who wants to share?&rdquo;</li>
+            <li>Exit tickets you never read.</li>
+            <li>Introducing a second routine too early.</li>
+          </ul></div>
+        </div>
+        <div class="phase-mvp"><h4>Minimum viable version</h4><p>Hold the quick-write and exit ticket, even at 60 seconds each. Drop the partner talk before you drop the write.</p></div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">02</div><div class="phase-weeks">Weeks 3–4 &middot; Structure</div></div>
+      <div class="phase-body">
+        <h3>Layer <em>accountability</em> onto talk.</h3>
+        <p class="phase-tagline">Sentence frames and small-group roles.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Two posted sentence frames:</strong> &ldquo;I want to build on what ___ said because…&rdquo; and &ldquo;I see it differently because…&rdquo;</li>
+            <li><strong>Trios with assigned roles</strong> for one document-analysis task per week. Rotate every session.</li>
+            <li><strong>Paraphrase accountability:</strong> after pair talks, ask for what the <em>partner</em> said.</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Content anchor &middot; antebellum reform movements</h4>
+          <p>Abolition, women's rights, temperance, education, prison reform. Multiple perspectives built in &mdash; perfect for trio roles.</p>
+        </div>
+        <div class="phase-section"><h4>Sample trio task</h4>
+          <div class="phase-prompts"><ul>
+            <li>Three sources: Garrison, Grimké, Douglass. Sourcer traces context, Evidencer pulls claims, Connector maps overlaps.</li>
+            <li>Seneca Falls Declaration vs. Declaration of Independence &mdash; what's changed, what's kept?</li>
+            <li>Who was this reform movement <em>for</em>? Who was it <em>not</em> for?</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">03</div><div class="phase-weeks">Weeks 5–6 &middot; First Protocol</div></div>
+      <div class="phase-body">
+        <h3>Your first <em>Fishbowl.</em></h3>
+        <p class="phase-tagline">Let them see what discussion actually looks like.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>One Fishbowl per week</strong>, ~25 minutes.</li>
+            <li><strong>See-Think-Wonder</strong> for visual sources.</li>
+            <li><strong>Two more sentence frames</strong> (ask for evidence; paraphrase).</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Content anchor &middot; Manifest Destiny</h4>
+          <p>Possibly the single best unit in 8th grade for discussion. Multiple legitimate perspectives, a contested phrase, visible historiography.</p>
+        </div>
+        <div class="phase-section"><h4>Fishbowl prompt candidates</h4>
+          <div class="phase-prompts"><ul>
+            <li>Was Manifest Destiny inevitable?</li>
+            <li>Whose story does the phrase &ldquo;Manifest Destiny&rdquo; erase?</li>
+            <li>Is Gast's <em>American Progress</em> a celebration, a justification, or a confession?</li>
+          </ul></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">04</div><div class="phase-weeks">Weeks 7–8 &middot; Controversy</div></div>
+      <div class="phase-body">
+        <h3>SAC on <em>the Mexican-American War.</em></h3>
+        <p class="phase-tagline">Argue one side. Argue the other. Find common ground.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Full SAC protocol</strong> over 2–3 class periods.</li>
+            <li><strong>Two curated source packets</strong> (Side A: justified; Side B: not justified).</li>
+            <li><strong>Written consensus statement</strong> as the culminating artifact.</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Central question</h4>
+          <div class="phase-prompts"><ul><li>Was the United States justified in going to war with Mexico in 1846?</li></ul></div>
+        </div>
+        <div class="phase-section"><h4>Source suggestions</h4>
+          <ul>
+            <li>Polk's War Message to Congress (1846)</li>
+            <li>Lincoln's Spot Resolutions (1847)</li>
+            <li>Excerpts from <em>Mexican Views of the War</em> (Alcaraz et al.)</li>
+            <li>Thoreau, &ldquo;Civil Disobedience&rdquo; (1849)</li>
+            <li>Grant's later memoir reflection on the war</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">05</div><div class="phase-weeks">Weeks 9–10 &middot; Seminar &amp; Reflect</div></div>
+      <div class="phase-body">
+        <h3>First <em>Socratic Seminar</em>, plus reflection.</h3>
+        <p class="phase-tagline">Teacher silent. Students facilitating.</p>
+        <div class="phase-section"><h4>What to install</h4>
+          <div class="phase-install"><ul>
+            <li><strong>One Socratic Seminar</strong> (prep day + seminar day + reflection day).</li>
+            <li><strong>Two smaller seminars of 12–15</strong> rather than one big one.</li>
+            <li><strong>End-of-year reflection</strong> on growth as a discussing class member.</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Text candidates</h4>
+          <div class="phase-prompts"><ul>
+            <li>Frederick Douglass, &ldquo;What to the Slave is the Fourth of July?&rdquo; (1852) &mdash; abridged</li>
+            <li>Lincoln-Douglas debate excerpts (1858)</li>
+            <li>Harriet Jacobs, <em>Incidents in the Life of a Slave Girl</em> (1861)</li>
+            <li>Sojourner Truth, &ldquo;Ain't I a Woman?&rdquo; (1851) paired with Declaration of Sentiments</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Closing reflection prompt</h4>
+          <div class="phase-prompts"><ul><li>Think about yourself as a talker and listener in April. Think about yourself now. What changed? What didn't? What do you want to keep building next year?</li></ul></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="plan-intro" style="margin-top: 56px; border-left-color: var(--maroon);">
+      <h4 style="font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--maroon); margin-bottom: 12px;">One honest note about testing season</h4>
+      <p>Spring testing will interrupt this plan. When it does, <em>don't advance the phase</em> &mdash; just hold. Habit formation beats calendar adherence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PATH C PLAN: protocol rotation -->
+<section class="section" id="plan" data-path-only="C">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Your Protocol Rotation</span>
+      <h2>One protocol <em>per month,</em> refined over time.</h2>
+      <p class="section-lede">Your foundational routines are already in place. This rotation adds breadth and depth without churning through novelties for their own sake.</p>
+    </div>
+    <div class="plan-intro">
+      <p><strong>Pick one protocol per month and repeat it at least twice.</strong> Single-exposure protocols feel like activities; repeated protocols become practices. The second time you run a Fishbowl, students know the structure and can focus on content.</p>
+      <p><strong>Reflect explicitly.</strong> After each protocol, build in 5–10 minutes of &ldquo;how did we do?&rdquo; Student noticing is what transfers.</p>
+    </div>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">01</div><div class="phase-weeks">Month 1 &middot; Fishbowl</div></div>
+      <div class="phase-body">
+        <h3>The <em>observation-based</em> discussion.</h3>
+        <p class="phase-tagline">Small inner circle. Outer circle with a job.</p>
+        <p>Start with Fishbowl because it legitimizes watching as a way of participating. Run it twice this month: once with a clear binary question, once with an open interpretive one.</p>
+        <div class="phase-section"><h4>Moves to try</h4>
+          <ul>
+            <li><strong>Tap-in Fishbowl:</strong> outer-circle students swap into the inner circle when they're ready (see Facing History's Plessy demo in the Fishbowl strategy card).</li>
+            <li><strong>4-Chair variant:</strong> just four chairs in the center; talking only happens there.</li>
+            <li><strong>Double Fishbowl:</strong> outer circle observes a specific inner partner, debriefs with them after.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">02</div><div class="phase-weeks">Month 2 &middot; SAC</div></div>
+      <div class="phase-body">
+        <h3>Structured Academic <em>Controversy.</em></h3>
+        <p class="phase-tagline">Argue both sides. Then find consensus.</p>
+        <p>SAC is the gold standard for controversial historical content. Pick a question historians actually argue about, not a false-balance issue.</p>
+        <div class="phase-section"><h4>Content candidates</h4>
+          <ul>
+            <li>Was Reconstruction a success or a failure?</li>
+            <li>Was the New Deal socialist, capitalist, or neither?</li>
+            <li>Should the U.S. have entered WWI? WWII before Pearl Harbor?</li>
+            <li>Was the atomic bombing of Hiroshima/Nagasaki militarily necessary?</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">03</div><div class="phase-weeks">Month 3 &middot; Socratic Seminar</div></div>
+      <div class="phase-body">
+        <h3>Student-led <em>text-based inquiry.</em></h3>
+        <p class="phase-tagline">Teacher silent. Students ask, build, cite.</p>
+        <p>If you've done SAC successfully, your students can handle Socratic Seminar. The discipline is harder &mdash; no assigned sides, no time pressure, no consensus requirement. Just a text and each other.</p>
+        <div class="phase-section"><h4>Variants to vary</h4>
+          <ul>
+            <li><strong>Inside-outside:</strong> half the class in the seminar, half observing assigned peers.</li>
+            <li><strong>Two parallel seminars</strong> of 12–15 each, you walk between them.</li>
+            <li><strong>Student-generated questions:</strong> students bring their own opening questions.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">04</div><div class="phase-weeks">Month 4 &middot; Microlab + Debate Team Carousel</div></div>
+      <div class="phase-body">
+        <h3>Equal-airtime and <em>rotating-perspective</em> protocols.</h3>
+        <p class="phase-tagline">Structured silence. Structured movement.</p>
+        <p>Microlab enforces equal airtime through timed silence. Debate Team Carousel (from the Himmeles) rotates students through multiple perspectives on a claim.</p>
+        <div class="phase-section"><h4>When to reach for each</h4>
+          <ul>
+            <li><strong>Microlab:</strong> after a heavy-content day, for community and reflection.</li>
+            <li><strong>Debate Team Carousel:</strong> when you want every student to wrestle with multiple angles on the same claim.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">05</div><div class="phase-weeks">Month 5 &middot; Student-Led</div></div>
+      <div class="phase-body">
+        <h3>Hand over <em>discussion leadership.</em></h3>
+        <p class="phase-tagline">Students facilitate. You observe.</p>
+        <p>By month five, students can run routines themselves. Rotate a &ldquo;discussion leader&rdquo; role. Students generate the opening question, set the norms reminder, and call on classmates. You sit in the back.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">06</div><div class="phase-weeks">Month 6 &middot; Refinement &amp; Reflection</div></div>
+      <div class="phase-body">
+        <h3>Polish, reflect, <em>consolidate.</em></h3>
+        <p class="phase-tagline">Deepen the protocols that worked best.</p>
+        <p>Don't add a sixth protocol. Return to the two or three that worked best and deepen them. Close with student self-assessment and a whole-class meta-discussion about what your discussion culture has become.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PATH D PLAN: full-year arc -->
+<section class="section" id="plan" data-path-only="D">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Your Full-Year Arc</span>
+      <h2>A discussion-centered year <em>from day one.</em></h2>
+      <p class="section-lede">Four quarters. Each builds on the last. The first week does more work than any other &mdash; protect it. Discussion habits established in the first five days will sustain the whole year.</p>
+    </div>
+    <div class="plan-intro">
+      <p><strong>The first week is not a syllabus-and-procedures week.</strong> It's a discussion-habits week. Run the rules lightly. Spend real time on co-creating talk norms, modeling quick-writes, and practicing warm-calling with low-stakes prompts. That's what your students will remember in October.</p>
+    </div>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">Q1</div><div class="phase-weeks">Weeks 1–9 &middot; Foundation</div></div>
+      <div class="phase-body">
+        <h3>Habits before <em>protocols.</em></h3>
+        <p class="phase-tagline">Quick-write, turn-and-talk, exit ticket. Every day.</p>
+        <div class="phase-section"><h4>Week 1 specifically</h4>
+          <div class="phase-install"><ul>
+            <li><strong>Day 1:</strong> co-create discussion norms with students. Post them.</li>
+            <li><strong>Day 2:</strong> model quick-write and turn-and-talk with a low-stakes prompt.</li>
+            <li><strong>Day 3:</strong> introduce warm-calling explicitly. Practice with get-to-know-you questions.</li>
+            <li><strong>Day 4:</strong> introduce exit tickets. Read them that night. Open day 5 with what you found.</li>
+            <li><strong>Day 5:</strong> first academic content. Run the full three-move rhythm.</li>
+          </ul></div>
+        </div>
+        <div class="phase-section"><h4>Across Q1</h4>
+          <ul>
+            <li>Rehearsal-before-share as the default.</li>
+            <li>Two sentence frames posted by week 5, two more by week 9.</li>
+            <li>First See-Think-Wonder opener by week 4.</li>
+            <li>First trios with roles by week 7.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">Q2</div><div class="phase-weeks">Weeks 10–18 &middot; Structure</div></div>
+      <div class="phase-body">
+        <h3>Small groups and <em>first protocols.</em></h3>
+        <p class="phase-tagline">Trios become reliable. Fishbowl enters.</p>
+        <p>Q2 adds structure to small groups and introduces the first protocol. Fishbowl is the right first choice &mdash; it lets students see discussion modeled by peers.</p>
+        <div class="phase-section"><h4>Install</h4>
+          <ul>
+            <li>Trios with roles, one doc analysis per week.</li>
+            <li>First Fishbowl by week 12.</li>
+            <li>Second and third Fishbowls by semester end.</li>
+            <li>Chalkboard Splash as a whole-class assessment.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">Q3</div><div class="phase-weeks">Weeks 19–27 &middot; Controversy</div></div>
+      <div class="phase-body">
+        <h3>SAC <em>becomes routine.</em></h3>
+        <p class="phase-tagline">At least two full SACs. The switch-sides move becomes familiar.</p>
+        <p>Q3 is when SAC should become a recognizable pattern for your students. Run at least two full SACs with legitimately contested content. The first will feel mechanical; the second should feel generative.</p>
+      </div>
+    </article>
+
+    <article class="phase">
+      <div class="phase-marker"><div class="phase-number">Q4</div><div class="phase-weeks">Weeks 28–36 &middot; Student-Led</div></div>
+      <div class="phase-body">
+        <h3>Socratic Seminar and <em>hand-off.</em></h3>
+        <p class="phase-tagline">By year's end, students can run a seminar without you.</p>
+        <p>Q4 is the payoff. With three quarters of scaffolded rehearsal, students can sustain a genuine student-led Socratic Seminar. Run one early in Q4 and another late, with an end-of-year written reflection on growth.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- OPENINGS -->
+<section class="section" id="openings">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Category One</span>
+      <h2>Openings &mdash; <em>the first five minutes.</em></h2>
+      <p class="section-lede">Openers do three things at once: surface prior knowledge, generate curiosity, and give every student something to say before anyone has to speak publicly.</p>
+    </div>
+
+    <div style="background: var(--paper); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 24px 28px; margin-bottom: 40px; border-radius: 4px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+      <div style="flex: 1 1 360px; min-width: 280px;">
+        <div style="font-family: var(--font-body); font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Companion reference</div>
+        <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; line-height: 1.25; color: var(--ink); margin-bottom: 6px;">Need the <em style="color: var(--maroon);">how</em>, not just the why?</div>
+        <p style="font-size: 14.5px; line-height: 1.55; color: var(--ink-muted); margin: 0;">The <a href="walkthrus.html">WalkThrus page</a> breaks down thirteen core strategies into dense, scannable reference cards &mdash; five-step protocols, sample scripts, and variations. Inspired by Sherrington and Caviglioli. Designed for prep-period reading or printing.</p>
+      </div>
+      <a href="walkthrus.html" class="btn btn-primary" style="flex-shrink: 0;">Open the WalkThrus &rarr;</a>
+    </div>
+
+    <div class="strategy-grid">
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>Quick-Write &rarr; Turn-and-Talk</h3>
+          <p class="strategy-summary">The workhorse. Guarantees every student has something to say before public share.</p>
+        </div>
+        <details open><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <h5>What the research says</h5>
+            <p>Mundelsee &amp; Jurkowski's 2021 study of 481 ninth graders found students who had time to think and talk with a peer before whole-class sharing were 1.7x more likely to volunteer than students asked to respond immediately, and reported lower anxiety.<cite><a href="https://researchschool.org.uk/durrington/news/how-effective-is-think-pair-share" target="_blank" rel="noopener">Mundelsee &amp; Jurkowski (2021), summary</a></cite></p>
+            <h5>When it works / struggles</h5>
+            <p><strong>Works:</strong> every day, every content. <strong>Struggles:</strong> closed-ended prompts. Use prompts that invite a stance.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Post a prompt tied to the day's lesson.</li>
+              <li>3 min silent writing. Visible timer.</li>
+              <li>2 min turn-and-talk: partner A first (60s), partner B paraphrases &amp; adds. Switch.</li>
+              <li>Warm-call, asking what their <em>partner</em> said.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.facinghistory.org/resource-library/think-pair-share" target="_blank" rel="noopener">Facing History classroom video: Think-Pair-Share</a><span class="resource-meta">Jackie Rubino's classroom &mdash; ELA but the protocol is identical</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.eleducation.org/resources/classroom-protocols-in-action-think-pair-share/" target="_blank" rel="noopener">EL Education: Classroom Protocols in Action</a><span class="resource-meta">Student-narrated demo</span></div></li>
+              <li><span class="resource-icon book">■</span><div><a href="https://www.ascd.org/books/total-participation-techniques-third-edition" target="_blank" rel="noopener">Himmele &amp; Himmele, <em>Total Participation Techniques</em></a><span class="resource-meta">Book &mdash; quick-writes are chapter-length here</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.theteachertoolkit.com/index.php/tool/think-pair-share" target="_blank" rel="noopener">Teacher Toolkit: printable TPS handouts</a><span class="resource-meta">Free editable Google Docs for secondary</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>See &middot; Think &middot; Wonder</h3>
+          <p class="strategy-summary">Observation-before-interpretation routine from Harvard Project Zero.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <h5>What the research says</h5>
+            <p>Project Zero's Visible Thinking research reports gains on state and district tests in reading, writing, and social studies in classrooms using thinking routines consistently. STW specifically builds the observation-before-interpretation habit central to historical thinking.</p>
+            <h5>When it works</h5>
+            <p>Any day with a compelling image, artifact, political cartoon, painting, or map. Especially strong for Early Republic and antebellum content.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Project a single image for silent viewing (60 seconds).</li>
+              <li><strong>See:</strong> observable details only (2 min).</li>
+              <li><strong>Think:</strong> interpretation grounded in observation.</li>
+              <li><strong>Wonder:</strong> questions for inquiry.</li>
+              <li>Bridge into content with the Wonder questions.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon handout">▤</span><div><a href="https://pz.harvard.edu/sites/default/files/See%20Think%20Wonder_2.pdf" target="_blank" rel="noopener">Project Zero See-Think-Wonder PDF</a><span class="resource-meta">Printable routine card</span></div></li>
+              <li><span class="resource-icon book">■</span><div><a href="https://pz.harvard.edu/thinking-routines" target="_blank" rel="noopener">Project Zero Thinking Routines Toolbox</a><span class="resource-meta">50+ free routines</span></div></li>
+              <li><span class="resource-icon book">■</span><div>Ritchhart, Church, &amp; Morrison, <em>Making Thinking Visible</em> (Jossey-Bass, 2011)<span class="resource-meta">STW is chapter 3</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="A D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level intermediate">Intermediate</span><span class="strategy-start">Start here</span></div>
+          <h3>Chalkboard Splash</h3>
+          <p class="strategy-summary">Silent, whole-class formative assessment made visible to everyone.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>A signature Total Participation Technique from the Himmeles. Gets 100% of students' thinking on the board without anyone speaking first.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Single open-ended prompt.</li>
+              <li>Students write a response on a sticky or quarter sheet.</li>
+              <li>Silently post on the board.</li>
+              <li>Silent circulation &mdash; students read for patterns.</li>
+              <li>Open the floor: &ldquo;What did you notice?&rdquo;</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon book">■</span><div><a href="https://www.ascd.org/books/total-participation-techniques-third-edition" target="_blank" rel="noopener">Himmele &amp; Himmele, <em>Total Participation Techniques</em></a></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.edweek.org/teaching-learning/opinion-total-participation-techniques-an-interview-with-persida-william-himmele/2016/07" target="_blank" rel="noopener">EdWeek: interview with the Himmeles</a></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="C">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level advanced">Advanced</span><span class="strategy-start">Start here</span></div>
+          <h3>Connect &middot; Extend &middot; Challenge</h3>
+          <p class="strategy-summary">A Project Zero routine that makes shifting understanding visible.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>Another Project Zero routine, designed to surface how students' thinking evolves across a unit. Especially powerful in history where prior conceptions are often partial.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li><strong>Connect:</strong> How does today connect to yesterday?</li>
+              <li><strong>Extend:</strong> What new direction does it push?</li>
+              <li><strong>Challenge:</strong> What's still confusing?</li>
+              <li>Use the Challenge responses as gold for discussion.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon handout">▤</span><div><a href="https://pz.harvard.edu/resources/connect-extend-challenge" target="_blank" rel="noopener">Project Zero Connect-Extend-Challenge PDF</a></div></li>
+              <li><span class="resource-icon book">■</span><div>Ritchhart &amp; Church, <em>The Power of Making Thinking Visible</em> (2020)</div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAIRS & GROUPS -->
+<section class="section" id="pairs">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Category Two</span>
+      <h2>Pairs &amp; Small Groups &mdash; <em>up to three.</em></h2>
+      <p class="section-lede">Small groups drift when there's no positive interdependence or individual accountability. The Johnson brothers' decades of cooperative learning research are unambiguous: without both, groups produce free-riding.</p>
+    </div>
+    <div class="strategy-grid">
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>Think-Pair-Share with Accountability</h3>
+          <p class="strategy-summary">The classic &mdash; but the &ldquo;share&rdquo; move is where most teachers lose it.</p>
+        </div>
+        <details open><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <h5>What the research says</h5>
+            <p>Developed by Frank Lyman at Maryland, 1981. The most-studied discussion protocol in K-12 research. Cooper et al. (2021) flag that the &ldquo;Share&rdquo; tends to be dominated by the same voices unless teachers explicitly structure accountability.<cite><a href="https://www.lifescied.org/doi/10.1187/cbe.20-08-0200" target="_blank" rel="noopener">Cooper et al. (2021)</a></cite></p>
+            <h5>The accountability fix</h5>
+            <p>Don't ask &ldquo;who wants to share?&rdquo; Ask: &ldquo;What did your partner say?&rdquo;</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li><strong>Think:</strong> silent write, 2–3 min.</li>
+              <li><strong>Pair:</strong> 2 min. Partner A first, B paraphrases &amp; adds. Switch.</li>
+              <li><strong>Share:</strong> warm-call, asking for the partner's ideas.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.facinghistory.org/resource-library/think-pair-share" target="_blank" rel="noopener">Facing History: TPS classroom video</a><span class="resource-meta">Jackie Rubino on <em>The Sunflower</em></span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.eleducation.org/resources/classroom-protocols-in-action-think-pair-share/" target="_blank" rel="noopener">EL Education: student-narrated TPS demo</a></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.edutopia.org/article/think-pair-share-variations-16-ways-up-your-game" target="_blank" rel="noopener">Edutopia: 16 TPS variations</a><span class="resource-meta">For when basic TPS gets stale</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.lifescied.org/doi/10.1187/cbe.20-08-0200" target="_blank" rel="noopener">Cooper et al. on the &ldquo;Share&rdquo; problem</a><span class="resource-meta">Open-access research</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.readingrockets.org/classroom/classroom-strategies/think-pair-share" target="_blank" rel="noopener">Reading Rockets: printable TPS guide</a></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>Accountable Talk Sentence Frames</h3>
+          <p class="strategy-summary">Zwiers' five conversation skills + GLAD's guided oral practice.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>Zwiers &amp; Crawford identify five core skills: elaborating, clarifying, supporting with evidence, building on / challenging, paraphrasing. Core to GLAD's Guided Oral Practice. Research shows significant gains in vocabulary and oral output for all students.</p>
+          </div>
+        </details>
+        <details><summary>Starter frames to post</summary>
+          <div class="strategy-body">
+            <ul>
+              <li><strong>Build on:</strong> &ldquo;I want to build on what ___ said. I think…&rdquo;</li>
+              <li><strong>Disagree:</strong> &ldquo;I see it differently because…&rdquo;</li>
+              <li><strong>Ask for evidence:</strong> &ldquo;What in the source makes you think that?&rdquo;</li>
+              <li><strong>Paraphrase:</strong> &ldquo;So what I hear you saying is…&rdquo;</li>
+              <li><strong>Clarify:</strong> &ldquo;Can you say more about what you mean by…?&rdquo;</li>
+            </ul>
+            <p><strong>How to install:</strong> two frames at a time, not five. Model them yourself. Tally uses to gamify. Add two more after two weeks.</p>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon book">■</span><div><a href="https://jeffzwiers.org/" target="_blank" rel="noopener">Zwiers &amp; Crawford, <em>Academic Conversations</em></a><span class="resource-meta">The canonical book</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://jeffzwiers.org/tools" target="_blank" rel="noopener">Jeff Zwiers' free tools page</a><span class="resource-meta">Downloadable frames, prompts, rubrics</span></div></li>
+              <li><span class="resource-icon book">■</span><div><a href="https://projectgladstudy.educationnorthwest.org/" target="_blank" rel="noopener">OCDE Project GLAD study &amp; resources</a><span class="resource-meta">Research on Guided Oral Practice</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level intermediate">Intermediate</span><span class="strategy-start">Start here</span></div>
+          <h3>Trios with Assigned Roles</h3>
+          <p class="strategy-summary">Three students, three roles, one shared artifact. No hiding.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>Elizabeth Cohen's Complex Instruction at Stanford showed that assigning roles and &ldquo;assigning competence&rdquo; widens who speaks. Trios beat quads in middle school because there's nowhere to hide.</p>
+            <h5>Three roles for document analysis</h5>
+            <ul><li><strong>Sourcer:</strong> who wrote this, when, why</li><li><strong>Evidencer:</strong> what does the source say</li><li><strong>Connector:</strong> how does it fit with the others</li></ul>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Form trios. Assign roles. Rotate every session.</li>
+              <li>Each student reads all sources but analyzes through their role's lens.</li>
+              <li>Group produces a single shared graphic organizer.</li>
+              <li>Debrief: groups report what they learned from one groupmate's role.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon book">■</span><div>Cohen &amp; Lotan, <em>Designing Groupwork</em> (3rd ed., 2014)<span class="resource-meta">Complex Instruction's foundational text</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.inquirygroup.org/history-lessons" target="_blank" rel="noopener">Digital Inquiry Group (SHEG) lessons</a><span class="resource-meta">Free document sets ready for trio roles</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="B C D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level advanced">Advanced</span><span class="strategy-start">Start here</span></div>
+          <h3>Structured Academic Controversy (SAC)</h3>
+          <p class="strategy-summary">Argue one side. Then argue the other. Drop both and find common ground.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>Developed by David and Roger Johnson at Minnesota; refined for social studies by Walter Parker at UW over three decades. The switch-sides step is what distinguishes SAC from debate.<cite><a href="https://education.uw.edu/sites/default/files/284/Parker_SAC.pdf" target="_blank" rel="noopener">Parker, <em>SAC: What it can be</em></a></cite></p>
+          </div>
+        </details>
+        <details><summary>Step-by-step (groups of 4, A-B / C-D pairs)</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Teacher provides a binary question and two source packets (15–20 min reading).</li>
+              <li>Pair A-B prepares Side A. Pair C-D prepares Side B. (5–10 min)</li>
+              <li>Pair A-B presents. C-D paraphrases before presenting their own.</li>
+              <li><strong>Switch sides.</strong> A-B now argues Side B using C-D's evidence. The critical move.</li>
+              <li>Drop positions. Reach refined consensus.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.teachingchannel.com/k12-hub/blog/debate-deliberate/" target="_blank" rel="noopener">Teaching Channel: SAC with Liz Robbins</a><span class="resource-meta">HS social studies SAC demo on civic issues</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.ed4democracy.org/videos/structured-academic-controversy" target="_blank" rel="noopener">Educating for Democracy: SAC on suffrage age 16</a><span class="resource-meta">Chicago Public Schools classroom demo</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.youtube.com/watch?v=nlt5uOylCWU" target="_blank" rel="noopener">&ldquo;Teach My Class With Me&rdquo; middle school SAC</a><span class="resource-meta">Actual MS classroom footage (YouTube)</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://teachinghistory.org/teaching-materials/teaching-guides/21731" target="_blank" rel="noopener">TeachingHistory.org: &ldquo;Was Lincoln a racist?&rdquo; SAC</a><span class="resource-meta">Full ready-to-use SAC with sources</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://education.uw.edu/sites/default/files/284/Parker_SAC.pdf" target="_blank" rel="noopener">Walter Parker, &ldquo;SAC: What it can be&rdquo;</a><span class="resource-meta">30-year refinement (PDF)</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://toocoolformiddleschool.com/2018/05/26/structured-academic-controversies/" target="_blank" rel="noopener">&ldquo;Too Cool for Middle School&rdquo; SAC blog</a><span class="resource-meta">MS teacher walkthrough with 6th grade</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="C D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level advanced">Advanced</span><span class="strategy-start">Start here</span></div>
+          <h3>Expert Groups / Jigsaw</h3>
+          <p class="strategy-summary">Students become experts, then teach peers.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>A signature GLAD strategy and one of Slavin's most-cited cooperative learning structures. Powerful interdependence combined with deep accountability.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Form home groups of 3–4. Number off.</li>
+              <li>All the 1s meet as Expert Group A, 2s as B, etc.</li>
+              <li>Experts research together and build a shared explanation.</li>
+              <li>Experts return to home groups and teach.</li>
+              <li>Synthesis via quiz or randomly-selected presenter.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon book">■</span><div><a href="https://projectgladstudy.educationnorthwest.org/" target="_blank" rel="noopener">OCDE Project GLAD study</a></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.jigsaw.org/" target="_blank" rel="noopener">Official Jigsaw Classroom site</a><span class="resource-meta">Elliot Aronson's original protocol</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHOLE CLASS -->
+<section class="section" id="whole-class">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Category Three</span>
+      <h2>Whole-Class Discussion &mdash; <em>decenter yourself.</em></h2>
+      <p class="section-lede">Two pillars: never ask students into whole-class talk without rehearsal, and gradually reduce your role from distributor-of-turns to facilitator-of-threads.</p>
+    </div>
+    <div class="strategy-grid">
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>Warm-Calling</h3>
+          <p class="strategy-summary">Cold-calling works &mdash; but only when framed warmly and preceded by rehearsal.</p>
+        </div>
+        <details open><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>A 2022 observational study of 86 cold-call events across 15 middle school teachers found the same technique produces opposite outcomes depending on framing. Warm: richer discussions, students safe to take risks. Catch-you-out: superficial engagement, anxiety.<cite><a href="https://www.edutopia.org/article/does-cold-calling-work-heres-what-the-research-says/" target="_blank" rel="noopener">Edutopia summary</a></cite></p>
+          </div>
+        </details>
+        <details><summary>The four-step protocol</summary>
+          <div class="strategy-body">
+            <ol>
+              <li><strong>Frame it publicly:</strong> &ldquo;I call on people by name because I want to hear from everyone. I'll always give you time to think first.&rdquo;</li>
+              <li><strong>Question before name.</strong> Naming first causes everyone else to disengage.</li>
+              <li><strong>Pause 5–10 seconds</strong> (Rowe's wait-time research).</li>
+              <li><strong>If they pass,</strong> let them &ldquo;phone a friend&rdquo; and come back for a paraphrase.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.edutopia.org/article/cold-calling-classroom-tips-effective-use/" target="_blank" rel="noopener">Edutopia: Cold Calling Tips for Effective Use</a></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.edutopia.org/article/does-cold-calling-work-heres-what-the-research-says/" target="_blank" rel="noopener">Edutopia: What the research says</a><span class="resource-meta">The 2022 MS study summary</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://journals.sagepub.com/doi/10.1177/002248718603700110" target="_blank" rel="noopener">Rowe (1986), &ldquo;Wait time&rdquo;</a><span class="resource-meta">The classic wait-time study</span></div></li>
+              <li><span class="resource-icon book">■</span><div>Doug Lemov, <em>Teach Like a Champion 3.0</em> (2021)<span class="resource-meta">Technique 34, &ldquo;Cold Call&rdquo;</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="A B C D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>Discussion-Worthy Questions</h3>
+          <p class="strategy-summary">Most questions are quiz questions. Only a few are discussion-worthy.</p>
+        </div>
+        <details><summary>Three features of real discussion prompts</summary>
+          <div class="strategy-body">
+            <ul>
+              <li><strong>Real stakes</strong> &mdash; something to argue about</li>
+              <li><strong>Textual grounding</strong> &mdash; evidence can be marshaled</li>
+              <li><strong>Multiple defensible answers</strong> &mdash; no single &ldquo;right&rdquo; one</li>
+            </ul>
+            <h5>Strong examples</h5>
+            <ul>
+              <li>Was Thomas Jefferson a hypocrite?</li>
+              <li>Should the U.S. have recognized Haitian independence in 1804?</li>
+              <li>Was the Monroe Doctrine protection or imperialism?</li>
+              <li>Did the Compromise of 1850 prevent war or make it inevitable?</li>
+            </ul>
+            <h5>Weak examples (save for quiz)</h5>
+            <ul><li>When was the Constitution ratified?</li><li>What were the three branches of government?</li></ul>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon book">■</span><div>Zwiers &amp; Crawford, <em>Academic Conversations</em> &mdash; chapter on conversation-worthy tasks</div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.inquirygroup.org/history-lessons" target="_blank" rel="noopener">Digital Inquiry Group Central Historical Questions</a><span class="resource-meta">Every SHEG/DIG lesson is built around one</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="B C">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level intermediate">Intermediate</span><span class="strategy-start">Start here</span></div>
+          <h3>Fishbowl</h3>
+          <p class="strategy-summary">Small inner circle discusses. Outer circle observes with a job.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>A core Facing History protocol. Makes the &ldquo;audience&rdquo; the majority and the discussion group a small circle &mdash; useful for students still building discussion confidence. The outer circle needs a job.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Inner circle: 6–8 students, discuss 10–12 minutes.</li>
+              <li>Outer circle: each observes one inner-circle student.</li>
+              <li>Inner discusses. Outer tracks discussion moves.</li>
+              <li>Swap. New inner group.</li>
+              <li>Debrief: observer partners share what they noticed.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.facinghistory.org/resource-library/fostering-active-engagement-through-fishbowl-discussion" target="_blank" rel="noopener">Facing History: Fishbowl on Plessy v. Ferguson</a><span class="resource-meta">Jenna Forton's social studies classroom &mdash; the model video</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.edutopia.org/video/60-second-strategy-fishbowl-discussion/" target="_blank" rel="noopener">Edutopia 60-Second Strategy: Fishbowl</a><span class="resource-meta">Quick overview</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.youtube.com/watch?v=e8zbUruOjyQ" target="_blank" rel="noopener">Paul Bogush: Middle school Fishbowl</a><span class="resource-meta">Actual MS classroom footage (YouTube)</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.facinghistory.org/resource-library/fishbowl" target="_blank" rel="noopener">Facing History Fishbowl strategy page</a><span class="resource-meta">Free norms &amp; observation sheets</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.trevormuir.com/blog/fishbowl" target="_blank" rel="noopener">Trevor Muir: The 4-Chair Fishbowl</a><span class="resource-meta">A tighter variant</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.weareteachers.com/fishbowl-discussions/" target="_blank" rel="noopener">WeAreTeachers: How I Use Fishbowl Discussions</a></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="C">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level advanced">Advanced</span><span class="strategy-start">Start here</span></div>
+          <h3>Socratic Seminar</h3>
+          <p class="strategy-summary">Student-led inquiry around a shared text. Teacher silent.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>Favorable when well-scaffolded: students prepare a text, follow norms, teacher stays silent. A Cal State study of AVID middle-school seminars found significant gains in self-awareness, social awareness, and peer connectedness.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li><strong>Prep day:</strong> students annotate + prepare 2–3 questions.</li>
+              <li><strong>Come prepped or don't participate.</strong></li>
+              <li>Circle setup. Teacher outside. Teacher does not call on anyone.</li>
+              <li>Post norms. Open with one question. Let silence happen.</li>
+              <li>Your only moves: tally participation, redirect if norms slip.</li>
+              <li><strong>Reflect in writing afterward.</strong></li>
+            </ol>
+            <h5>Middle-school variant</h5>
+            <p>Two smaller seminars of 12–15 each. You walk between them.</p>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.youtube.com/watch?v=xMOt6PqQ3EU" target="_blank" rel="noopener">Middle school AVID Socratic Seminar demo</a><span class="resource-meta">Actual 8th-grade classroom (YouTube)</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.youtube.com/watch?v=6pGVR6ZF_2M" target="_blank" rel="noopener">Walker MS: 8th grade seminar on &ldquo;I Have a Dream&rdquo;</a><span class="resource-meta">Social studies content</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.youtube.com/watch?v=JnpQQz7gylw" target="_blank" rel="noopener">Maribel Alba: 6th grade Socratic Seminar</a><span class="resource-meta">Common Core demonstration teacher</span></div></li>
+              <li><span class="resource-icon video">▶</span><div><a href="https://www.youtube.com/watch?v=e3IBLKYaK1E" target="_blank" rel="noopener">Edutopia: Scaffolding Discussion Skills</a><span class="resource-meta">Strong pedagogical framing</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.facinghistory.org/resource-library/socratic-seminar" target="_blank" rel="noopener">Facing History: Socratic Seminar strategy</a><span class="resource-meta">Free norms, rubrics, video clips</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.edutopia.org/article/socratic-seminars-middle-school" target="_blank" rel="noopener">Edutopia: Middle School Socratic Seminars</a></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.middleweb.com/23250/sarah-tweaks-her-socratic-seminar-recipe/" target="_blank" rel="noopener">MiddleWeb: Tantillo &amp; Fort's MS recipe</a><span class="resource-meta">Two-smaller-seminars variant</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.readwritethink.org/professional-development/strategy-guides/socratic-seminars" target="_blank" rel="noopener">ReadWriteThink: Socratic Seminars guide</a></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSINGS -->
+<section class="section" id="closings">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Category Four</span>
+      <h2>Closings &mdash; <em>the last five minutes.</em></h2>
+      <p class="section-lede">Black &amp; Wiliam's research on formative assessment shows that frequent low-stakes feedback produces some of the largest effect sizes in education research.</p>
+    </div>
+    <div class="strategy-grid">
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>Exit Tickets (done right)</h3>
+          <p class="strategy-summary">A 3-minute formative snapshot. Read them tonight. Open tomorrow with what you found.</p>
+        </div>
+        <details open><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>A variant of Angelo &amp; Cross's &ldquo;Minute Paper.&rdquo; Iteratively-designed exit tickets improve both student metacognition and teacher responsiveness.</p>
+            <h5>Strong prompt types</h5>
+            <ul>
+              <li><strong>Application:</strong> &ldquo;If Toussaint were alive in 1820s Mexico, which side would he take?&rdquo;</li>
+              <li><strong>Connection:</strong> &ldquo;How does today connect to Unit 6?&rdquo;</li>
+              <li><strong>Stance with evidence:</strong> &ldquo;Do you agree the Whiskey Rebellion was a failure? One sentence.&rdquo;</li>
+              <li><strong>Question generation:</strong> &ldquo;What's one question you still have?&rdquo;</li>
+            </ul>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Single focused prompt in the last 3–4 min.</li>
+              <li>Students respond on sticky, index card, or digital form.</li>
+              <li>Read that evening. Sort: <strong>got it / partial / misconception.</strong></li>
+              <li><strong>Open the next day with what you found.</strong></li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon book">■</span><div>Dylan Wiliam, <em>Embedded Formative Assessment</em> (2nd ed., 2018)<span class="resource-meta">The definitive book</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.tandfonline.com/doi/full/10.1080/87567555.2024.2355210" target="_blank" rel="noopener">Iteratively-designed exit tickets study</a><span class="resource-meta">2024 research</span></div></li>
+              <li><span class="resource-icon article">⚑</span><div><a href="https://www.gla.ac.uk/t4/learningandteaching/files/PGCTLHE/BlackandWiliam1998.pdf" target="_blank" rel="noopener">Black &amp; Wiliam (1998), &ldquo;Inside the black box&rdquo;</a><span class="resource-meta">Foundational paper (free PDF)</span></div></li>
+              <li><span class="resource-icon handout">▤</span><div><a href="https://www.theteachertoolkit.com/index.php/tool/exit-ticket" target="_blank" rel="noopener">Teacher Toolkit: printable Exit Ticket templates</a></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="A B D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level foundational">Foundational</span><span class="strategy-start">Start here</span></div>
+          <h3>3 &middot; 2 &middot; 1</h3>
+          <p class="strategy-summary">Three things learned, two connections, one question.</p>
+        </div>
+        <details><summary>The prompt</summary>
+          <div class="strategy-body">
+            <ol>
+              <li><strong>Three</strong> things you learned.</li>
+              <li><strong>Two</strong> connections (to other content, to your life, to the news).</li>
+              <li><strong>One</strong> question you still have.</li>
+            </ol>
+            <p>The &ldquo;one question&rdquo; pile becomes tomorrow's opener.</p>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon article">⚑</span><div><a href="https://journals.sagepub.com/doi/10.3102/003465430298487" target="_blank" rel="noopener">Hattie &amp; Timperley (2007), &ldquo;The Power of Feedback&rdquo;</a></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="B C D">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level intermediate">Intermediate</span><span class="strategy-start">Start here</span></div>
+          <h3>I Used to Think&hellip; Now I Think&hellip;</h3>
+          <p class="strategy-summary">A Project Zero routine to capture shifts in understanding.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>Designed to make students aware of their own conceptual change. Especially powerful in social studies where students arrive with partial or distorted priors.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Students write: &ldquo;I used to think ___. Now I think ___ because ___.&rdquo;</li>
+              <li>Optional turn-and-talk.</li>
+              <li>Collect for next day's opener, or post anonymously.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon handout">▤</span><div><a href="https://pz.harvard.edu/resources/i-used-to-think-now-i-think" target="_blank" rel="noopener">Project Zero: I Used to Think&hellip;</a></div></li>
+              <li><span class="resource-icon book">■</span><div>Ritchhart, Church, &amp; Morrison, <em>Making Thinking Visible</em></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+      <article class="strategy" data-start-for="C">
+        <div class="strategy-head">
+          <div class="strategy-badges"><span class="strategy-level advanced">Advanced</span><span class="strategy-start">Start here</span></div>
+          <h3>Microlab Protocol</h3>
+          <p class="strategy-summary">90 seconds each, uninterrupted. Silence while listening is the move.</p>
+        </div>
+        <details><summary>Research &amp; how it works</summary>
+          <div class="strategy-body">
+            <p>A National School Reform Faculty protocol. Gives every student equal airtime and builds listening as a discipline.</p>
+            <h5>When it works</h5>
+            <p>At the end of a heavy-content day (Middle Passage, Indian Removal, Douglass). Closes class with dignity.</p>
+          </div>
+        </details>
+        <details><summary>Step-by-step</summary>
+          <div class="strategy-body">
+            <ol>
+              <li>Groups of three.</li>
+              <li>Each person speaks 90s uninterrupted. Others listen silently.</li>
+              <li>Rotate through all three.</li>
+              <li>2 minutes open discussion within the trio.</li>
+              <li>No whole-class share unless volunteered.</li>
+            </ol>
+          </div>
+        </details>
+        <details><summary>Resources</summary>
+          <div class="strategy-body">
+            <ul class="resource-list">
+              <li><span class="resource-icon handout">▤</span><div><a href="https://nsrfharmony.org/wp-content/uploads/2017/10/microlab_0.pdf" target="_blank" rel="noopener">NSRF Microlab Protocol (PDF)</a></div></li>
+              <li><span class="resource-icon book">■</span><div><a href="https://nsrfharmony.org/free-resources/protocols/" target="_blank" rel="noopener">NSRF full protocol library</a><span class="resource-meta">200+ free discussion protocols</span></div></li>
+            </ul>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section" id="principles">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Cross-cutting</span>
+      <h2>Six Principles <em>running beneath everything.</em></h2>
+      <p class="section-lede">If you forget every protocol in this hub, keep these.</p>
+    </div>
+    <div class="principles">
+      <div class="principle"><span class="principle-num">1</span><h4>Rehearsal before public performance. Always.</h4><p>Writing or pair-talk before whole-class share. This single principle explains most of the effect sizes in the research.</p></div>
+      <div class="principle"><span class="principle-num">2</span><h4>Sentence frames lower the language demand.</h4><p>Especially valuable for multilingual learners, but GLAD's research shows they benefit everyone.</p></div>
+      <div class="principle"><span class="principle-num">3</span><h4>Wait time matters more than you think.</h4><p>Rowe's research: 3 seconds after questions, and after responses, dramatically improves quality.</p></div>
+      <div class="principle"><span class="principle-num">4</span><h4>Decenter yourself gradually.</h4><p>Applebee &amp; Langer: strongest literacy outcomes came from classrooms with teachers talking less and students more, in structured ways.</p></div>
+      <div class="principle"><span class="principle-num">5</span><h4>Reflect on the discussion, not just the content.</h4><p>Students learn to discuss by noticing what discussion <em>is</em>. Build in 2 minutes of &ldquo;how did we do?&rdquo;</p></div>
+      <div class="principle"><span class="principle-num">6</span><h4>Protocols are training wheels that stay on.</h4><p>Well-structured protocols produce better discussions than unstructured ones, even with adults.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="section" id="references">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Bibliography</span>
+      <h2>Core References <em>&amp; further reading.</em></h2>
+      <p class="section-lede">The research foundation for this hub. Books, articles, and free protocol libraries.</p>
+    </div>
+    <div class="references-list">
+      <div class="reference"><span class="reference-title">Applebee, A. N., Langer, J. A., Nystrand, M., &amp; Gamoran, A.</span> (2003). <span class="reference-meta">Discussion-based approaches to developing understanding.</span> <em>American Educational Research Journal</em>, 40(3). <a href="https://journals.sagepub.com/doi/abs/10.3102/00028312040003685" target="_blank" rel="noopener">Link</a></div>
+      <div class="reference"><span class="reference-title">Black, P., &amp; Wiliam, D.</span> (1998). <span class="reference-meta">Inside the black box.</span> <em>Phi Delta Kappan</em>, 80(2). <a href="https://www.gla.ac.uk/t4/learningandteaching/files/PGCTLHE/BlackandWiliam1998.pdf" target="_blank" rel="noopener">PDF</a></div>
+      <div class="reference"><span class="reference-title">Hammond, Z.</span> (2015). <span class="reference-meta"><em>Culturally responsive teaching and the brain.</em></span> Corwin. <a href="https://us.corwin.com/books/cultural-responsv-teaching-brain-241754" target="_blank" rel="noopener">Publisher</a></div>
+      <div class="reference"><span class="reference-title">Himmele, P., &amp; Himmele, W.</span> (2024, 3rd ed.). <span class="reference-meta"><em>Total participation techniques.</em></span> ASCD. <a href="https://www.ascd.org/books/total-participation-techniques-third-edition" target="_blank" rel="noopener">Publisher</a></div>
+      <div class="reference"><span class="reference-title">Johnson, D. W., &amp; Johnson, R. T.; Parker, W.</span> <span class="reference-meta">Structured Academic Controversy.</span> <a href="https://teachinghistory.org/teaching-materials/teaching-guides/21731" target="_blank" rel="noopener">TeachingHistory.org</a> &middot; <a href="https://education.uw.edu/sites/default/files/284/Parker_SAC.pdf" target="_blank" rel="noopener">Parker PDF</a></div>
+      <div class="reference"><span class="reference-title">Lemov, D.</span> (2021). <span class="reference-meta"><em>Teach like a champion 3.0.</em></span> Jossey-Bass. <a href="https://teachlikeachampion.org/" target="_blank" rel="noopener">Publisher</a></div>
+      <div class="reference"><span class="reference-title">Mundelsee, L., &amp; Jurkowski, S.</span> (2021). <span class="reference-meta">Think and pair before share.</span> <em>Learning and Individual Differences</em>, 88. <a href="https://researchschool.org.uk/durrington/news/how-effective-is-think-pair-share" target="_blank" rel="noopener">Summary</a></div>
+      <div class="reference"><span class="reference-title">OCDE Project GLAD Study.</span> <span class="reference-meta">Education Northwest.</span> <a href="https://projectgladstudy.educationnorthwest.org/" target="_blank" rel="noopener">Project</a> &middot; <a href="https://educationnorthwest.org/sites/default/files/events/resources/impact-of-project-glad-paper-508.pdf" target="_blank" rel="noopener">Full paper</a></div>
+      <div class="reference"><span class="reference-title">Ritchhart, R., Church, M., &amp; Morrison, K.</span> (2011). <span class="reference-meta"><em>Making thinking visible.</em></span> Jossey-Bass. <a href="https://pz.harvard.edu/thinking-routines" target="_blank" rel="noopener">Routines Toolbox</a></div>
+      <div class="reference"><span class="reference-title">Rowe, M. B.</span> (1986). <span class="reference-meta">Wait time: Slowing down may be a way of speeding up.</span> <a href="https://journals.sagepub.com/doi/10.1177/002248718603700110" target="_blank" rel="noopener">Link</a></div>
+      <div class="reference"><span class="reference-title">Wiliam, D.</span> (2018, 2nd ed.). <span class="reference-meta"><em>Embedded formative assessment.</em></span> Solution Tree.</div>
+      <div class="reference"><span class="reference-title">Wineburg, S., et al.</span> <span class="reference-meta">Reading Like a Historian / Digital Inquiry Group.</span> <a href="https://www.inquirygroup.org/" target="_blank" rel="noopener">inquirygroup.org</a></div>
+      <div class="reference"><span class="reference-title">Zwiers, J., &amp; Crawford, M.</span> (2011). <span class="reference-meta"><em>Academic conversations.</em></span> Stenhouse. <a href="https://jeffzwiers.org/" target="_blank" rel="noopener">Zwiers' site</a> &middot; <a href="https://jeffzwiers.org/tools" target="_blank" rel="noopener">Free tools</a></div>
+    </div>
+    <div style="margin-top: 40px; padding: 24px 28px; background: var(--paper); border: 1px solid var(--border); border-radius: 4px;">
+      <h4 style="font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px;">Free protocol libraries and video collections</h4>
+      <ul>
+        <li><a href="https://pz.harvard.edu/thinking-routines" target="_blank" rel="noopener">Project Zero Thinking Routines Toolbox</a> (Harvard)</li>
+        <li><a href="https://www.facinghistory.org/resource-library?type=teaching_strategy" target="_blank" rel="noopener">Facing History teaching strategies (with classroom videos)</a></li>
+        <li><a href="https://www.inquirygroup.org/history-lessons" target="_blank" rel="noopener">Digital Inquiry Group history lessons</a></li>
+        <li><a href="https://nsrfharmony.org/free-resources/protocols/" target="_blank" rel="noopener">National School Reform Faculty protocols</a> (200+)</li>
+        <li><a href="https://www.edutopia.org/" target="_blank" rel="noopener">Edutopia classroom videos and 60-Second Strategies</a></li>
+        <li><a href="https://www.teachingchannel.com/" target="_blank" rel="noopener">Teaching Channel video library</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span class="footer-mark">Room 1610 &middot; Alderwood MS</span>
+  <p>A starter framework for meaningful discussion in 8th grade Social Studies.</p>
+  <p>Iteration welcome &mdash; your read of the room should override any protocol in this hub when they conflict.</p>
+</footer>
+
+<script>
+(function() {
+  const PATH_LABELS = { A: 'Building from scratch', B: 'Refreshing mid-year', C: 'Adding to what works', D: 'Planning next year' };
+  const body = document.body;
+  const currentPathLabel = document.getElementById('currentPathLabel');
+  const changePathBtn = document.getElementById('changePathBtn');
+  const skipPathBtn = document.getElementById('skipPathBtn');
+
+  function getSavedPath() { try { return localStorage.getItem('discussionHubPath'); } catch (e) { return null; } }
+  function savePath(p) { try { localStorage.setItem('discussionHubPath', p || ''); } catch (e) {} }
+
+  function applyPath(path) {
+    if (path && PATH_LABELS[path]) {
+      body.setAttribute('data-path', path);
+      currentPathLabel.textContent = PATH_LABELS[path];
+    } else {
+      body.removeAttribute('data-path');
+    }
+  }
+
+  const saved = getSavedPath();
+  if (saved && PATH_LABELS[saved]) applyPath(saved);
+
+  document.querySelectorAll('[data-select-path]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = btn.getAttribute('data-select-path');
+      applyPath(p); savePath(p);
+      setTimeout(() => {
+        const target = document.querySelector('.hero[data-path-only~="' + p + '"]');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    });
+  });
+
+  if (changePathBtn) {
+    changePathBtn.addEventListener('click', () => {
+      applyPath(null); savePath('');
+      document.getElementById('top').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (skipPathBtn) {
+    skipPathBtn.addEventListener('click', () => {
+      const defaultHero = document.querySelector('.hero[data-no-path]');
+      if (defaultHero) defaultHero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  }
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+  }
+})();
+</script>
+
+</body>
+</html>

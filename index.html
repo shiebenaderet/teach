@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching &mdash; Mr. B's Social Studies</title>
+<meta name="description" content="A small, growing collection of research-backed, teacher-facing classroom resources. Maintained by Shie Benaderet, 8th grade Social Studies at Alderwood Middle School.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,600&family=Nunito:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #FAF6EC; --cream-dark: #F2ECD9; --paper: #FFFEF9;
+  --ink: #2A2018; --ink-muted: #665A4B; --ink-subtle: #8B7F6F;
+  --maroon: #8B2E2E; --maroon-dark: #6B1F1F; --maroon-soft: rgba(139, 46, 46, 0.08);
+  --gold: #B8862F; --gold-light: #E5CF8F; --gold-pale: #F2E8C9;
+  --green: #3d7a3d; --border: #E5DDC8; --border-dark: #D4C99E;
+  --shadow-sm: 0 1px 2px rgba(42, 32, 24, 0.04);
+  --shadow-md: 0 4px 16px rgba(42, 32, 24, 0.06);
+  --shadow-lg: 0 12px 32px rgba(42, 32, 24, 0.08);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w: 1120px; --reading-w: 680px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 18% 14%, rgba(184, 134, 47, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 82% 86%, rgba(139, 46, 46, 0.035) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+
+a { color: var(--maroon); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color 0.2s ease; }
+a:hover { color: var(--maroon-dark); text-decoration-thickness: 2px; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   NAV — sticky, semi-transparent, same language as the hub
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 246, 236, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.nav-brand {
+  font-family: var(--font-display); font-weight: 700; font-size: 19px;
+  color: var(--maroon); text-decoration: none;
+  letter-spacing: -0.01em; white-space: nowrap;
+}
+.nav-brand:hover { color: var(--maroon-dark); text-decoration: none; }
+.nav-brand em { font-style: italic; color: var(--gold); font-weight: 400; }
+.nav-links { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; align-items: center; }
+.nav-links li { margin: 0; }
+.nav-links a {
+  color: var(--ink-muted); text-decoration: none;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+  padding: 4px 0; border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.nav-links a:hover { color: var(--maroon); border-bottom-color: var(--gold); }
+@media (max-width: 720px) {
+  .nav-inner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 14px 24px; }
+  .nav-links { gap: 16px; }
+}
+
+/* ============================================================
+   MASTHEAD — editorial, airy, nothing flashy
+   ============================================================ */
+.masthead { padding: 140px 32px 96px; }
+.masthead-inner { max-width: var(--reading-w); margin: 0 auto; }
+.masthead .eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px; display: block;
+}
+.masthead h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  margin-bottom: 28px;
+}
+.masthead h1 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.masthead-lede {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-bottom: 0;
+}
+.masthead-rule {
+  width: 72px; height: 2px; background: var(--gold);
+  margin: 72px 0 0;
+}
+@media (max-width: 640px) {
+  .masthead { padding: 80px 24px 64px; }
+}
+
+/* ============================================================
+   SHORT BIO — teacher-to-teacher, not marketing
+   ============================================================ */
+.bio { padding: 72px 32px; }
+.bio-inner {
+  max-width: var(--reading-w); margin: 0 auto;
+  display: grid; grid-template-columns: 140px 1fr; gap: 40px;
+  align-items: start;
+}
+@media (max-width: 640px) { .bio-inner { grid-template-columns: 1fr; gap: 12px; } }
+.bio-label {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); padding-top: 8px;
+}
+.bio-body p { font-size: 18px; color: var(--ink); line-height: 1.7; }
+.bio-body p + p { margin-top: 14px; }
+.bio-body em { font-style: italic; color: var(--maroon); }
+
+/* ============================================================
+   RESOURCES — the core of the directory
+   ============================================================ */
+.resources { padding: 72px 32px 48px; border-top: 1px solid var(--border); }
+.resources-inner { max-width: var(--max-w); margin: 0 auto; }
+.resources-head {
+  max-width: var(--reading-w); margin-bottom: 56px;
+}
+.resources-head .eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px; display: block;
+}
+.resources-head h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+}
+.resources-head h2 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.resources-head p {
+  font-size: 17px; color: var(--ink-muted); line-height: 1.6;
+}
+
+/* Entries: ordered-list-of-articles feel, not a product card grid */
+.entry {
+  display: grid;
+  grid-template-columns: 88px 1fr auto;
+  gap: 32px;
+  align-items: baseline;
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+  text-decoration: none; color: var(--ink);
+  transition: background 0.2s ease;
+}
+.entry:last-of-type { border-bottom: 1px solid var(--border); }
+.entry:hover { background: rgba(250, 254, 249, 0.6); text-decoration: none; }
+.entry:hover h3 { color: var(--maroon); }
+.entry:hover .entry-cta::after { transform: translateX(4px); }
+.entry-num {
+  font-family: var(--font-display);
+  font-style: italic; font-weight: 900;
+  font-size: 52px; line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+.entry-body h3 {
+  font-size: 26px; line-height: 1.2;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+.entry-body h3 em { font-style: italic; color: var(--maroon); font-weight: 600; }
+.entry-meta {
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-subtle);
+  margin-bottom: 12px;
+}
+.entry-meta .dot { display: inline-block; margin: 0 8px; color: var(--border-dark); }
+.entry-desc {
+  font-size: 16px; line-height: 1.6; color: var(--ink-muted);
+  max-width: 56ch;
+}
+.entry-cta {
+  align-self: center;
+  font-family: var(--font-body);
+  font-weight: 700; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--maroon);
+  white-space: nowrap;
+}
+.entry-cta::after { content: '  →'; transition: transform 0.2s ease; display: inline-block; }
+@media (max-width: 720px) {
+  .entry { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .entry-num { font-size: 40px; }
+  .entry-cta { align-self: start; }
+}
+
+/* Empty "more coming" entry — dimmer, no link */
+.entry-pending {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 32px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  opacity: 0.8;
+}
+.entry-pending + .entry-pending { border-top: none; }
+.entry-pending .entry-num {
+  color: var(--border-dark);
+  font-style: italic;
+}
+.entry-pending .entry-meta {
+  color: var(--ink-subtle);
+}
+.entry-pending h3 {
+  font-size: 22px;
+  color: var(--ink-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.entry-pending .entry-desc {
+  font-size: 15px;
+  color: var(--ink-subtle);
+}
+@media (max-width: 720px) {
+  .entry-pending { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+}
+
+.resources-note {
+  margin-top: 48px;
+  padding: 20px 24px;
+  background: var(--cream-dark);
+  border-left: 3px solid var(--gold);
+  border-radius: 2px;
+  font-size: 15px; color: var(--ink-muted); line-height: 1.6;
+  max-width: var(--reading-w);
+}
+.resources-note strong { color: var(--ink); font-weight: 700; }
+
+/* ============================================================
+   ELSEWHERE — sibling sites
+   ============================================================ */
+.elsewhere { padding: 96px 32px; border-top: 1px solid var(--border); background: var(--cream-dark); }
+.elsewhere-inner { max-width: var(--max-w); margin: 0 auto; }
+.elsewhere-head {
+  max-width: var(--reading-w); margin-bottom: 40px;
+}
+.elsewhere-head .eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px; display: block;
+}
+.elsewhere-head h2 {
+  font-size: clamp(26px, 3.2vw, 34px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.elsewhere-head h2 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.elsewhere-head p {
+  font-size: 16px; color: var(--ink-muted); line-height: 1.6;
+}
+.sibling-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  list-style: none; padding: 0; margin: 0;
+}
+.sibling-list li { margin: 0; }
+.sibling {
+  display: block;
+  padding: 24px 26px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.sibling:hover {
+  border-color: var(--maroon);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.sibling-url {
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.sibling h3 {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.sibling h3 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.sibling p {
+  font-size: 14.5px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot {
+  padding: 64px 32px 72px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--ink-subtle);
+}
+.foot-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.foot a { color: var(--ink-muted); }
+.foot a:hover { color: var(--maroon); }
+.foot em { font-style: italic; color: var(--gold); }
+
+/* ============================================================
+   PRINT — clean, no chrome
+   ============================================================ */
+@media print {
+  .nav, .foot { display: none; }
+  body { background: white; color: black; }
+  a { color: black; text-decoration: underline; }
+  .masthead, .bio, .resources, .elsewhere { padding: 24px 0; border: none; background: white; }
+  .entry, .entry-pending { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Teaching &middot; <em>Mr. B</em></a>
+    <ul class="nav-links">
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#elsewhere">Elsewhere</a></li>
+      <li><a href="https://mrbsocialstudies.org" rel="noopener">Main site</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="masthead" id="top">
+  <div class="masthead-inner">
+    <span class="eyebrow">Teacher-facing · Research-backed</span>
+    <h1>A small library for the <em>teacher next door</em>.</h1>
+    <p class="masthead-lede">
+      This is the teacher-facing companion to <a href="https://mrbsocialstudies.org" rel="noopener">mrbsocialstudies.org</a>. It's a slowly growing collection of classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, grounded in research, and shaped by what actually holds up in a middle school classroom.
+    </p>
+    <div class="masthead-rule" role="presentation"></div>
+  </div>
+</header>
+
+<section class="bio" aria-label="About">
+  <div class="bio-inner">
+    <div class="bio-label">Who&rsquo;s this</div>
+    <div class="bio-body">
+      <p>I&rsquo;m <em>Shie Benaderet</em>, 8th grade Social Studies at Alderwood Middle School. I build these as I go &mdash; usually because I needed one and couldn&rsquo;t find the version I wanted.</p>
+      <p>Everything here is what I&rsquo;d want a first-year me, or a colleague down the hall, to have on their desk. If something helps, take it. If it&rsquo;s wrong or outdated, tell me.</p>
+    </div>
+  </div>
+</section>
+
+<section class="resources" id="resources" aria-label="Resources">
+  <div class="resources-inner">
+    <div class="resources-head">
+      <span class="eyebrow">The library</span>
+      <h2>What&rsquo;s <em>in here</em>.</h2>
+      <p>One resource for now. More below, once they&rsquo;re built. Each one lives in its own folder and is designed to stand alone &mdash; open it, print it, share it.</p>
+    </div>
+
+    <a class="entry" href="./discussion/">
+      <div class="entry-num">01</div>
+      <div class="entry-body">
+        <div class="entry-meta">Hub &amp; WalkThrus <span class="dot">&middot;</span> Ready</div>
+        <h3>The <em>Discussion Hub</em></h3>
+        <p class="entry-desc">A path-tailored guide to building meaningful academic discussion in middle school Social Studies. Four starting points (build, refresh, extend, plan), a categorized strategy library, and a companion reference with thirteen core moves in a WalkThrus-inspired format.</p>
+      </div>
+      <div class="entry-cta">Open</div>
+    </a>
+
+    <div class="entry-pending" aria-label="Upcoming resource">
+      <div class="entry-num">02</div>
+      <div class="entry-body">
+        <div class="entry-meta">Poster <span class="dot">&middot;</span> In progress</div>
+        <h3>GLAD sentence-stem poster</h3>
+        <p class="entry-desc">A printable, large-format reference &mdash; stems color-coded by discourse skill, built for the wall behind the whiteboard.</p>
+      </div>
+    </div>
+
+    <div class="entry-pending" aria-label="Upcoming resource">
+      <div class="entry-num">03</div>
+      <div class="entry-body">
+        <div class="entry-meta">Toolkit <span class="dot">&middot;</span> Planned</div>
+        <h3>MTSS intervention toolkit</h3>
+        <p class="entry-desc">A Tier 1 / 2 / 3 working guide, pulled out of my own binder and cleaned up for sharing.</p>
+      </div>
+    </div>
+
+    <div class="resources-note">
+      <strong>More coming.</strong> Parent-communication templates, a unit-planning skeleton, and a handful of pedagogy one-pagers are in the queue. New pieces land quietly &mdash; no newsletter, no launch. Check back, or just bookmark the page.
+    </div>
+  </div>
+</section>
+
+<section class="elsewhere" id="elsewhere" aria-label="Related sites">
+  <div class="elsewhere-inner">
+    <div class="elsewhere-head">
+      <span class="eyebrow">Elsewhere</span>
+      <h2>The <em>rest of the ecosystem</em>.</h2>
+      <p>These are the student- and public-facing sites this one sits alongside. Different audiences, same classroom.</p>
+    </div>
+    <ul class="sibling-list">
+      <li>
+        <a class="sibling" href="https://ss8.mrbsocialstudies.org" rel="noopener">
+          <div class="sibling-url">ss8.mrbsocialstudies.org</div>
+          <h3><em>SS8</em> &mdash; 8th grade course site</h3>
+          <p>The student-facing home for the year: unit pages, assignments, study guides, and class-wide reference.</p>
+        </a>
+      </li>
+      <li>
+        <a class="sibling" href="https://scotus.mrbsocialstudies.org" rel="noopener">
+          <div class="sibling-url">scotus.mrbsocialstudies.org</div>
+          <h3><em>SCOTUS</em> &mdash; case explorer</h3>
+          <p>A browseable, student-friendly catalog of landmark Supreme Court cases and the questions they turned on.</p>
+        </a>
+      </li>
+      <li>
+        <a class="sibling" href="https://current.mrbsocialstudies.org" rel="noopener">
+          <div class="sibling-url">current.mrbsocialstudies.org</div>
+          <h3><em>Current</em> &mdash; events &amp; civics</h3>
+          <p>Ongoing current-events coverage tied to class: what&rsquo;s happening, why it matters, how to read it.</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>Built in Room 1610 &middot; Alderwood MS &middot; <em>mrbsocialstudies.org</em></div>
+    <div><a href="https://github.com/shiebenaderet/Teaching" rel="noopener">Source on GitHub</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Strategies &mdash; Room 1610 Discussion Hub</title>
+<meta name="description" content="Thirteen core discussion strategies for middle school Social Studies, explained clearly in a WalkThrus-inspired reference format.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — same palette as the hub
+   ============================================================ */
+:root {
+  --cream: #FAF6EC; --cream-dark: #F2ECD9; --paper: #FFFEF9;
+  --ink: #2A2018; --ink-muted: #665A4B; --ink-subtle: #8B7F6F;
+  --maroon: #8B2E2E; --maroon-dark: #6B1F1F; --maroon-soft: rgba(139, 46, 46, 0.08);
+  --gold: #B8862F; --gold-light: #E5CF8F; --gold-pale: #F2E8C9;
+  --green: #3d7a3d; --green-soft: rgba(61, 122, 61, 0.08);
+  --border: #E5DDC8; --border-dark: #D4C99E;
+  --shadow-sm: 0 1px 2px rgba(42, 32, 24, 0.04);
+  --shadow-md: 0 4px 16px rgba(42, 32, 24, 0.06);
+  --shadow-lg: 0 12px 32px rgba(42, 32, 24, 0.08);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w: 1200px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(184, 134, 47, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(139, 46, 46, 0.03) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+a { color: var(--maroon); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color 0.2s ease; }
+a:hover { color: var(--maroon-dark); text-decoration-thickness: 2px; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   NAV — consistent with hub
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 246, 236, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.nav-brand {
+  font-family: var(--font-display); font-weight: 700; font-size: 19px;
+  color: var(--maroon); text-decoration: none;
+  letter-spacing: -0.01em; white-space: nowrap;
+}
+.nav-brand:hover { color: var(--maroon-dark); text-decoration: none; }
+.nav-brand em { font-style: italic; color: var(--gold); font-weight: 400; }
+.nav-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.nav-back {
+  font-family: var(--font-body); font-weight: 600; font-size: 13px;
+  color: var(--ink-muted); text-decoration: none;
+  padding: 6px 12px; border: 1px solid var(--border-dark); border-radius: 3px;
+  transition: all 0.2s ease; white-space: nowrap;
+}
+.nav-back::before { content: '←  '; color: var(--gold); }
+.nav-back:hover { color: var(--maroon); border-color: var(--maroon); text-decoration: none; }
+
+/* ============================================================
+   HERO — dense, editorial
+   ============================================================ */
+.hero { padding: 96px 32px 64px; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(180deg, transparent 0%, rgba(245, 232, 201, 0.25) 100%);
+  pointer-events: none;
+}
+.hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+.hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; align-items: end; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; align-items: start; } }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px; display: block;
+}
+.hero h1 {
+  font-size: clamp(44px, 6.5vw, 82px);
+  line-height: 0.98; font-weight: 900;
+  margin-bottom: 20px; letter-spacing: -0.03em;
+}
+.hero h1 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.hero-lede {
+  font-size: 18px; line-height: 1.55;
+  color: var(--ink-muted); margin-bottom: 0; max-width: 640px;
+}
+.hero-aside {
+  background: var(--paper); border: 1px solid var(--border);
+  padding: 24px 28px; border-radius: 3px;
+  font-size: 14px; color: var(--ink-muted); line-height: 1.6;
+}
+.hero-aside strong { color: var(--ink); font-weight: 700; }
+.hero-aside-title {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px; font-family: var(--font-body);
+}
+
+/* ============================================================
+   CONTENTS GRID
+   ============================================================ */
+.contents {
+  padding: 32px 32px 80px;
+  border-top: 1px solid var(--border);
+  background: var(--cream-dark);
+}
+.contents-inner { max-width: var(--max-w); margin: 0 auto; }
+.contents-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin: 48px 0 32px; flex-wrap: wrap; gap: 20px;
+}
+.contents-head h2 { font-size: 26px; letter-spacing: -0.01em; }
+.contents-head h2 em { font-style: italic; color: var(--maroon); font-weight: 400; }
+.contents-head .meta { font-size: 13px; color: var(--ink-subtle); font-style: italic; }
+
+.contents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.contents-item {
+  background: var(--paper);
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex; align-items: center; gap: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.contents-item:hover {
+  background: var(--cream);
+  color: var(--maroon);
+  text-decoration: none;
+}
+.contents-item .num {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 900; font-style: italic;
+  color: var(--gold);
+  line-height: 1; flex-shrink: 0;
+  width: 38px;
+}
+.contents-item .name {
+  font-size: 14px; font-weight: 700;
+  line-height: 1.25; letter-spacing: -0.005em;
+}
+.contents-item .level {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-subtle); margin-top: 4px;
+  display: block;
+}
+.contents-item[data-level="foundational"] .level { color: var(--gold); }
+.contents-item[data-level="intermediate"] .level { color: var(--maroon); }
+.contents-item[data-level="advanced"] .level { color: var(--ink); }
+
+/* ============================================================
+   WALKTHRU CARD
+   ============================================================ */
+.walkthrus {
+  padding: 40px 32px 80px;
+}
+.walkthrus-inner { max-width: var(--max-w); margin: 0 auto; }
+
+.walkthru {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 56px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: 80px;
+}
+
+/* Card top strip — the big anchor */
+.walkthru-head {
+  padding: 32px 40px 28px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 32px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 760px) {
+  .walkthru-head { grid-template-columns: auto 1fr; gap: 20px; padding: 24px 24px 20px; }
+  .walkthru-head .level-badge { grid-column: 1 / -1; }
+}
+.walkthru-num {
+  font-family: var(--font-display);
+  font-size: 72px; font-weight: 900; font-style: italic;
+  line-height: 1; letter-spacing: -0.03em;
+  color: var(--maroon);
+}
+.walkthru-title h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px); line-height: 1.1;
+  margin-bottom: 6px; letter-spacing: -0.015em;
+}
+.walkthru-title .subtitle {
+  font-family: var(--font-display);
+  font-size: 16px; font-style: italic;
+  color: var(--ink-muted);
+}
+.level-badge {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 2px;
+  white-space: nowrap; align-self: start;
+}
+.level-badge.foundational { background: var(--gold-pale); color: var(--gold); }
+.level-badge.intermediate { background: var(--maroon-soft); color: var(--maroon); }
+.level-badge.advanced { background: var(--ink); color: var(--cream); }
+
+/* Card-level accent — colored rail on left per level */
+.walkthru[data-level="foundational"] { border-left: 5px solid var(--gold); }
+.walkthru[data-level="intermediate"] { border-left: 5px solid var(--maroon); }
+.walkthru[data-level="advanced"] { border-left: 5px solid var(--ink); }
+
+/* Essentials strip: Why / When / Watch-outs */
+.essentials {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+@media (max-width: 760px) { .essentials { grid-template-columns: 1fr; } }
+.essential {
+  padding: 22px 28px;
+  border-right: 1px solid var(--border);
+}
+.essential:last-child { border-right: none; }
+@media (max-width: 760px) {
+  .essential { border-right: none; border-bottom: 1px solid var(--border); }
+  .essential:last-child { border-bottom: none; }
+}
+.essential-label {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.essential-body {
+  font-size: 14px; line-height: 1.55; color: var(--ink);
+}
+
+/* Core move pull quote */
+.core-move {
+  padding: 28px 40px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 760px) { .core-move { padding: 24px 24px; } }
+.core-move-label {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.core-move-quote {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-style: italic; font-weight: 400;
+  line-height: 1.25; color: var(--ink);
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-left: 24px;
+}
+.core-move-quote::before {
+  content: '"';
+  position: absolute; left: -4px; top: -14px;
+  font-family: var(--font-display);
+  font-size: 56px; color: var(--gold);
+  line-height: 1;
+}
+
+/* 5-STEP WALKTHRU */
+.walkthru-steps-wrap {
+  padding: 36px 40px 32px;
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 760px) { .walkthru-steps-wrap { padding: 28px 24px 24px; } }
+.walkthru-steps-label {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--maroon); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.walkthru-steps-label::before {
+  content: ''; display: block;
+  width: 28px; height: 2px; background: var(--maroon);
+}
+.walkthru-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+@media (max-width: 1000px) { .walkthru-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .walkthru-steps { grid-template-columns: 1fr; } }
+.step {
+  background: var(--paper);
+  padding: 20px 22px 22px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.step-num {
+  font-family: var(--font-display);
+  font-size: 34px; font-weight: 900; font-style: italic;
+  line-height: 1;
+  color: var(--gold); letter-spacing: -0.03em;
+}
+.step-verb {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--maroon);
+}
+.step-body {
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-muted);
+  flex-grow: 1;
+}
+
+/* Script + Variations footer grid */
+.walkthru-footer {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 760px) { .walkthru-footer { grid-template-columns: 1fr; } }
+.script, .variations { padding: 28px 40px; }
+.script { border-right: 1px solid var(--border); }
+@media (max-width: 760px) {
+  .script { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 24px; }
+  .variations { padding: 24px 24px; }
+}
+.script-label, .variations-label {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+.script-body {
+  font-family: var(--font-display);
+  font-size: 17px; font-style: italic; line-height: 1.5;
+  color: var(--ink);
+}
+.script-body::before, .script-body::after { content: none; }
+.script-attribution {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-body); font-style: normal;
+  font-size: 12px; color: var(--ink-subtle); letter-spacing: 0.05em;
+}
+.script-attribution::before { content: '— '; }
+.variations-list { list-style: none; padding: 0; margin: 0; }
+.variations-list li {
+  font-size: 13.5px; color: var(--ink); line-height: 1.5;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border);
+  padding-left: 20px;
+  position: relative;
+}
+.variations-list li::before {
+  content: '→'; position: absolute; left: 0; top: 6px;
+  color: var(--gold); font-weight: 700;
+}
+.variations-list li:last-child { border-bottom: none; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 56px 32px;
+  border-top: 1px solid var(--border);
+  background: var(--cream-dark);
+  text-align: center;
+  font-size: 14px; color: var(--ink-muted);
+}
+.footer p { margin-bottom: 8px; }
+.footer-mark {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 18px; color: var(--maroon);
+  margin-bottom: 16px; display: block;
+}
+.footer a { color: var(--maroon); font-weight: 600; }
+
+/* ============================================================
+   SMALL UTILITIES
+   ============================================================ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.hero h1, .hero-lede, .hero-aside { animation: fadeUp 0.6s ease-out backwards; }
+.hero-lede { animation-delay: 0.08s; }
+.hero-aside { animation-delay: 0.12s; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+@media print {
+  .nav, .footer { display: none; }
+  .walkthru { box-shadow: none; break-inside: avoid; page-break-inside: avoid; margin-bottom: 24px; }
+  body { background: white; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Room 1610 &middot; <em>Discussion Hub</em></a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-back">Back to the hub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Key Strategies &middot; A WalkThrus-style reference</span>
+        <h1>Thirteen moves, <em>explained clearly.</em></h1>
+        <p class="hero-lede">
+          One strategy per card. Each one follows the same structure: why it works,
+          when to use it, what to watch for, the core move in one sentence, five steps
+          to actually do it, a sample script, and variations. Inspired by Sherrington
+          and Caviglioli's WalkThrus &mdash; designed for scanning on a prep period and
+          printing for the fridge.
+        </p>
+      </div>
+      <aside class="hero-aside">
+        <div class="hero-aside-title">How to read a card</div>
+        <p>
+          The <strong>essentials strip</strong> at top is your &ldquo;do I pick this one?&rdquo;
+          check. The <strong>core move</strong> is the single idea to hold in mind. The
+          <strong>five steps</strong> are the actual protocol. The <strong>script</strong>
+          shows what the move sounds like in a teacher's voice. <strong>Variations</strong>
+          are riffs for when the basic version gets stale.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENTS -->
+<section class="contents">
+  <div class="contents-inner">
+    <div class="contents-head">
+      <h2>Contents &mdash; <em>jump to any strategy</em></h2>
+      <span class="meta">Sorted roughly from foundational to advanced</span>
+    </div>
+    <div class="contents-grid">
+      <a href="#warm-calling" class="contents-item" data-level="foundational"><span class="num">01</span><span><span class="name">Warm-Calling</span><span class="level">Foundational</span></span></a>
+      <a href="#quick-write" class="contents-item" data-level="foundational"><span class="num">02</span><span><span class="name">Quick-Write → Turn-and-Talk</span><span class="level">Foundational</span></span></a>
+      <a href="#tps" class="contents-item" data-level="foundational"><span class="num">03</span><span><span class="name">Think-Pair-Share</span><span class="level">Foundational</span></span></a>
+      <a href="#glad-stems" class="contents-item" data-level="foundational"><span class="num">04</span><span><span class="name">GLAD Sentence Stems</span><span class="level">Foundational</span></span></a>
+      <a href="#exit-tickets" class="contents-item" data-level="foundational"><span class="num">05</span><span><span class="name">Exit Tickets</span><span class="level">Foundational</span></span></a>
+      <a href="#stw" class="contents-item" data-level="foundational"><span class="num">06</span><span><span class="name">See · Think · Wonder</span><span class="level">Foundational</span></span></a>
+      <a href="#trios" class="contents-item" data-level="intermediate"><span class="num">07</span><span><span class="name">Trios with Roles</span><span class="level">Intermediate</span></span></a>
+      <a href="#chalk-splash" class="contents-item" data-level="intermediate"><span class="num">08</span><span><span class="name">Chalkboard Splash</span><span class="level">Intermediate</span></span></a>
+      <a href="#fishbowl" class="contents-item" data-level="intermediate"><span class="num">09</span><span><span class="name">Fishbowl</span><span class="level">Intermediate</span></span></a>
+      <a href="#sac" class="contents-item" data-level="advanced"><span class="num">10</span><span><span class="name">Structured Academic Controversy</span><span class="level">Advanced</span></span></a>
+      <a href="#socratic" class="contents-item" data-level="advanced"><span class="num">11</span><span><span class="name">Socratic Seminar</span><span class="level">Advanced</span></span></a>
+      <a href="#microlab" class="contents-item" data-level="advanced"><span class="num">12</span><span><span class="name">Microlab</span><span class="level">Advanced</span></span></a>
+      <a href="#iutt" class="contents-item" data-level="intermediate"><span class="num">13</span><span><span class="name">I Used to Think… Now I Think…</span><span class="level">Intermediate</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- WALKTHRUS -->
+<section class="walkthrus">
+  <div class="walkthrus-inner">
+
+  <!-- ============ 01 WARM-CALLING ============ -->
+  <article class="walkthru" id="warm-calling" data-level="foundational">
+    <header class="walkthru-head">
+      <div class="walkthru-num">01</div>
+      <div class="walkthru-title">
+        <h2>Warm-Calling</h2>
+        <p class="subtitle">Cold-calling done warmly, so it builds voice instead of anxiety.</p>
+      </div>
+      <span class="level-badge foundational">Foundational</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Without being called on by name, the same handful of students will always speak. Cold-calling <em>does</em> work — but only when every student has rehearsed and the framing is invitational.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Every whole-class discussion, after students have written or paired. Never as a cold first move.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Naming before asking (others check out). No wait time. Punitive tone. Calling repeatedly on the same confident voices.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Question first. Pause. Then name — warmly.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Frame</div><div class="step-body">On day one, tell students you call by name because you want to hear from everyone. Promise thinking time. Promise no penalty for being wrong.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Ask first</div><div class="step-body">Pose the question to the whole class <em>before</em> naming anyone. This keeps every brain engaged.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Pause</div><div class="step-body">Count 5–10 silent seconds. Uncomfortable, but research-backed. Students need the time.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Name</div><div class="step-body">Invite a student in warmly: &ldquo;Mia, what do you want to add?&rdquo; Tone matters as much as wording.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Honor the pass</div><div class="step-body">If they pass, offer a phone-a-friend, then circle back with a paraphrase task. No one stays off the hook, but no one gets punished either.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">Take a minute to think about this one. [pauses, scans the room] … Jordan — what part of Toussaint's letter stood out to you?<span class="script-attribution">said while standing still, not pacing</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>No-hands-up classroom (whole-year norm)</li>
+          <li>Phone-a-friend when stuck</li>
+          <li>Warm-call specifically <em>after</em> Turn-and-Talk: &ldquo;What did your partner say?&rdquo;</li>
+          <li>Equity sticks / name cards to distribute calls</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 02 QUICK-WRITE ============ -->
+  <article class="walkthru" id="quick-write" data-level="foundational">
+    <header class="walkthru-head">
+      <div class="walkthru-num">02</div>
+      <div class="walkthru-title">
+        <h2>Quick-Write → Turn-and-Talk</h2>
+        <p class="subtitle">Every student has something to say before anyone speaks publicly.</p>
+      </div>
+      <span class="level-badge foundational">Foundational</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">The workhorse of every discussion-based classroom. Writing first lowers anxiety, generates ideas, and makes the partner talk substantive instead of performative.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Daily opener. Before any whole-class share. As a mid-class reset after a heavy text.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Skipping the write when time gets tight (worst move). Prompts that have a single right answer. Letting pairs chat instead of rehearse.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Write first. Then talk. Then share.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Post</div><div class="step-body">A prompt that invites a stance, a prediction, or a connection. Not a recall question.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Write</div><div class="step-body">Three minutes of silent writing. Visible timer. No talking, no hands, no exceptions.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Pair</div><div class="step-body">Two minutes. Partner A speaks 60s, B paraphrases and adds. Switch. Use a timer.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Sample</div><div class="step-body">Warm-call 2–3 pairs. Ask them what their <em>partner</em> said that was interesting.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Thread</div><div class="step-body">Stitch what students said back into the arc of the lesson. Don't let their ideas drop on the floor.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">On the prompt on the board: three minutes of silent writing. Then two with a partner. Ready? Go.<span class="script-attribution">timer visible, teacher writes too (models)</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Write-Pair-Square: two pairs merge to compare</li>
+          <li>Silent gallery walk with written responses</li>
+          <li>Write-Pair-Swap: pairs exchange papers, annotate each other's</li>
+          <li>Quick-draw variant for visual learners</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 03 TPS ============ -->
+  <article class="walkthru" id="tps" data-level="foundational">
+    <header class="walkthru-head">
+      <div class="walkthru-num">03</div>
+      <div class="walkthru-title">
+        <h2>Think-Pair-Share</h2>
+        <p class="subtitle">The most-studied protocol in K-12. The trick is the Share.</p>
+      </div>
+      <span class="level-badge foundational">Foundational</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Raises participation, lowers anxiety. Cooper et al. (2021) flagged that the &ldquo;Share&rdquo; phase is where most teachers revert to the same confident voices — the accountability move fixes that.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Any moment you would have asked &ldquo;Does anyone want to share?&rdquo; Replace that habit with this protocol.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">The killer question: &ldquo;Who wants to share?&rdquo; Replace it. Also: pair-talk that drifts into socializing.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Ask for your partner's thinking, not your own.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Think</div><div class="step-body">1–3 minutes of silent thinking, ideally with a written anchor. No anchor = lighter version.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Pair</div><div class="step-body">Each partner speaks for 60 seconds. Use a visible timer. Switch.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Paraphrase</div><div class="step-body">Before adding their own, each partner restates what the other said. Installs listening.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Share</div><div class="step-body">Warm-call asking for the <em>partner's</em> thinking: &ldquo;What did Kai say that made you think?&rdquo;</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Bridge</div><div class="step-body">Use one student's move — a good question, an evidence move — to set up the next part of the lesson.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">In pairs — what did your partner notice that surprised them? You have two minutes, then I'll call on a few of you.<span class="script-attribution">emphasis on &ldquo;your partner&rdquo;</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Think-Pair-Square (2 pairs merge)</li>
+          <li>Pair-Off-Pair-On (rotate partners twice)</li>
+          <li>Silent TPS: written exchange, no speaking</li>
+          <li>Appointment pairs: pre-assigned partners rotated across the week</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 04 GLAD SENTENCE STEMS ============ -->
+  <article class="walkthru" id="glad-stems" data-level="foundational">
+    <header class="walkthru-head">
+      <div class="walkthru-num">04</div>
+      <div class="walkthru-title">
+        <h2>GLAD Sentence Stems</h2>
+        <p class="subtitle">Post them. Model them. Require them. The discourse moves become learnable.</p>
+      </div>
+      <span class="level-badge foundational">Foundational</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Zwiers' five conversation skills (build, clarify, evidence, challenge, paraphrase) become teachable rather than mysterious. GLAD research shows frames benefit all students, not only multilingual learners.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Any paired, small-group, or whole-class discussion. Start with two frames. Add two more after two weeks.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Introducing five at once. Posting without modeling. Never referring to them again. Treating them as babyish — they're academic moves.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Post. Model. Require. Praise.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Choose</div><div class="step-body">Start with two. Best openers: &ldquo;I want to build on…&rdquo; and &ldquo;I see it differently because…&rdquo;</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Post</div><div class="step-body">Large, visible, permanent. On the wall, not on a slide that disappears. Make them part of the room.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Model</div><div class="step-body">You use them when responding to students. &ldquo;I want to build on what Maya said. What if…&rdquo;</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Require</div><div class="step-body">One activity per week where students must use each target frame twice. Tally uses.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Rotate</div><div class="step-body">After two weeks, add two more. Build to five over the quarter: build, disagree, evidence, paraphrase, clarify.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">In this next pair talk, I want to hear at least one &ldquo;build on&rdquo; and one &ldquo;I see it differently&rdquo; from each of you. I'll be listening.<span class="script-attribution">post-it tally on the back wall</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Frame-of-the-week focus with tracked use</li>
+          <li>Table-card versions for every seat</li>
+          <li>Spanish/English bilingual frame cards</li>
+          <li>Student-generated frames added alongside the canonical ones</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 05 EXIT TICKETS ============ -->
+  <article class="walkthru" id="exit-tickets" data-level="foundational">
+    <header class="walkthru-head">
+      <div class="walkthru-num">05</div>
+      <div class="walkthru-title">
+        <h2>Exit Tickets</h2>
+        <p class="subtitle">A 3-minute snapshot. Only worth doing if you actually read them.</p>
+      </div>
+      <span class="level-badge foundational">Foundational</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Black &amp; Wiliam's research on formative feedback is clear: frequent low-stakes checks are one of the highest-effect moves in teaching. But only if the data comes back into your planning.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Last 3–4 minutes of every class. Non-negotiable at the start of the year.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Collecting without reading (worst sin). Pure-recall prompts. Skipping them when time's tight. Not opening the next day with what you saw.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">One question. Read tonight. Open tomorrow with what you found.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Craft</div><div class="step-body">A prompt that invites stance, application, or connection — not recall. One sentence, not five.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Protect</div><div class="step-body">Hold 3–4 minutes at class close. Don't teach over it. This is sacred time.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Collect</div><div class="step-body">Silent, individual. Sticky, card, or digital form. Students leave them as they exit.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Sort</div><div class="step-body">Read the same evening. Three piles: got it / partial / misconception. Takes less time than you think.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Open</div><div class="step-body">Start the next class by naming what you saw. &ldquo;Several of you were wondering whether…&rdquo;</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">Before you leave: in one sentence, argue whether Jackson's Indian Removal was democratic or tyrannical. Use one piece of evidence.<span class="script-attribution">prompt visible on the board for the last 4 minutes</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>3-2-1: three things learned, two connections, one question</li>
+          <li>Anonymous wall of responses (read by the class)</li>
+          <li>&ldquo;Stick and shift&rdquo;: what stuck, what shifted your thinking</li>
+          <li>Student-generated question as the ticket</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 06 SEE THINK WONDER ============ -->
+  <article class="walkthru" id="stw" data-level="foundational">
+    <header class="walkthru-head">
+      <div class="walkthru-num">06</div>
+      <div class="walkthru-title">
+        <h2>See · Think · Wonder</h2>
+        <p class="subtitle">Observation before interpretation. The habit at the heart of historical thinking.</p>
+      </div>
+      <span class="level-badge foundational">Foundational</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Students jump to interpretation before observation. Project Zero's routine separates the two and teaches the habit history demands: read the source before you explain it.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Any day with a compelling image, artifact, map, or political cartoon. Especially powerful in Social Studies.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Rushing the See step. Letting interpretation sneak into observation. Boring images — pick ones with real visual stakes.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Tell me what's there before you tell me what it means.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Project</div><div class="step-body">One compelling image, in silence, for 60 full seconds. No narration.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">See</div><div class="step-body">List only what's literally visible. &ldquo;I see a woman. I see smoke. I see three flags.&rdquo; Discipline the observation.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Think</div><div class="step-body">Interpret, but only grounded in what was seen. &ldquo;The flags suggest…&rdquo; &ldquo;The smoke might mean…&rdquo;</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Wonder</div><div class="step-body">Generate questions the source can't fully answer. This is where inquiry starts.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Bridge</div><div class="step-body">Use the Wonders to transition into the day's content. Student questions are the hook.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">For the next minute, I don't want interpretation. I want observation only. What's literally there?<span class="script-attribution">teacher stands silently, lets students look</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>ZoomIn: reveal one quadrant of the image at a time</li>
+          <li>STW on a primary source excerpt (&ldquo;see&rdquo; becomes &ldquo;notice&rdquo;)</li>
+          <li>Paired image comparison (two related sources)</li>
+          <li>Student-led STW: one student picks the image</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 07 TRIOS WITH ROLES ============ -->
+  <article class="walkthru" id="trios" data-level="intermediate">
+    <header class="walkthru-head">
+      <div class="walkthru-num">07</div>
+      <div class="walkthru-title">
+        <h2>Trios with Roles</h2>
+        <p class="subtitle">Three students, three jobs, one shared artifact. Nowhere to hide.</p>
+      </div>
+      <span class="level-badge intermediate">Intermediate</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Elizabeth Cohen's Complex Instruction showed that assigned roles — and rotating them — distribute participation. Trios beat quads in middle school. One student short means one fewer place to disappear.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Document analysis, source corroboration, or any task with three legitimate subtasks. At least once per week.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Roles that ossify into identities. Groups that silently divide work instead of discussing. Uneven subtasks (one role easier than others).</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Three roles. One shared artifact. Rotate every time.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Form</div><div class="step-body">Trios assigned by you. Not student-chosen. Balance ability, language, voice.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Assign</div><div class="step-body">Sourcer (who/when/why), Evidencer (claims and quotes), Connector (how it fits with other sources).</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Analyze</div><div class="step-body">Each student reads all sources but analyzes through their role's lens. Individual thinking, then shared.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Build</div><div class="step-body">Produce a single shared graphic organizer. No one leaves until all three perspectives are on the page.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Debrief</div><div class="step-body">Each trio reports out <em>what they learned from a groupmate's role</em> — not their own. Forces listening.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">Connectors — your job is to find the thread between Garrison and Grimké. Sourcers, check their context against each other. Evidencers, pull the strongest quote from each.<span class="script-attribution">roles rotate next session — no permanent Sourcers</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Numbered-Heads: teacher calls a random number to present</li>
+          <li>Role cards handed out face-down for reveal</li>
+          <li>Four-role quads when content genuinely needs four angles</li>
+          <li>Expert-Group Jigsaw: same roles, different content per trio</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 08 CHALKBOARD SPLASH ============ -->
+  <article class="walkthru" id="chalk-splash" data-level="intermediate">
+    <header class="walkthru-head">
+      <div class="walkthru-num">08</div>
+      <div class="walkthru-title">
+        <h2>Chalkboard Splash</h2>
+        <p class="subtitle">100% of student thinking visible — without anyone speaking first.</p>
+      </div>
+      <span class="level-badge intermediate">Intermediate</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">A signature Himmele Total Participation Technique. Converts whole-class assessment into shared evidence everyone can read — without putting anyone on the spot.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Reviewing prior content, surfacing prior knowledge, processing a documentary clip or reading. Strong mid-unit.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Generic prompts (&ldquo;what did you learn?&rdquo; — useless). Rushing the silent circulation. Skipping the &ldquo;what did you notice&rdquo; debrief.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Everyone writes. Everyone posts. Everyone reads. Then we talk.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Pose</div><div class="step-body">Single open-ended prompt. &ldquo;One sentence: what was the strongest argument for the Removal Act?&rdquo;</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Write</div><div class="step-body">2 minutes on a sticky or quarter-sheet. One sentence, not a paragraph.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Post</div><div class="step-body">Students silently walk to the board or wall and stick their response. No speaking.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Circulate</div><div class="step-body">Students read in silence, looking for patterns, surprises, disagreements. 3–4 minutes.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Notice</div><div class="step-body">Open the floor: &ldquo;What did you notice?&rdquo; Now there's evidence to anchor discussion.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">In silence — write one sentence, post it, read others' sentences. Then come back and we'll see what the board is telling us.<span class="script-attribution">teacher posts their own response too</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Digital splash: Padlet, Jamboard, or shared slides</li>
+          <li>Partner splash: read in pairs, flag two favorites</li>
+          <li>Sorted splash: post under teacher-labeled categories</li>
+          <li>Anonymous splash: no names (for risky topics)</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 09 FISHBOWL ============ -->
+  <article class="walkthru" id="fishbowl" data-level="intermediate">
+    <header class="walkthru-head">
+      <div class="walkthru-num">09</div>
+      <div class="walkthru-title">
+        <h2>Fishbowl</h2>
+        <p class="subtitle">A small inner circle talks. A larger outer circle observes — with a job.</p>
+      </div>
+      <span class="level-badge intermediate">Intermediate</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Facing History's core protocol. Lowers the social stakes of whole-class discussion by making the audience the majority. Models discussion behavior for students still learning it.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">A contested question with real multiple perspectives. Especially valuable before asking students to do a full SAC or Socratic Seminar.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Outer circle with no job (drift). Inner circle that talks only to the teacher. Teacher who over-intervenes.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Inner circle talks. Outer circle observes — with specific jobs.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Set up</div><div class="step-body">6–8 chairs in an inner circle. Rest of class forms the outer ring. Question posted visibly.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Partner</div><div class="step-body">Each outer-circle student is paired with one inner-circle person they'll observe. Name their job.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Run</div><div class="step-body">10–12 minutes of inner discussion. Teacher steps physically back. Silences are okay.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Swap</div><div class="step-body">New inner group. Continue the question or deepen it. Everyone gets a turn in the circle.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Debrief</div><div class="step-body">Observer partners share what they noticed — moves made, evidence cited, questions asked.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">Your job in the outer circle is to notice every time your partner cites evidence, builds on someone, or asks a question. I want specifics.<span class="script-attribution">teacher stands outside the whole time</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Tap-in Fishbowl: outer students physically swap in when ready</li>
+          <li>4-Chair: only four chairs, talking only there</li>
+          <li>Silent fishbowl: written-only exchange in the circle</li>
+          <li>Fishbowl with a written debrief instead of verbal</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 10 SAC ============ -->
+  <article class="walkthru" id="sac" data-level="advanced">
+    <header class="walkthru-head">
+      <div class="walkthru-num">10</div>
+      <div class="walkthru-title">
+        <h2>Structured Academic Controversy</h2>
+        <p class="subtitle">Argue one side. Argue the other. Drop both. Find consensus.</p>
+      </div>
+      <span class="level-badge advanced">Advanced</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">The Johnsons' protocol, refined by Walter Parker at UW for 30 years. The switch-sides move is what separates SAC from debate — and where the real learning happens.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">Contested historical or civic questions with legitimate evidence on both sides. Not false-balance issues.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Skipping the switch (makes it a debate). Picking morally-indefensible opposing sides. Consensus pressure that flattens real disagreement.</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Argue one side. Then argue the other. Drop both. Find consensus.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Prep</div><div class="step-body">Binary question + two source packets. Groups of 4, paired A-B / C-D. Each pair preps one side.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Present</div><div class="step-body">A-B presents Side A. C-D paraphrases A-B's argument to A-B's satisfaction before presenting Side B.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Switch</div><div class="step-body">A-B now argues Side B using C-D's evidence. Vice versa. The critical move.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Consensus</div><div class="step-body">Drop positions. All four students craft a refined shared position that accounts for both sides' strongest evidence.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Reflect</div><div class="step-body">Where did your own thinking shift? What was the strongest argument you hadn't considered?</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">When you switch, your job is to use your opponent's strongest evidence — not your own. That's the whole point.<span class="script-attribution">teacher circulates, coaches the paraphrase step</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Whole-class SAC (one question, staged publicly)</li>
+          <li>Digital source packets in shared slides</li>
+          <li>Cross-classroom SAC with another teacher's students</li>
+          <li>Policy-SAC: consensus must be a written recommendation</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 11 SOCRATIC SEMINAR ============ -->
+  <article class="walkthru" id="socratic" data-level="advanced">
+    <header class="walkthru-head">
+      <div class="walkthru-num">11</div>
+      <div class="walkthru-title">
+        <h2>Socratic Seminar</h2>
+        <p class="subtitle">Student-led inquiry around a shared text. Teacher silent. Text anchors.</p>
+      </div>
+      <span class="level-badge advanced">Advanced</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">The culmination of a discussion-based classroom. Students run the seminar. Teacher sits outside the circle. Growth in self-awareness, peer connectedness, and text analysis is well-documented.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">After months of foundational work. With a rich, ambiguous text. Never as a first try — scaffold relentlessly.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Teacher talking. Underprepared students (hold the line — no prep = no participation). Too-large a circle (break into two smaller ones).</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Teacher silent. Students facilitate. Text anchors everything.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Prep</div><div class="step-body">Students annotate the text and bring 2–3 open questions. Come prepared or don't participate — hold this line.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Circle</div><div class="step-body">Chairs in a circle. Teacher outside. Norms posted: cite the text, build on others, invite quiet voices.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Open</div><div class="step-body">One genuinely open question. Then silence. Middle schoolers will fill it if you don't.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Observe</div><div class="step-body">Tally participation, watch norms, redirect only when they slip. Say almost nothing.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Reflect</div><div class="step-body">Written reflection after: my contributions, my listening, one goal for next time. Reflection matters as much as the seminar.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">Where does Douglass's argument become impossible to ignore? … That's my only question today.<span class="script-attribution">teacher then does not speak again for 40 minutes</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Two parallel seminars of 12–15 (walk between them)</li>
+          <li>Inside-outside: half circle, half observing assigned peers</li>
+          <li>Student-generated opening questions</li>
+          <li>Text-rendering variant: start by reading meaningful lines aloud</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 12 MICROLAB ============ -->
+  <article class="walkthru" id="microlab" data-level="advanced">
+    <header class="walkthru-head">
+      <div class="walkthru-num">12</div>
+      <div class="walkthru-title">
+        <h2>Microlab</h2>
+        <p class="subtitle">Ninety seconds each, uninterrupted. Silence-while-listening is the discipline.</p>
+      </div>
+      <span class="level-badge advanced">Advanced</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">An NSRF protocol originally used in teacher PD. Gives every student equal airtime and builds listening as a discipline — not just a polite gesture.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">End of a heavy-content or emotionally-weighty day (Middle Passage, Indian Removal, Douglass). Closes class with dignity.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Cutting the silence. Groups that start interrupting. Running it on a trivial prompt (wastes the structure).</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Ninety seconds each. Interrupt no one. Listen hard.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Form</div><div class="step-body">Trios only. Quads break the timing. One prompt — weighty but open.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Speak</div><div class="step-body">Person 1 speaks for 90 seconds uninterrupted. Others silent — no nodding, no sounds, no notes.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Pause</div><div class="step-body">10 seconds of held silence after each person. Discomfort is the point.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Rotate</div><div class="step-body">Person 2, then 3. Same rules. Protect the timing; interruptions kill it.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Open</div><div class="step-body">2 minutes of free discussion within the trio. No whole-class share unless a student volunteers.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">For ninety seconds, your only job is to listen. Not respond, not plan what you'll say — just listen.<span class="script-attribution">teacher sets a visible timer and does not speak</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Microlab + writing (write 90s before speaking)</li>
+          <li>Two rounds with a shifted prompt</li>
+          <li>Microlab in pairs (60 seconds each)</li>
+          <li>Post-Microlab: one word each to the whole class</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 13 I USED TO THINK ============ -->
+  <article class="walkthru" id="iutt" data-level="intermediate">
+    <header class="walkthru-head">
+      <div class="walkthru-num">13</div>
+      <div class="walkthru-title">
+        <h2>I Used to Think… Now I Think…</h2>
+        <p class="subtitle">Name the before. Name the after. Name what changed it.</p>
+      </div>
+      <span class="level-badge intermediate">Intermediate</span>
+    </header>
+
+    <div class="essentials">
+      <div class="essential">
+        <div class="essential-label">Why</div>
+        <div class="essential-body">Another Project Zero Visible Thinking routine, designed for conceptual change. Especially powerful in Social Studies where students arrive with partial or distorted priors.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">When</div>
+        <div class="essential-body">End of a lesson or unit that meaningfully challenged a prior conception. Not after a recall-heavy lesson — there's nothing to shift.</div>
+      </div>
+      <div class="essential">
+        <div class="essential-label">Watch-outs</div>
+        <div class="essential-body">Generic reflection (&ldquo;I used to think history was boring…&rdquo;). Students who didn't actually shift — honor that: &ldquo;I still think X, but now I see why others think Y.&rdquo;</div>
+      </div>
+    </div>
+
+    <div class="core-move">
+      <div class="core-move-label">Core move</div>
+      <div class="core-move-quote">Name the before. Name the after. Name what changed it.</div>
+    </div>
+
+    <div class="walkthru-steps-wrap">
+      <div class="walkthru-steps-label">The five-step walkthru</div>
+      <div class="walkthru-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-verb">Prompt</div><div class="step-body">Name the specific prior understanding students likely had. &ldquo;Before this unit, what did you think about Jefferson?&rdquo;</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-verb">Write</div><div class="step-body">Three sentences: &ldquo;I used to think ___. Now I think ___. What changed my mind was ___.&rdquo;</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-verb">Pair</div><div class="step-body">Optional: brief share with a partner. Sometimes what students wrote becomes clearer when spoken.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-verb">Collect</div><div class="step-body">Use for next-day opener, or post anonymously as a wall of shifts. Student voices become the hook.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-verb">Revisit</div><div class="step-body">At unit's end, revisit: has your thinking shifted again? The routine compounds when repeated.</div></div>
+      </div>
+    </div>
+
+    <div class="walkthru-footer">
+      <div class="script">
+        <div class="script-label">Sample teacher script</div>
+        <div class="script-body">Before you leave: what did you used to think about Jefferson? What do you think now — and what specifically changed it?<span class="script-attribution">collected and projected anonymously tomorrow</span></div>
+      </div>
+      <div class="variations">
+        <div class="variations-label">Variations</div>
+        <ul class="variations-list">
+          <li>Class wall of shifts (posted all quarter)</li>
+          <li>Pre/post journal entries around a unit</li>
+          <li>Colored chart showing clusters of similar shifts</li>
+          <li>Paired routine with Connect-Extend-Challenge</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <span class="footer-mark">Room 1610 &middot; Alderwood MS</span>
+  <p>A WalkThrus-inspired reference for the thirteen core moves.</p>
+  <p>Built as a companion to the main <a href="index.html">Discussion Hub</a>. Designed to be printed, taped to the prep-period wall, and scribbled on.</p>
+</footer>
+
+</body>
+</html>

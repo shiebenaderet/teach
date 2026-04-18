@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Local reference library — do not publish
+texts/
+
+# Editor scratch
+*.swp
+*.swo
+.vscode/
