@@ -1,4 +1,4 @@
-# Cowork handoff — `teaching` repo
+# Cowork handoff — `teach` repo
 
 Copy-paste this whole document into a Cowork chat (or keep it in the repo as `HANDOFF.md` for future you / future contributors). It contains everything needed to pick up development without prior context.
 
@@ -6,9 +6,9 @@ Copy-paste this whole document into a Cowork chat (or keep it in the repo as `HA
 
 ## Context
 
-I'm Shie Benaderet, 8th grade Social Studies teacher at Alderwood Middle School. I maintain a small ecosystem of GitHub Pages sites under `mrbsocialstudies.org` — `ss8`, `scotus`, `current`, each for a different audience. This new repo, `teaching`, is the **teacher-facing** companion: a growing collection of research-backed classroom resources aimed at me and fellow educators, not at students.
+I'm Shie Benaderet, 8th grade Social Studies teacher at Alderwood Middle School. I maintain a small ecosystem of GitHub Pages sites under `mrbsocialstudies.org` — `ams` (the main site), `ss8`, `scotus`, `current`, each for a different audience. This repo, `teach`, is the **teacher-facing** companion: a growing collection of research-backed classroom resources aimed at me and fellow educators, not at students.
 
-It will live at `teaching.mrbsocialstudies.org`.
+It lives at `teach.mrbsocialstudies.org`.
 
 The repo is designed to grow. The first resource is a Discussion Hub. Future tenants will likely include a GLAD sentence-stem poster, an MTSS intervention toolkit, and other pedagogy references. Each resource gets its own subfolder; the root `index.html` is the directory.
 
@@ -17,10 +17,10 @@ The repo is designed to grow. The first resource is a Discussion Hub. Future ten
 The repo is initialized on GitHub and contains the Discussion Hub files. Target folder structure:
 
 ```
-teaching/
-├── README.md                ← repo-level (needs rewrite — currently describes only the hub)
-├── index.html               ← top-level landing page (DOES NOT EXIST YET — needs to be built)
-├── CNAME                    ← contains: teaching.mrbsocialstudies.org
+teach/
+├── README.md                ← repo-level
+├── index.html               ← top-level landing page
+├── CNAME                    ← contains: teach.mrbsocialstudies.org
 └── discussion/
     ├── index.html           ← the Discussion Hub (exists, works)
     └── walkthrus.html       ← the WalkThrus reference page (exists, works)
@@ -32,9 +32,9 @@ teaching/
 
 ### Task 1 — Build the top-level `index.html`
 
-This is the landing page for `teaching.mrbsocialstudies.org`. It should:
+This is the landing page for `teach.mrbsocialstudies.org`. It should:
 
-- Introduce the site in one paragraph (teacher-facing research-backed resources, companion to `mrbsocialstudies.org`)
+- Introduce the site in one paragraph (teacher-facing research-backed resources, companion to `ams.mrbsocialstudies.org`)
 - Introduce me briefly — 8th grade Social Studies teacher, Alderwood MS — in my own voice, not marketing-speak
 - List the Discussion Hub as the first (currently only) resource, with a short description and a clear link to `/discussion/`
 - Include a "more coming" note or empty state so it's obvious the site is meant to grow
@@ -47,7 +47,7 @@ Single HTML file, embedded CSS, no build step. Same no-framework approach as the
 
 The current README describes only the Discussion Hub. Replace it with a repo-level README that:
 
-- Describes `teaching` as a multi-resource teacher-facing site
+- Describes `teach` as a multi-resource teacher-facing site
 - Documents the folder-per-resource pattern (each resource is self-contained in its own subfolder)
 - Explains how to add a new resource (drop a folder at root, add it to the top-level `index.html`)
 - Points to the GitHub Pages setup and CNAME
@@ -108,12 +108,12 @@ Delete `discussion/README.md` if it exists — the repo-level README replaces it
 
 - `discussion/index.html` uses `localStorage` inside a try/catch to remember the selected path. Don't wrap it in anything that breaks the try/catch.
 - Internal links between `discussion/index.html` and `discussion/walkthrus.html` are relative (`href="walkthrus.html"`). They work because both files sit in the same folder.
-- The `CNAME` file at root contains exactly one line: `teaching.mrbsocialstudies.org`. No quotes, no trailing slash, no `https://`. Don't rename or move it.
+- The `CNAME` file at root contains exactly one line: `teach.mrbsocialstudies.org`. No quotes, no trailing slash, no `https://`. Don't rename or move it.
 - The hub links out to many external resources (videos, articles, books). If one rots, just update the link — don't remove the resource entry.
 
 ## Verify when done
 
-1. Open `teaching/index.html` locally — it should render, look on-brand, and link correctly to `/discussion/`.
+1. Open `teach/index.html` locally — it should render, look on-brand, and link correctly to `/discussion/`.
 2. Open `discussion/index.html` — still works, path selector still works, links to `walkthrus.html` still work.
 3. Open `discussion/walkthrus.html` — still works, "Back to the hub" link resolves to `../index.html` **NOT** the hub's internal index. Actually — check this: if the existing back-link in `walkthrus.html` points to `index.html`, it now resolves to the new top-level landing, not the hub. That's probably wrong. The back-link should point to the hub, which is now at `index.html` in the same folder (still `index.html` from walkthrus's perspective since they're siblings). Verify this still works as expected.
 4. Commit with a clear message (`Add top-level landing + rewritten README`) and push. GitHub Pages rebuilds automatically.

@@ -1,18 +1,18 @@
 # Teaching
 
-The teacher-facing companion site to [mrbsocialstudies.org](https://mrbsocialstudies.org). A slowly growing collection of research-backed classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, not for students.
+The teacher-facing companion site to [ams.mrbsocialstudies.org](https://ams.mrbsocialstudies.org). A slowly growing collection of research-backed classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, not for students.
 
-Lives at **[teaching.mrbsocialstudies.org](https://teaching.mrbsocialstudies.org)**.
+Lives at **[teach.mrbsocialstudies.org](https://teach.mrbsocialstudies.org)**.
 
 ## Structure
 
 One folder per resource. The root `index.html` is the directory that points at them.
 
 ```
-teaching/
+teach/
 ├── index.html          ← landing page / directory
 ├── README.md           ← you are here
-├── CNAME               ← teaching.mrbsocialstudies.org
+├── CNAME               ← teach.mrbsocialstudies.org
 └── discussion/         ← Resource #01 — the Discussion Hub
     ├── index.html
     └── walkthrus.html
@@ -49,8 +49,8 @@ See the existing `index.html` and `discussion/*.html` for the full vocabulary.
 ## GitHub Pages setup
 
 - Repo: public, source = `main` branch, `/ (root)` folder.
-- `CNAME` at the root contains exactly one line: `teaching.mrbsocialstudies.org` &mdash; no quotes, no protocol, no trailing slash.
-- DNS: `teaching` CNAME pointed at `shiebenaderet.github.io` (or whichever GitHub account hosts this repo).
+- `CNAME` at the root contains exactly one line: `teach.mrbsocialstudies.org` &mdash; no quotes, no protocol, no trailing slash.
+- DNS: `teach` CNAME pointed at `shiebenaderet.github.io` (or whichever GitHub account hosts this repo).
 
 Pages rebuilds automatically on every push to `main`.
 
