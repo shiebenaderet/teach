@@ -296,6 +296,66 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
   line-height: 1;
 }
 
+/* AT-A-GLANCE DIAGRAM — Caviglioli-inspired visual grammar.
+   Sits between the core-move quote and the 5-step list.
+   Two colors (ink + maroon), gold for phase labels and transitions,
+   cream background, bold sans inside shapes. */
+.walkthru-diagram {
+  padding: 32px 40px 28px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 760px) { .walkthru-diagram { padding: 24px 24px 20px; } }
+.walkthru-diagram-label {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.walkthru-diagram-label::before {
+  content: ''; display: block;
+  width: 28px; height: 2px; background: var(--gold);
+}
+.walkthru-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+}
+.walkthru-diagram-caption {
+  font-size: 12.5px;
+  color: var(--ink-subtle);
+  font-style: italic;
+  margin: 14px auto 0;
+  max-width: 640px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* SVG text defaults scoped to diagrams */
+.walkthru-diagram .svg-eyebrow {
+  font-family: var(--font-body); font-weight: 800;
+  font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase;
+  fill: var(--gold);
+}
+.walkthru-diagram .svg-label {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 12px; fill: var(--ink);
+}
+.walkthru-diagram .svg-label-inv {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 12px; fill: var(--paper);
+}
+.walkthru-diagram .svg-sub {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 11px; fill: var(--ink-muted);
+}
+.walkthru-diagram .svg-num {
+  font-family: var(--font-display); font-style: italic; font-weight: 700;
+  fill: var(--gold); font-size: 18px;
+}
+
 /* 5-STEP WALKTHRU */
 .walkthru-steps-wrap {
   padding: 36px 40px 32px;
@@ -419,6 +479,8 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 @media print {
   .nav, .footer { display: none; }
   .walkthru { box-shadow: none; break-inside: avoid; page-break-inside: avoid; margin-bottom: 24px; }
+  .walkthru-diagram { background: white; break-inside: avoid; page-break-inside: avoid; }
+  .walkthru-diagram svg { max-width: 520px; }
   body { background: white; }
 }
 </style>
@@ -525,6 +587,44 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">Question first. Pause. Then name — warmly.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 220" role="img" aria-label="Warm-Calling sequence: ask the whole class, pause five to ten seconds, name one student warmly, honor the pass with a phone-a-friend.">
+        <defs><marker id="wc-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker></defs>
+        <!-- 01 Ask -->
+        <text class="svg-num" x="30" y="42">01</text>
+        <text class="svg-eyebrow" x="58" y="40">Ask</text>
+        <g fill="#8B2E2E"><circle cx="44" cy="82" r="6"/><circle cx="72" cy="82" r="6"/><circle cx="100" cy="82" r="6"/><circle cx="128" cy="82" r="6"/><circle cx="44" cy="108" r="6"/><circle cx="72" cy="108" r="6"/><circle cx="100" cy="108" r="6"/><circle cx="128" cy="108" r="6"/><circle cx="44" cy="134" r="6"/><circle cx="72" cy="134" r="6"/><circle cx="100" cy="134" r="6"/><circle cx="128" cy="134" r="6"/></g>
+        <text class="svg-sub" x="30" y="176">Whole class engaged.</text>
+        <line x1="155" y1="108" x2="185" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#wc-a)"/>
+        <!-- 02 Pause -->
+        <text class="svg-num" x="200" y="42">02</text>
+        <text class="svg-eyebrow" x="228" y="40">Pause</text>
+        <rect x="200" y="60" width="150" height="96" rx="3" fill="#F2E8C9" stroke="#B8862F" stroke-width="1.5"/>
+        <circle cx="275" cy="108" r="22" fill="none" stroke="#B8862F" stroke-width="2"/>
+        <line x1="275" y1="108" x2="275" y2="92" stroke="#B8862F" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="275" y1="108" x2="288" y2="108" stroke="#B8862F" stroke-width="2" stroke-linecap="round"/>
+        <text class="svg-sub" x="200" y="176">5–10 silent seconds.</text>
+        <line x1="360" y1="108" x2="390" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#wc-a)"/>
+        <!-- 03 Name -->
+        <text class="svg-num" x="405" y="42">03</text>
+        <text class="svg-eyebrow" x="433" y="40">Name</text>
+        <g fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5"><circle cx="419" cy="82" r="6"/><circle cx="475" cy="82" r="6"/><circle cx="503" cy="82" r="6"/><circle cx="531" cy="82" r="6"/><circle cx="419" cy="108" r="6"/><circle cx="503" cy="108" r="6"/><circle cx="531" cy="108" r="6"/><circle cx="419" cy="134" r="6"/><circle cx="447" cy="134" r="6"/><circle cx="475" cy="134" r="6"/><circle cx="531" cy="134" r="6"/></g>
+        <circle cx="447" cy="82" r="7" fill="#8B2E2E"/>
+        <circle cx="447" cy="82" r="13" fill="none" stroke="#B8862F" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <text class="svg-sub" x="405" y="176">One student, warmly invited.</text>
+        <line x1="558" y1="108" x2="588" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#wc-a)"/>
+        <!-- 04 Honor -->
+        <text class="svg-num" x="603" y="42">04</text>
+        <text class="svg-eyebrow" x="631" y="40">Honor</text>
+        <circle cx="625" cy="88" r="9" fill="#8B2E2E"/>
+        <circle cx="685" cy="132" r="7" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5"/>
+        <path d="M 635 93 Q 670 95 680 124" fill="none" stroke="#B8862F" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <polygon points="677,121 683,126 680,118" fill="#B8862F"/>
+        <text class="svg-sub" x="603" y="176">Pass? Phone a friend.</text>
+      </svg>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -582,6 +682,53 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     <div class="core-move">
       <div class="core-move-label">Core move</div>
       <div class="core-move-quote">Write first. Then talk. Then share.</div>
+    </div>
+
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 220" role="img" aria-label="Quick-Write to Turn-and-Talk: one student writes silently, then pairs rehearse in conversation, then warm-called pairs share with the whole class.">
+        <defs><marker id="qw-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker></defs>
+        <!-- 01 Write -->
+        <text class="svg-num" x="40" y="42">01</text>
+        <text class="svg-eyebrow" x="68" y="40">Write</text>
+        <!-- page icon behind dot -->
+        <rect x="50" y="70" width="70" height="86" rx="2" fill="#FFFEF9" stroke="#E5DDC8" stroke-width="1.5"/>
+        <line x1="60" y1="88" x2="110" y2="88" stroke="#E5DDC8" stroke-width="1"/>
+        <line x1="60" y1="100" x2="110" y2="100" stroke="#E5DDC8" stroke-width="1"/>
+        <line x1="60" y1="112" x2="100" y2="112" stroke="#E5DDC8" stroke-width="1"/>
+        <line x1="60" y1="124" x2="110" y2="124" stroke="#E5DDC8" stroke-width="1"/>
+        <line x1="60" y1="136" x2="95" y2="136" stroke="#E5DDC8" stroke-width="1"/>
+        <circle cx="30" cy="110" r="10" fill="#8B2E2E"/>
+        <path d="M 40 110 L 48 110" stroke="#2A2018" stroke-width="1.2"/>
+        <text class="svg-sub" x="40" y="180">3 min silent. Visible timer.</text>
+        <line x1="148" y1="113" x2="178" y2="113" stroke="#2A2018" stroke-width="1.5" marker-end="url(#qw-a)"/>
+        <!-- 02 Pair -->
+        <text class="svg-num" x="195" y="42">02</text>
+        <text class="svg-eyebrow" x="223" y="40">Pair</text>
+        <rect x="195" y="60" width="200" height="100" rx="3" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1"/>
+        <circle cx="235" cy="110" r="11" fill="#8B2E2E"/>
+        <circle cx="355" cy="110" r="11" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5"/>
+        <path d="M 248 104 L 342 104" stroke="#8B2E2E" stroke-width="1.5" marker-end="url(#qw-a)"/>
+        <path d="M 342 118 L 248 118" stroke="#2A2018" stroke-width="1.5" marker-end="url(#qw-a)"/>
+        <text class="svg-label" x="215" y="114" fill="#FFFEF9">A</text>
+        <text class="svg-label" x="350" y="114">B</text>
+        <text class="svg-sub" x="195" y="180">A speaks 60s → B paraphrases, adds → switch.</text>
+        <line x1="408" y1="113" x2="438" y2="113" stroke="#2A2018" stroke-width="1.5" marker-end="url(#qw-a)"/>
+        <!-- 03 Share -->
+        <text class="svg-num" x="455" y="42">03</text>
+        <text class="svg-eyebrow" x="483" y="40">Share</text>
+        <!-- class of 16 dots, 2 called on (with gold rings) -->
+        <g fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5">
+          <circle cx="475" cy="80" r="6"/><circle cx="500" cy="80" r="6"/><circle cx="525" cy="80" r="6"/><circle cx="550" cy="80" r="6"/><circle cx="575" cy="80" r="6"/><circle cx="600" cy="80" r="6"/><circle cx="625" cy="80" r="6"/><circle cx="650" cy="80" r="6"/>
+          <circle cx="475" cy="110" r="6"/><circle cx="525" cy="110" r="6"/><circle cx="550" cy="110" r="6"/><circle cx="575" cy="110" r="6"/><circle cx="600" cy="110" r="6"/><circle cx="625" cy="110" r="6"/><circle cx="650" cy="110" r="6"/>
+          <circle cx="475" cy="140" r="6"/><circle cx="500" cy="140" r="6"/><circle cx="525" cy="140" r="6"/><circle cx="550" cy="140" r="6"/><circle cx="600" cy="140" r="6"/><circle cx="625" cy="140" r="6"/><circle cx="650" cy="140" r="6"/><circle cx="675" cy="140" r="6"/>
+        </g>
+        <circle cx="500" cy="110" r="7" fill="#8B2E2E"/>
+        <circle cx="500" cy="110" r="13" fill="none" stroke="#B8862F" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <circle cx="575" cy="140" r="7" fill="#8B2E2E"/>
+        <circle cx="575" cy="140" r="13" fill="none" stroke="#B8862F" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <text class="svg-sub" x="465" y="180">2–3 pairs warm-called. &quot;What did your partner say?&quot;</text>
+      </svg>
     </div>
 
     <div class="walkthru-steps-wrap">
@@ -643,6 +790,51 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">Ask for your partner's thinking, not your own.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 220" role="img" aria-label="Think-Pair-Share: one student thinks silently, two partners paraphrase each other's thinking, then the named student reports what the partner said.">
+        <defs><marker id="tps-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker></defs>
+        <!-- 01 Think -->
+        <text class="svg-num" x="40" y="42">01</text>
+        <text class="svg-eyebrow" x="68" y="40">Think</text>
+        <circle cx="90" cy="108" r="14" fill="#8B2E2E"/>
+        <!-- thought bubble -->
+        <path d="M 112 86 Q 135 78 150 82 Q 168 78 172 94 Q 178 104 170 112 Q 175 122 164 126 Q 155 134 140 128 Q 125 135 115 120 Q 104 118 104 104 Q 100 90 112 86 Z" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1.2"/>
+        <circle cx="110" cy="124" r="3" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1"/>
+        <circle cx="104" cy="132" r="2" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1"/>
+        <text class="svg-sub" x="40" y="176">Silent. Ideally with a written anchor.</text>
+        <line x1="192" y1="108" x2="222" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#tps-a)"/>
+        <!-- 02 Pair + Paraphrase (central — largest emphasis) -->
+        <text class="svg-num" x="240" y="42">02</text>
+        <text class="svg-eyebrow" x="268" y="40">Pair &amp; paraphrase</text>
+        <rect x="240" y="60" width="220" height="100" rx="3" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1"/>
+        <circle cx="280" cy="108" r="13" fill="#8B2E2E"/>
+        <circle cx="420" cy="108" r="13" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5"/>
+        <text class="svg-label" x="280" y="112" text-anchor="middle" fill="#FFFEF9">A</text>
+        <text class="svg-label" x="420" y="112" text-anchor="middle">B</text>
+        <!-- paraphrase loops: curved arrows going both ways, emphasized with gold -->
+        <path d="M 294 98 Q 350 75 406 98" fill="none" stroke="#B8862F" stroke-width="1.8" marker-end="url(#tps-a)"/>
+        <path d="M 406 118 Q 350 141 294 118" fill="none" stroke="#B8862F" stroke-width="1.8" marker-end="url(#tps-a)"/>
+        <text class="svg-eyebrow" x="330" y="78" text-anchor="middle">Paraphrase</text>
+        <text class="svg-sub" x="240" y="180">Each partner restates the other before adding their own.</text>
+        <line x1="472" y1="108" x2="502" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#tps-a)"/>
+        <!-- 03 Share — warm-called for partner's thinking -->
+        <text class="svg-num" x="520" y="42">03</text>
+        <text class="svg-eyebrow" x="548" y="40">Share</text>
+        <g fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5">
+          <circle cx="535" cy="80" r="6"/><circle cx="560" cy="80" r="6"/><circle cx="585" cy="80" r="6"/><circle cx="610" cy="80" r="6"/><circle cx="635" cy="80" r="6"/><circle cx="660" cy="80" r="6"/><circle cx="685" cy="80" r="6"/>
+          <circle cx="535" cy="108" r="6"/><circle cx="585" cy="108" r="6"/><circle cx="610" cy="108" r="6"/><circle cx="635" cy="108" r="6"/><circle cx="660" cy="108" r="6"/><circle cx="685" cy="108" r="6"/>
+          <circle cx="535" cy="136" r="6"/><circle cx="560" cy="136" r="6"/><circle cx="585" cy="136" r="6"/><circle cx="610" cy="136" r="6"/><circle cx="660" cy="136" r="6"/><circle cx="685" cy="136" r="6"/>
+        </g>
+        <circle cx="560" cy="108" r="7" fill="#8B2E2E"/>
+        <circle cx="560" cy="108" r="13" fill="none" stroke="#B8862F" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <circle cx="635" cy="136" r="7" fill="#8B2E2E"/>
+        <circle cx="635" cy="136" r="13" fill="none" stroke="#B8862F" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <text class="svg-sub" x="525" y="180">&quot;What did your partner say?&quot;</text>
+      </svg>
+      <p class="walkthru-diagram-caption">The gold loops at step 02 are the whole point — paraphrase before adding is what separates TPS from partner-chatting.</p>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -700,6 +892,73 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     <div class="core-move">
       <div class="core-move-label">Core move</div>
       <div class="core-move-quote">Post. Model. Require. Praise.</div>
+    </div>
+
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 240" role="img" aria-label="GLAD Sentence Stems: five frames posted on the classroom wall — build, disagree, evidence, paraphrase, clarify — each color-coded to its discourse function.">
+        <!-- classroom wall baseline -->
+        <line x1="30" y1="190" x2="690" y2="190" stroke="#2A2018" stroke-width="1.5"/>
+        <line x1="30" y1="190" x2="30" y2="210" stroke="#2A2018" stroke-width="1.5"/>
+        <line x1="690" y1="190" x2="690" y2="210" stroke="#2A2018" stroke-width="1.5"/>
+        <text class="svg-sub" x="360" y="222" text-anchor="middle">Large. Visible. Permanent. On the wall — not in a disappearing slide.</text>
+        <!-- 5 stem cards on the wall, each a different accent family -->
+        <!-- Card 1: Build (maroon) -->
+        <g transform="translate(40,36)">
+          <rect width="120" height="146" rx="3" fill="#FFFEF9" stroke="#8B2E2E" stroke-width="1.5"/>
+          <rect width="120" height="26" rx="3" fill="#8B2E2E"/>
+          <rect y="20" width="120" height="8" fill="#8B2E2E"/>
+          <text class="svg-eyebrow" x="60" y="18" text-anchor="middle" fill="#F2E8C9">Build</text>
+          <text class="svg-label" x="60" y="62" text-anchor="middle">&ldquo;I want to</text>
+          <text class="svg-label" x="60" y="80" text-anchor="middle">build on</text>
+          <text class="svg-label" x="60" y="98" text-anchor="middle">what Maya</text>
+          <text class="svg-label" x="60" y="116" text-anchor="middle">said …&rdquo;</text>
+        </g>
+        <!-- Card 2: Disagree (ink) -->
+        <g transform="translate(170,36)">
+          <rect width="120" height="146" rx="3" fill="#FFFEF9" stroke="#2A2018" stroke-width="1.5"/>
+          <rect width="120" height="26" rx="3" fill="#2A2018"/>
+          <rect y="20" width="120" height="8" fill="#2A2018"/>
+          <text class="svg-eyebrow" x="60" y="18" text-anchor="middle" fill="#F2E8C9">Disagree</text>
+          <text class="svg-label" x="60" y="62" text-anchor="middle">&ldquo;I see it</text>
+          <text class="svg-label" x="60" y="80" text-anchor="middle">differently</text>
+          <text class="svg-label" x="60" y="98" text-anchor="middle">because</text>
+          <text class="svg-label" x="60" y="116" text-anchor="middle">…&rdquo;</text>
+        </g>
+        <!-- Card 3: Evidence (gold) -->
+        <g transform="translate(300,36)">
+          <rect width="120" height="146" rx="3" fill="#FFFEF9" stroke="#B8862F" stroke-width="1.5"/>
+          <rect width="120" height="26" rx="3" fill="#B8862F"/>
+          <rect y="20" width="120" height="8" fill="#B8862F"/>
+          <text class="svg-eyebrow" x="60" y="18" text-anchor="middle" fill="#FFFEF9">Evidence</text>
+          <text class="svg-label" x="60" y="62" text-anchor="middle">&ldquo;The text</text>
+          <text class="svg-label" x="60" y="80" text-anchor="middle">shows this</text>
+          <text class="svg-label" x="60" y="98" text-anchor="middle">when it</text>
+          <text class="svg-label" x="60" y="116" text-anchor="middle">says …&rdquo;</text>
+        </g>
+        <!-- Card 4: Paraphrase (green) -->
+        <g transform="translate(430,36)">
+          <rect width="120" height="146" rx="3" fill="#FFFEF9" stroke="#3d7a3d" stroke-width="1.5"/>
+          <rect width="120" height="26" rx="3" fill="#3d7a3d"/>
+          <rect y="20" width="120" height="8" fill="#3d7a3d"/>
+          <text class="svg-eyebrow" x="60" y="18" text-anchor="middle" fill="#F2E8C9">Paraphrase</text>
+          <text class="svg-label" x="60" y="62" text-anchor="middle">&ldquo;So what</text>
+          <text class="svg-label" x="60" y="80" text-anchor="middle">you're saying</text>
+          <text class="svg-label" x="60" y="98" text-anchor="middle">is …?&rdquo;</text>
+        </g>
+        <!-- Card 5: Clarify (gold-light) -->
+        <g transform="translate(560,36)">
+          <rect width="120" height="146" rx="3" fill="#FFFEF9" stroke="#665A4B" stroke-width="1.5"/>
+          <rect width="120" height="26" rx="3" fill="#665A4B"/>
+          <rect y="20" width="120" height="8" fill="#665A4B"/>
+          <text class="svg-eyebrow" x="60" y="18" text-anchor="middle" fill="#F2E8C9">Clarify</text>
+          <text class="svg-label" x="60" y="62" text-anchor="middle">&ldquo;Can you</text>
+          <text class="svg-label" x="60" y="80" text-anchor="middle">say more</text>
+          <text class="svg-label" x="60" y="98" text-anchor="middle">about what</text>
+          <text class="svg-label" x="60" y="116" text-anchor="middle">you mean?&rdquo;</text>
+        </g>
+      </svg>
+      <p class="walkthru-diagram-caption">Five frames, color-coded by discourse function. Start with Build + Disagree — add the rest over the quarter.</p>
     </div>
 
     <div class="walkthru-steps-wrap">
@@ -761,6 +1020,88 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">One question. Read tonight. Open tomorrow with what you found.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 240" role="img" aria-label="Exit Tickets: written in the last four minutes of class today, sorted by the teacher tonight into got-it, partial, and misconception piles, and used to open tomorrow's class.">
+        <defs><marker id="et-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker></defs>
+        <!-- Day timeline -->
+        <line x1="40" y1="190" x2="680" y2="190" stroke="#E5DDC8" stroke-width="1.5"/>
+        <g fill="#B8862F">
+          <circle cx="110" cy="190" r="4"/>
+          <circle cx="360" cy="190" r="4"/>
+          <circle cx="610" cy="190" r="4"/>
+        </g>
+        <text class="svg-eyebrow" x="110" y="215" text-anchor="middle">Today, last 4 min</text>
+        <text class="svg-eyebrow" x="360" y="215" text-anchor="middle">Tonight</text>
+        <text class="svg-eyebrow" x="610" y="215" text-anchor="middle">Tomorrow, opener</text>
+
+        <!-- Station 01: Write -->
+        <text class="svg-num" x="60" y="40">01</text>
+        <text class="svg-eyebrow" x="88" y="38">Write</text>
+        <g>
+          <rect x="70" y="56" width="80" height="100" rx="2" fill="#FFFEF9" stroke="#E5DDC8" stroke-width="1.5"/>
+          <line x1="80" y1="72" x2="140" y2="72" stroke="#8B2E2E" stroke-width="1.4"/>
+          <line x1="80" y1="88" x2="140" y2="88" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="80" y1="102" x2="130" y2="102" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="80" y1="116" x2="140" y2="116" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="80" y1="130" x2="120" y2="130" stroke="#E5DDC8" stroke-width="1"/>
+        </g>
+        <line x1="165" y1="108" x2="210" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#et-a)"/>
+
+        <!-- Station 02: Sort — three piles -->
+        <text class="svg-num" x="220" y="40">02</text>
+        <text class="svg-eyebrow" x="248" y="38">Sort</text>
+        <!-- Pile: got it -->
+        <g transform="translate(220,60)">
+          <rect x="0" y="12" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#3d7a3d" stroke-width="1.2"/>
+          <rect x="3" y="8" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#3d7a3d" stroke-width="1.2"/>
+          <rect x="6" y="4" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#3d7a3d" stroke-width="1.2"/>
+          <rect x="9" y="0" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#3d7a3d" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="45" y="12" text-anchor="middle" fill="#3d7a3d">Got it</text>
+        </g>
+        <!-- Pile: partial -->
+        <g transform="translate(220,108)">
+          <rect x="0" y="12" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#B8862F" stroke-width="1.2"/>
+          <rect x="3" y="8" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#B8862F" stroke-width="1.2"/>
+          <rect x="6" y="4" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#B8862F" stroke-width="1.2"/>
+          <rect x="9" y="0" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#B8862F" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="45" y="12" text-anchor="middle" fill="#B8862F">Partial</text>
+        </g>
+        <!-- Pile: miss -->
+        <g transform="translate(220,156)">
+          <rect x="0" y="12" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#8B2E2E" stroke-width="1.2"/>
+          <rect x="3" y="8" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#8B2E2E" stroke-width="1.2"/>
+          <rect x="9" y="0" width="70" height="16" rx="2" fill="#FFFEF9" stroke="#8B2E2E" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="45" y="12" text-anchor="middle" fill="#8B2E2E">Miss</text>
+        </g>
+        <line x1="320" y1="108" x2="410" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#et-a)"/>
+
+        <!-- Station 03: Plan tomorrow's opener -->
+        <text class="svg-num" x="430" y="40">03</text>
+        <text class="svg-eyebrow" x="458" y="38">Plan</text>
+        <rect x="430" y="60" width="110" height="96" rx="3" fill="#F2E8C9" stroke="#B8862F" stroke-width="1.5"/>
+        <text class="svg-eyebrow" x="485" y="84" text-anchor="middle">Tomorrow's</text>
+        <text class="svg-eyebrow" x="485" y="100" text-anchor="middle">opener</text>
+        <line x1="446" y1="118" x2="526" y2="118" stroke="#B8862F" stroke-width="1.2"/>
+        <line x1="446" y1="132" x2="520" y2="132" stroke="#B8862F" stroke-width="1.2"/>
+        <line x1="446" y1="146" x2="510" y2="146" stroke="#B8862F" stroke-width="1.2"/>
+        <line x1="555" y1="108" x2="605" y2="108" stroke="#2A2018" stroke-width="1.5" marker-end="url(#et-a)"/>
+
+        <!-- Station 04: Class hears "several of you were wondering…" -->
+        <text class="svg-num" x="620" y="40">04</text>
+        <text class="svg-eyebrow" x="648" y="38">Open</text>
+        <g fill="#8B2E2E">
+          <circle cx="620" cy="82" r="5"/><circle cx="640" cy="82" r="5"/><circle cx="660" cy="82" r="5"/><circle cx="680" cy="82" r="5"/>
+          <circle cx="620" cy="108" r="5"/><circle cx="640" cy="108" r="5"/><circle cx="660" cy="108" r="5"/><circle cx="680" cy="108" r="5"/>
+          <circle cx="620" cy="134" r="5"/><circle cx="640" cy="134" r="5"/><circle cx="660" cy="134" r="5"/><circle cx="680" cy="134" r="5"/>
+        </g>
+        <!-- banner: "Several of you…" -->
+        <rect x="615" y="150" width="75" height="18" rx="2" fill="#F2E8C9" stroke="#B8862F" stroke-width="1"/>
+        <text class="svg-sub" x="652" y="162" text-anchor="middle" font-size="8">&quot;Several of you …&quot;</text>
+      </svg>
+      <p class="walkthru-diagram-caption">Three piles turn a stack of tickets into a plan. Without the sort, the ticket is just paper.</p>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -818,6 +1159,56 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     <div class="core-move">
       <div class="core-move-label">Core move</div>
       <div class="core-move-quote">Tell me what's there before you tell me what it means.</div>
+    </div>
+
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 260" role="img" aria-label="See Think Wonder: a single source on the left feeds three narrowing channels — See the literal, Think the grounded, Wonder the open.">
+        <defs><marker id="stw-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker></defs>
+        <!-- Source (image placeholder) on left -->
+        <text class="svg-eyebrow" x="40" y="40">Source</text>
+        <rect x="40" y="56" width="180" height="160" rx="3" fill="#FFFEF9" stroke="#2A2018" stroke-width="1.5"/>
+        <!-- abstract image: horizon + sun + figure -->
+        <rect x="40" y="56" width="180" height="95" fill="#F2E8C9"/>
+        <circle cx="170" cy="98" r="22" fill="#B8862F" opacity="0.6"/>
+        <path d="M 40 151 L 220 151" stroke="#2A2018" stroke-width="1.2"/>
+        <rect x="40" y="151" width="180" height="65" fill="#FDFBF3"/>
+        <!-- Two figures suggesting historical scene -->
+        <circle cx="95" cy="178" r="7" fill="#2A2018"/>
+        <rect x="90" y="184" width="10" height="24" fill="#2A2018"/>
+        <circle cx="140" cy="178" r="7" fill="#2A2018"/>
+        <rect x="135" y="184" width="10" height="24" fill="#2A2018"/>
+        <line x1="98" y1="195" x2="137" y2="195" stroke="#2A2018" stroke-width="1"/>
+        <text class="svg-sub" x="130" y="238" text-anchor="middle">One compelling image, 60s of silence.</text>
+
+        <!-- Arrow out of source -->
+        <line x1="225" y1="136" x2="255" y2="136" stroke="#2A2018" stroke-width="1.5" marker-end="url(#stw-a)"/>
+
+        <!-- Three narrowing channels -->
+        <!-- See (widest) -->
+        <g transform="translate(270,64)">
+          <rect width="420" height="42" rx="3" fill="#8B2E2E"/>
+          <text class="svg-eyebrow" x="14" y="17" fill="#F2E8C9">01 See</text>
+          <text class="svg-label-inv" x="14" y="34">What's literally there — flags, smoke, posture, angle.</text>
+        </g>
+        <!-- Think (medium) -->
+        <g transform="translate(270,116)">
+          <rect width="330" height="42" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="14" y="17">02 Think</text>
+          <text class="svg-label" x="14" y="34">Interpretation — grounded in what you saw.</text>
+        </g>
+        <!-- Wonder (narrowest) -->
+        <g transform="translate(270,168)">
+          <rect width="240" height="42" rx="3" fill="#F2E8C9" stroke="#B8862F" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="14" y="17">03 Wonder</text>
+          <text class="svg-label" x="14" y="34">Questions the source can't answer.</text>
+        </g>
+
+        <!-- Funnel guide-lines showing narrowing -->
+        <line x1="270" y1="106" x2="270" y2="116" stroke="#E5DDC8" stroke-width="1" stroke-dasharray="2 2"/>
+        <line x1="600" y1="158" x2="510" y2="168" stroke="#E5DDC8" stroke-width="1" stroke-dasharray="2 2"/>
+      </svg>
+      <p class="walkthru-diagram-caption">The widest channel is observation. Interpretation narrows. Questions narrow further — but they open the inquiry.</p>
     </div>
 
     <div class="walkthru-steps-wrap">
@@ -879,6 +1270,64 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">Three roles. One shared artifact. Rotate every time.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Trios with Roles: three students arranged around a shared graphic organizer, each with a distinct role — Sourcer, Evidencer, Connector — rotating across sessions.">
+        <!-- Central shared artifact (the organizer) -->
+        <g transform="translate(300,100)">
+          <rect width="120" height="100" rx="3" fill="#FFFEF9" stroke="#2A2018" stroke-width="1.5"/>
+          <line x1="14" y1="22" x2="106" y2="22" stroke="#8B2E2E" stroke-width="1.4"/>
+          <line x1="14" y1="42" x2="106" y2="42" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="14" y1="56" x2="96" y2="56" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="14" y1="70" x2="106" y2="70" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="14" y1="84" x2="86" y2="84" stroke="#E5DDC8" stroke-width="1"/>
+          <text class="svg-eyebrow" x="60" y="15" text-anchor="middle">Shared organizer</text>
+        </g>
+
+        <!-- Three students arranged around the artifact -->
+        <!-- Top: Sourcer -->
+        <g>
+          <circle cx="360" cy="60" r="20" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="360" y="65" text-anchor="middle">S</text>
+          <text class="svg-eyebrow" x="360" y="30" text-anchor="middle">Sourcer</text>
+          <text class="svg-sub" x="360" y="260" text-anchor="middle">—</text>
+        </g>
+        <!-- Bottom-left: Evidencer -->
+        <g>
+          <circle cx="220" cy="230" r="20" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="220" y="235" text-anchor="middle">E</text>
+          <text class="svg-eyebrow" x="220" y="278" text-anchor="middle">Evidencer</text>
+          <text class="svg-sub" x="220" y="294" text-anchor="middle">claims + quotes</text>
+        </g>
+        <!-- Bottom-right: Connector -->
+        <g>
+          <circle cx="500" cy="230" r="20" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="500" y="235" text-anchor="middle">C</text>
+          <text class="svg-eyebrow" x="500" y="278" text-anchor="middle">Connector</text>
+          <text class="svg-sub" x="500" y="294" text-anchor="middle">links across sources</text>
+        </g>
+
+        <!-- Sourcer caption above (tight — couldn't fit in top slot) -->
+        <text class="svg-sub" x="360" y="48" text-anchor="middle">who / when / why</text>
+
+        <!-- Connectors: each role touches the shared artifact -->
+        <line x1="360" y1="80" x2="360" y2="100" stroke="#2A2018" stroke-width="1.2"/>
+        <line x1="240" y1="217" x2="308" y2="190" stroke="#2A2018" stroke-width="1.2"/>
+        <line x1="480" y1="217" x2="412" y2="190" stroke="#2A2018" stroke-width="1.2"/>
+
+        <!-- Rotation arrow around the whole triangle (gold, dashed) -->
+        <g>
+          <path d="M 620 150 A 280 160 0 1 1 620 149" fill="none" stroke="#B8862F" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.0"/>
+          <!-- Simplified: three curved arrow segments -->
+          <path d="M 620 150 A 280 160 0 0 1 360 290" fill="none" stroke="#B8862F" stroke-width="1.8" stroke-dasharray="4 4"/>
+          <polygon points="360,290 372,284 372,296" fill="#B8862F"/>
+          <text class="svg-eyebrow" x="628" y="160" fill="#B8862F">Rotate</text>
+          <text class="svg-sub" x="628" y="176" fill="#B8862F">next session</text>
+        </g>
+      </svg>
+      <p class="walkthru-diagram-caption">Roles rotate every session — nobody stays Sourcer, nobody stays silent.</p>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -936,6 +1385,61 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     <div class="core-move">
       <div class="core-move-label">Core move</div>
       <div class="core-move-quote">Everyone writes. Everyone posts. Everyone reads. Then we talk.</div>
+    </div>
+
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Chalkboard Splash: students post sticky-note responses silently on the board, which forms clusters that become the starting evidence for discussion.">
+        <defs><marker id="cs-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker></defs>
+        <!-- The board itself -->
+        <rect x="60" y="30" width="600" height="180" rx="2" fill="#2A2018"/>
+        <rect x="60" y="30" width="600" height="180" rx="2" fill="none" stroke="#665A4B" stroke-width="3"/>
+        <text class="svg-eyebrow" x="75" y="52" fill="#F2E8C9">The board</text>
+
+        <!-- Sticky notes — clustered by pattern -->
+        <!-- Cluster A (left): gold stickies - one argument -->
+        <g>
+          <rect x="90" y="70" width="46" height="46" fill="#F2E8C9" transform="rotate(-3 113 93)"/>
+          <rect x="145" y="75" width="46" height="46" fill="#F2E8C9" transform="rotate(2 168 98)"/>
+          <rect x="95" y="130" width="46" height="46" fill="#F2E8C9" transform="rotate(4 118 153)"/>
+          <rect x="150" y="135" width="46" height="46" fill="#F2E8C9" transform="rotate(-2 173 158)"/>
+        </g>
+        <!-- Cluster B (center): maroon stickies - another argument -->
+        <g>
+          <rect x="270" y="78" width="46" height="46" fill="#FDFBF3" stroke="#8B2E2E" stroke-width="1.5" transform="rotate(1 293 101)"/>
+          <rect x="325" y="70" width="46" height="46" fill="#FDFBF3" stroke="#8B2E2E" stroke-width="1.5" transform="rotate(-2 348 93)"/>
+          <rect x="295" y="130" width="46" height="46" fill="#FDFBF3" stroke="#8B2E2E" stroke-width="1.5" transform="rotate(3 318 153)"/>
+        </g>
+        <!-- Cluster C (right): ink stickies - dissent/surprise -->
+        <g>
+          <rect x="460" y="75" width="46" height="46" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5" transform="rotate(-4 483 98)"/>
+          <rect x="520" y="82" width="46" height="46" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5" transform="rotate(3 543 105)"/>
+          <rect x="485" y="135" width="46" height="46" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5" transform="rotate(2 508 158)"/>
+          <rect x="545" y="140" width="46" height="46" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5" transform="rotate(-3 568 163)"/>
+          <rect x="600" y="100" width="46" height="46" fill="#FDFBF3" stroke="#2A2018" stroke-width="1.5" transform="rotate(5 623 123)"/>
+        </g>
+
+        <!-- Silent student dots approaching from below -->
+        <g fill="#8B2E2E">
+          <circle cx="120" cy="240" r="7"/>
+          <circle cx="170" cy="252" r="7"/>
+          <circle cx="260" cy="244" r="7"/>
+          <circle cx="330" cy="250" r="7"/>
+          <circle cx="400" cy="240" r="7"/>
+          <circle cx="470" cy="252" r="7"/>
+          <circle cx="540" cy="244" r="7"/>
+          <circle cx="610" cy="252" r="7"/>
+        </g>
+        <!-- Dashed arrows upward = silent approach -->
+        <g stroke="#B8862F" stroke-width="1.2" stroke-dasharray="3 3" fill="none" opacity="0.7">
+          <line x1="120" y1="232" x2="120" y2="200"/>
+          <line x1="330" y1="242" x2="330" y2="200"/>
+          <line x1="540" y1="236" x2="540" y2="200"/>
+        </g>
+
+        <text class="svg-sub" x="360" y="285" text-anchor="middle">All students write, then post silently. Patterns in the clusters become the discussion's evidence.</text>
+      </svg>
+      <p class="walkthru-diagram-caption">Clusters on the board become the starting evidence: &quot;What do you notice?&quot;</p>
     </div>
 
     <div class="walkthru-steps-wrap">
@@ -997,6 +1501,68 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">Inner circle talks. Outer circle observes — with specific jobs.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 360" role="img" aria-label="Fishbowl seating: an inner ring of six to eight speakers surrounded by an outer ring of observers, with the teacher outside the circle and silent pairings between observer-speaker partners.">
+        <!-- subtle cream wash -->
+        <rect x="20" y="20" width="680" height="320" rx="3" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1"/>
+        <!-- ring guides -->
+        <circle cx="320" cy="180" r="140" fill="none" stroke="#E5DDC8" stroke-width="1" stroke-dasharray="2 4"/>
+        <circle cx="320" cy="180" r="64" fill="none" stroke="#E5DDC8" stroke-width="1"/>
+
+        <!-- Outer ring — 14 observer dots -->
+        <g fill="#FDFBF3" stroke="#2A2018" stroke-width="1.8">
+          <circle cx="460" cy="180" r="9"/>
+          <circle cx="446.3" cy="243.0" r="9"/>
+          <circle cx="408.2" cy="292.0" r="9"/>
+          <circle cx="351.0" cy="318.7" r="9"/>
+          <circle cx="289.0" cy="318.7" r="9"/>
+          <circle cx="231.8" cy="292.0" r="9"/>
+          <circle cx="193.7" cy="243.0" r="9"/>
+          <circle cx="180" cy="180" r="9"/>
+          <circle cx="193.7" cy="117.0" r="9"/>
+          <circle cx="231.8" cy="68.0" r="9"/>
+          <circle cx="289.0" cy="41.3" r="9"/>
+          <circle cx="351.0" cy="41.3" r="9"/>
+          <circle cx="408.2" cy="68.0" r="9"/>
+          <circle cx="446.3" cy="117.0" r="9"/>
+        </g>
+        <!-- Inner ring — 7 speakers (matching "6–8 chairs") -->
+        <g fill="#8B2E2E">
+          <circle cx="384" cy="180" r="10"/>
+          <circle cx="360" cy="242.8" r="10"/>
+          <circle cx="296" cy="242.8" r="10"/>
+          <circle cx="256" cy="180" r="10"/>
+          <circle cx="281.5" cy="122.5" r="10"/>
+          <circle cx="342" cy="110" r="10"/>
+          <circle cx="384" cy="150" r="10"/>
+        </g>
+        <!-- Dashed observer-speaker pairings -->
+        <g stroke="#2A2018" stroke-width="1.2" stroke-dasharray="3 4" fill="none" opacity="0.5">
+          <line x1="460" y1="180" x2="384" y2="180"/>
+          <line x1="351" y1="318.7" x2="360" y2="242.8"/>
+          <line x1="193.7" y1="117" x2="281.5" y2="122.5"/>
+        </g>
+        <!-- Teacher marker outside, upper-right -->
+        <circle cx="598" cy="70" r="11" fill="#B8862F" stroke="#8E6622" stroke-width="1.5"/>
+        <line x1="598" y1="70" x2="460" y2="180" stroke="#B8862F" stroke-width="1.1" stroke-dasharray="2 4" opacity="0.6"/>
+
+        <!-- Labels on right -->
+        <text class="svg-eyebrow" x="500" y="180">Inner ring</text>
+        <text class="svg-label" x="500" y="198">6–8 speakers</text>
+        <text class="svg-sub" x="500" y="214">They do the talking.</text>
+
+        <text class="svg-eyebrow" x="500" y="252">Outer ring</text>
+        <text class="svg-label" x="500" y="270">Everyone else</text>
+        <text class="svg-sub" x="500" y="286">Paired with a speaker —</text>
+        <text class="svg-sub" x="500" y="300">observing specific moves.</text>
+
+        <text class="svg-eyebrow" x="504" y="58" fill="#B8862F">Teacher</text>
+        <text class="svg-sub" x="504" y="86">Outside, silent, still.</text>
+      </svg>
+      <p class="walkthru-diagram-caption">Dashed lines: observer-speaker pairings for the debrief. The teacher is never at the center.</p>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -1054,6 +1620,124 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     <div class="core-move">
       <div class="core-move-label">Core move</div>
       <div class="core-move-quote">Argue one side. Then argue the other. Drop both. Find consensus.</div>
+    </div>
+
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 520" role="img" aria-label="Structured Academic Controversy: five procedural bands — prep, present, switch, consensus, reflect. The critical color swap happens at step three.">
+        <defs>
+          <marker id="sac-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2A2018"/></marker>
+          <marker id="sac-maroon" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8B2E2E"/></marker>
+          <marker id="sac-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B8862F"/></marker>
+        </defs>
+        <!-- Canvas + rails -->
+        <rect x="0" y="0" width="720" height="520" fill="#FDFBF3"/>
+        <line x1="140" y1="10" x2="140" y2="510" stroke="#E5DDC8" stroke-width="1"/>
+        <g stroke="#E5DDC8" stroke-width="1">
+          <line x1="0" y1="110" x2="720" y2="110"/>
+          <line x1="0" y1="200" x2="720" y2="200"/>
+          <line x1="0" y1="300" x2="720" y2="300"/>
+          <line x1="0" y1="400" x2="720" y2="400"/>
+        </g>
+
+        <!-- 01 PREP -->
+        <text class="svg-num" x="22" y="58">01</text>
+        <text class="svg-eyebrow" x="22" y="78">Prep</text>
+        <text class="svg-sub" x="22" y="96">Read + pick sides.</text>
+        <g transform="translate(180,38)">
+          <rect width="112" height="48" rx="3" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="56" y="30" text-anchor="middle">A · Pro</text>
+        </g>
+        <g transform="translate(304,38)">
+          <rect width="112" height="48" rx="3" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="56" y="30" text-anchor="middle">B · Pro</text>
+        </g>
+        <g transform="translate(448,38)">
+          <rect width="112" height="48" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">C · Con</text>
+        </g>
+        <g transform="translate(572,38)">
+          <rect width="112" height="48" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">D · Con</text>
+        </g>
+
+        <!-- 02 PRESENT -->
+        <text class="svg-num" x="22" y="148">02</text>
+        <text class="svg-eyebrow" x="22" y="168">Present</text>
+        <text class="svg-sub" x="22" y="186">Each side, uninterrupted.</text>
+        <g transform="translate(180,138)">
+          <rect width="112" height="48" rx="3" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="56" y="30" text-anchor="middle">A · Pro</text>
+        </g>
+        <g transform="translate(304,138)">
+          <rect width="112" height="48" rx="3" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="56" y="30" text-anchor="middle">B · Pro</text>
+        </g>
+        <g transform="translate(448,138)">
+          <rect width="112" height="48" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">C · Con</text>
+        </g>
+        <g transform="translate(572,138)">
+          <rect width="112" height="48" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">D · Con</text>
+        </g>
+        <line x1="420" y1="155" x2="446" y2="155" stroke="#8B2E2E" stroke-width="2" marker-end="url(#sac-maroon)"/>
+        <line x1="446" y1="170" x2="420" y2="170" stroke="#2A2018" stroke-width="2" marker-end="url(#sac-ink)"/>
+
+        <!-- 03 SWITCH (the critical move) -->
+        <text class="svg-num" x="22" y="248">03</text>
+        <text class="svg-eyebrow" x="22" y="268" fill="#B8862F">Switch</text>
+        <text class="svg-sub" x="22" y="286">Argue the other side.</text>
+        <g transform="translate(180,238)">
+          <rect width="112" height="48" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">A · now Con</text>
+        </g>
+        <g transform="translate(304,238)">
+          <rect width="112" height="48" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">B · now Con</text>
+        </g>
+        <g transform="translate(448,238)">
+          <rect width="112" height="48" rx="3" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="56" y="30" text-anchor="middle">C · now Pro</text>
+        </g>
+        <g transform="translate(572,238)">
+          <rect width="112" height="48" rx="3" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="56" y="30" text-anchor="middle">D · now Pro</text>
+        </g>
+        <path d="M 290 295 C 360 280 390 280 460 295" fill="none" stroke="#B8862F" stroke-width="1.8" stroke-dasharray="4 4" marker-end="url(#sac-gold)"/>
+        <text class="svg-eyebrow" x="360" y="276" text-anchor="middle" fill="#B8862F">swap</text>
+
+        <!-- 04 CONSENSUS -->
+        <text class="svg-num" x="22" y="348">04</text>
+        <text class="svg-eyebrow" x="22" y="368">Consensus</text>
+        <text class="svg-sub" x="22" y="386">Drop sides. Build one view.</text>
+        <g transform="translate(180,338)">
+          <rect width="504" height="48" rx="3" fill="#F2E8C9" stroke="#B8862F" stroke-width="1.5"/>
+          <text class="svg-label" x="252" y="30" text-anchor="middle">A · B · C · D — shared position</text>
+        </g>
+
+        <!-- 05 REFLECT -->
+        <text class="svg-num" x="22" y="448">05</text>
+        <text class="svg-eyebrow" x="22" y="468">Reflect</text>
+        <text class="svg-sub" x="22" y="486">Individually, in writing.</text>
+        <g transform="translate(180,438)">
+          <rect width="112" height="48" rx="3" fill="#FFFEF9" stroke="#E5DDC8" stroke-width="1.5"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">A</text>
+        </g>
+        <g transform="translate(304,438)">
+          <rect width="112" height="48" rx="3" fill="#FFFEF9" stroke="#E5DDC8" stroke-width="1.5"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">B</text>
+        </g>
+        <g transform="translate(448,438)">
+          <rect width="112" height="48" rx="3" fill="#FFFEF9" stroke="#E5DDC8" stroke-width="1.5"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">C</text>
+        </g>
+        <g transform="translate(572,438)">
+          <rect width="112" height="48" rx="3" fill="#FFFEF9" stroke="#E5DDC8" stroke-width="1.5"/>
+          <text class="svg-label" x="56" y="30" text-anchor="middle">D</text>
+        </g>
+      </svg>
+      <p class="walkthru-diagram-caption">The color flip at step 03 is the protocol's structural signature. Skip it and it's just a debate.</p>
     </div>
 
     <div class="walkthru-steps-wrap">
@@ -1115,6 +1799,67 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">Teacher silent. Students facilitate. Text anchors everything.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 360" role="img" aria-label="Socratic Seminar: students form a single circle around a shared text at the center; the teacher sits outside the circle, silent.">
+        <rect x="20" y="20" width="680" height="320" rx="3" fill="#FDFBF3" stroke="#E5DDC8" stroke-width="1"/>
+
+        <!-- Outer student ring -->
+        <circle cx="320" cy="180" r="130" fill="none" stroke="#E5DDC8" stroke-width="1" stroke-dasharray="2 4"/>
+
+        <!-- 12 students around the ring -->
+        <g fill="#8B2E2E">
+          <circle cx="450" cy="180" r="11"/>
+          <circle cx="432.6" cy="245" r="11"/>
+          <circle cx="385" cy="292.6" r="11"/>
+          <circle cx="320" cy="310" r="11"/>
+          <circle cx="255" cy="292.6" r="11"/>
+          <circle cx="207.4" cy="245" r="11"/>
+          <circle cx="190" cy="180" r="11"/>
+          <circle cx="207.4" cy="115" r="11"/>
+          <circle cx="255" cy="67.4" r="11"/>
+          <circle cx="320" cy="50" r="11"/>
+          <circle cx="385" cy="67.4" r="11"/>
+          <circle cx="432.6" cy="115" r="11"/>
+        </g>
+
+        <!-- The TEXT at the center (the anchor) -->
+        <g transform="translate(282,150)">
+          <rect width="76" height="60" rx="2" fill="#FFFEF9" stroke="#2A2018" stroke-width="2"/>
+          <line x1="10" y1="14" x2="66" y2="14" stroke="#8B2E2E" stroke-width="1.4"/>
+          <line x1="10" y1="24" x2="66" y2="24" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="10" y1="32" x2="60" y2="32" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="10" y1="40" x2="66" y2="40" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="10" y1="48" x2="52" y2="48" stroke="#E5DDC8" stroke-width="1"/>
+        </g>
+        <text class="svg-eyebrow" x="320" y="142" text-anchor="middle">The text</text>
+
+        <!-- Dashed lines: students anchoring comments back to the text -->
+        <g stroke="#2A2018" stroke-width="1" stroke-dasharray="2 4" fill="none" opacity="0.5">
+          <line x1="450" y1="180" x2="358" y2="180"/>
+          <line x1="385" y1="292.6" x2="340" y2="210"/>
+          <line x1="255" y1="67.4" x2="300" y2="150"/>
+          <line x1="190" y1="180" x2="282" y2="180"/>
+        </g>
+
+        <!-- Teacher outside, upper right -->
+        <circle cx="620" cy="64" r="12" fill="#B8862F" stroke="#8E6622" stroke-width="1.5"/>
+        <line x1="620" y1="64" x2="450" y2="180" stroke="#B8862F" stroke-width="1.1" stroke-dasharray="2 4" opacity="0.5"/>
+
+        <!-- Labels right -->
+        <text class="svg-eyebrow" x="520" y="200">One ring</text>
+        <text class="svg-label" x="520" y="218">Students facilitate.</text>
+        <text class="svg-sub" x="520" y="234">Every comment cites the text.</text>
+
+        <text class="svg-eyebrow" x="520" y="268">Teacher</text>
+        <text class="svg-label" x="520" y="286">Outside. Silent.</text>
+        <text class="svg-sub" x="520" y="302">Tallies, but does not speak.</text>
+
+        <text class="svg-eyebrow" x="490" y="55" fill="#B8862F">Outside</text>
+      </svg>
+      <p class="walkthru-diagram-caption">Unlike Fishbowl's two rings, Socratic has one — around the text. The text, not the teacher, is the center.</p>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -1174,6 +1919,66 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
       <div class="core-move-quote">Ninety seconds each. Interrupt no one. Listen hard.</div>
     </div>
 
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Microlab: three students in a trio, each speaking for ninety seconds uninterrupted, with ten-second held silences between rounds.">
+        <!-- Three students in triangle around a central timer -->
+        <!-- Student 1 (top) — speaking -->
+        <g>
+          <circle cx="360" cy="64" r="22" fill="#8B2E2E"/>
+          <text class="svg-label-inv" x="360" y="70" text-anchor="middle">1</text>
+          <!-- speech lines -->
+          <g stroke="#8B2E2E" stroke-width="2" stroke-linecap="round">
+            <line x1="390" y1="58" x2="402" y2="58"/>
+            <line x1="390" y1="66" x2="408" y2="66"/>
+            <line x1="390" y1="74" x2="398" y2="74"/>
+          </g>
+          <text class="svg-eyebrow" x="360" y="32" text-anchor="middle">Speaking</text>
+        </g>
+        <!-- Student 2 (bottom-left) — listening (silent) -->
+        <g>
+          <circle cx="220" cy="230" r="22" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="220" y="236" text-anchor="middle">2</text>
+          <!-- silent indicator: ear + X -->
+          <g transform="translate(245,210)">
+            <path d="M 0 14 Q 0 0 12 0 Q 20 0 20 10 Q 20 18 14 18 L 10 22" fill="none" stroke="#2A2018" stroke-width="1.4"/>
+          </g>
+          <text class="svg-eyebrow" x="220" y="276" text-anchor="middle">Listening</text>
+          <text class="svg-sub" x="220" y="292" text-anchor="middle">no sounds, no notes</text>
+        </g>
+        <!-- Student 3 (bottom-right) — listening (silent) -->
+        <g>
+          <circle cx="500" cy="230" r="22" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-label" x="500" y="236" text-anchor="middle">3</text>
+          <g transform="translate(470,210)">
+            <path d="M 20 14 Q 20 0 8 0 Q 0 0 0 10 Q 0 18 6 18 L 10 22" fill="none" stroke="#2A2018" stroke-width="1.4"/>
+          </g>
+          <text class="svg-eyebrow" x="500" y="276" text-anchor="middle">Listening</text>
+          <text class="svg-sub" x="500" y="292" text-anchor="middle">no sounds, no notes</text>
+        </g>
+
+        <!-- Central TIMER — circle divided into 3 × 90s segments -->
+        <g transform="translate(360,160)">
+          <!-- full circle base -->
+          <circle cx="0" cy="0" r="58" fill="#FDFBF3" stroke="#B8862F" stroke-width="2"/>
+          <!-- Segment 1 (top-right third, currently active — maroon) -->
+          <path d="M 0 0 L 0 -58 A 58 58 0 0 1 50.2 29 Z" fill="#8B2E2E" opacity="0.85"/>
+          <!-- Segment 2 (bottom third — hollow) -->
+          <path d="M 0 0 L 50.2 29 A 58 58 0 0 1 -50.2 29 Z" fill="#FDFBF3" stroke="#B8862F" stroke-width="1"/>
+          <!-- Segment 3 (top-left third — hollow) -->
+          <path d="M 0 0 L -50.2 29 A 58 58 0 0 1 0 -58 Z" fill="#FDFBF3" stroke="#B8862F" stroke-width="1"/>
+          <!-- Center label -->
+          <circle cx="0" cy="0" r="22" fill="#FFFEF9" stroke="#B8862F" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="0" y="-1" text-anchor="middle" fill="#B8862F">90s</text>
+          <text class="svg-sub" x="0" y="12" text-anchor="middle" fill="#B8862F">× 3</text>
+        </g>
+
+        <!-- pause indicator -->
+        <text class="svg-sub" x="360" y="262" text-anchor="middle" font-style="italic">+ 10 held seconds between rounds</text>
+      </svg>
+      <p class="walkthru-diagram-caption">Three equal segments. The listener's silence is the discipline — no nodding, no notes, no sounds.</p>
+    </div>
+
     <div class="walkthru-steps-wrap">
       <div class="walkthru-steps-label">The five-step walkthru</div>
       <div class="walkthru-steps">
@@ -1231,6 +2036,48 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
     <div class="core-move">
       <div class="core-move-label">Core move</div>
       <div class="core-move-quote">Name the before. Name the after. Name what changed it.</div>
+    </div>
+
+    <div class="walkthru-diagram">
+      <div class="walkthru-diagram-label">At a glance</div>
+      <svg viewBox="0 0 720 260" role="img" aria-label="I Used to Think, Now I Think: before and after boxes linked by an arrow, with what changed the thinking named below.">
+        <defs><marker id="iutt-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8B2E2E"/></marker></defs>
+        <!-- Before box -->
+        <g transform="translate(60,60)">
+          <rect width="240" height="110" rx="3" fill="#FDFBF3" stroke="#2A2018" stroke-width="2"/>
+          <text class="svg-eyebrow" x="16" y="24">Before</text>
+          <text class="svg-label" x="16" y="52">I used to think …</text>
+          <line x1="16" y1="70" x2="224" y2="70" stroke="#E5DDC8" stroke-width="1"/>
+          <line x1="16" y1="86" x2="224" y2="86" stroke="#E5DDC8" stroke-width="1"/>
+          <text class="svg-sub" x="16" y="104" font-style="italic">Jefferson was a champion of</text>
+        </g>
+
+        <!-- Arrow: maroon, emphatic -->
+        <line x1="310" y1="114" x2="410" y2="114" stroke="#8B2E2E" stroke-width="3" marker-end="url(#iutt-a)"/>
+        <text class="svg-eyebrow" x="360" y="102" text-anchor="middle" fill="#8B2E2E">Shift</text>
+
+        <!-- After box (filled maroon — the new thinking) -->
+        <g transform="translate(420,60)">
+          <rect width="240" height="110" rx="3" fill="#8B2E2E"/>
+          <text class="svg-eyebrow" x="16" y="24" fill="#F2E8C9">Now</text>
+          <text class="svg-label-inv" x="16" y="52">Now I think …</text>
+          <line x1="16" y1="70" x2="224" y2="70" stroke="#B8862F" stroke-width="1"/>
+          <line x1="16" y1="86" x2="224" y2="86" stroke="#B8862F" stroke-width="1"/>
+          <text class="svg-sub" x="16" y="104" fill="#F2E8C9" font-style="italic">… but he also held people enslaved.</text>
+        </g>
+
+        <!-- What changed it (the bridge below) -->
+        <g transform="translate(180,195)">
+          <rect width="360" height="42" rx="3" fill="#F2E8C9" stroke="#B8862F" stroke-width="1.5"/>
+          <text class="svg-eyebrow" x="20" y="17">What changed it</text>
+          <text class="svg-label" x="20" y="34">Hemings letters · the DOI passage · Amos's question</text>
+        </g>
+
+        <!-- Connecting lines from before/after down to the "what changed it" bridge -->
+        <line x1="180" y1="170" x2="240" y2="195" stroke="#B8862F" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="540" y1="170" x2="480" y2="195" stroke="#B8862F" stroke-width="1" stroke-dasharray="3 3"/>
+      </svg>
+      <p class="walkthru-diagram-caption">Three named things: before, after, and the specific thing that moved the needle.</p>
     </div>
 
     <div class="walkthru-steps-wrap">
