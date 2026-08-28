@@ -8,3 +8,6 @@ texts/
 *.swp
 *.swo
 .vscode/
+
+# Subagent-driven-development scratch
+.superpowers/
