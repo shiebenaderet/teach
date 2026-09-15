@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeros and the 50 Floor &mdash; Teaching &middot; Mr. B</title>
+<meta name="description" content="Two sides of the minimum-grade debate, the math both sides start from, and what the research actually shows. Compiled for staff discussion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+:root{
+  --bg:#F5F0E8; --surface:#FFFDF9; --surface-2:#EFE9DF;
+  --ink:#1F2124; --muted:#5C5852; --border:#D6CFC3; --rule:#E4DDD1;
+  --change:#1B2D45; --change-accent:#3E5F87; --change-tint:#E8EDF4; --change-ink:#1B2D45;
+  --concern:#7E5A15; --concern-accent:#B8893B; --concern-tint:#F5ECD8; --concern-ink:#6B4B0F;
+  --mixed:#43285A; --mixed-tint:#ECE6F2; --mixed-ink:#43285A;
+  --neutral-tint:#E9E4DB; --neutral-ink:#4A4640;
+  --link:#2F4E7A; --focus:#3E5F87;
+  --band-f:#C9BFB0; --band-d:#B8893B; --band-c:#8B9E6E; --band-b:#3E888D; --band-a:#3E5F87;
+  --shadow:0 1px 2px rgba(31,33,36,.06), 0 8px 24px rgba(31,33,36,.06);
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Nunito", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17191C; --surface:#1F2124; --surface-2:#26292E;
+    --ink:#EDE8DF; --muted:#ABA59B; --border:#3A3D43; --rule:#2E3136;
+    --change:#9DBBE0; --change-accent:#7FA3D1; --change-tint:#1E2A3A; --change-ink:#C5D6EC;
+    --concern:#E2BE77; --concern-accent:#C9A45C; --concern-tint:#332A18; --concern-ink:#EBD3A0;
+    --mixed:#C7B3DE; --mixed-tint:#2E2538; --mixed-ink:#D9CBE8;
+    --neutral-tint:#2C2F34; --neutral-ink:#C9C3B9;
+    --link:#9DBBE0; --focus:#9DBBE0;
+    --band-f:#4A4D53; --band-d:#B8893B; --band-c:#7E9866; --band-b:#3E888D; --band-a:#5F86BD;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17191C; --surface:#1F2124; --surface-2:#26292E;
+  --ink:#EDE8DF; --muted:#ABA59B; --border:#3A3D43; --rule:#2E3136;
+  --change:#9DBBE0; --change-accent:#7FA3D1; --change-tint:#1E2A3A; --change-ink:#C5D6EC;
+  --concern:#E2BE77; --concern-accent:#C9A45C; --concern-tint:#332A18; --concern-ink:#EBD3A0;
+  --mixed:#C7B3DE; --mixed-tint:#2E2538; --mixed-ink:#D9CBE8;
+  --neutral-tint:#2C2F34; --neutral-ink:#C9C3B9;
+  --link:#9DBBE0; --focus:#9DBBE0;
+  --band-f:#4A4D53; --band-d:#B8893B; --band-c:#7E9866; --band-b:#3E888D; --band-a:#5F86BD;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth} }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--body); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--link); text-decoration-thickness:1px; text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--focus); outline-offset:3px; border-radius:2px}
+h1,h2,h3{font-family:var(--display); line-height:1.15; text-wrap:balance; margin:0; font-weight:700}
+h1{font-size:clamp(2.1rem, 5vw, 3.4rem); letter-spacing:-.01em}
+h2{font-size:clamp(1.55rem, 3vw, 2.1rem)}
+h3{font-size:1.25rem}
+p{margin:0}
+.wrap{max-width:1120px; margin-inline:auto; padding-inline:clamp(16px, 4vw, 40px)}
+.skip{position:absolute; left:-999px; top:8px; background:var(--surface); padding:.5rem .75rem; z-index:100}
+.skip:focus{left:8px}
+
+/* header + nav */
+.masthead{padding-block:clamp(2.2rem,6vw,4.5rem) clamp(1.5rem,4vw,2.5rem)}
+.masthead .eyebrow{font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:1rem}
+.masthead .lede{font-size:1.15rem; max-width:62ch; margin-top:1.1rem; color:var(--muted)}
+.masthead .lede strong{color:var(--ink); font-weight:600}
+.nav{
+  position:sticky; top:env(safe-area-inset-top, 0px); z-index:50;
+  background:var(--bg); background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-block:1px solid var(--rule);
+}
+.nav ul{list-style:none; margin:0; padding:0; display:flex; gap:.25rem; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+.nav ul::-webkit-scrollbar{display:none}
+.nav li{flex:0 0 auto}
+.nav a{display:block; padding:.8rem .7rem; font-size:.9rem; font-weight:700; color:var(--ink); text-decoration:none; white-space:nowrap; border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="true"]{border-bottom-color:var(--ink)}
+.nav a.side-change{color:var(--change)} .nav a.side-concern{color:var(--concern)}
+.nav a.side-change:hover,.nav a.side-change[aria-current="true"]{border-bottom-color:var(--change)}
+.nav a.side-concern:hover,.nav a.side-concern[aria-current="true"]{border-bottom-color:var(--concern)}
+
+/* sections */
+section{padding-block:clamp(2.2rem,5vw,3.6rem)}
+section + section{border-top:1px solid var(--rule)}
+.sec-head{display:grid; gap:.6rem; max-width:70ch; margin-bottom:1.6rem}
+.sec-head .kicker{font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--muted)}
+.sec-head p{color:var(--muted); font-size:1.02rem}
+.prose{max-width:68ch}
+.prose p + p{margin-top:.9rem}
+
+/* the math */
+.scale{display:grid; gap:1.6rem; margin-top:.5rem}
+.bar-block{display:grid; gap:.5rem}
+.bar-title{display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap}
+.bar-title h3{font-family:var(--body); font-size:1rem; font-weight:700}
+.bar-title span{font-size:.9rem; color:var(--muted)}
+.bar{display:flex; width:100%; height:44px; border-radius:6px; overflow:hidden; border:1px solid var(--border)}
+.bar div{display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.9rem; color:#fff; font-variant-numeric:tabular-nums; min-width:0; white-space:nowrap; text-shadow:0 1px 1px rgba(0,0,0,.25)}
+.bar .f{background:var(--band-f); color:var(--ink); text-shadow:none} .bar .d{background:var(--band-d)} .bar .c{background:var(--band-c)} .bar .b{background:var(--band-b)} .bar .a{background:var(--band-a)}
+.bar .dead{background:repeating-linear-gradient(135deg, var(--surface-2) 0 6px, var(--bg) 6px 12px); color:var(--muted); text-shadow:none; border-right:1px dashed var(--border)}
+.ticks{display:flex; justify-content:space-between; font-size:.78rem; color:var(--muted); font-variant-numeric:tabular-nums; padding-inline:2px}
+.examples{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.2rem; margin-top:2rem}
+.example{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1.25rem 1.35rem; display:grid; gap:.75rem; align-content:start}
+.example .who{font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; font-weight:700}
+.example.change .who{color:var(--change)} .example.concern .who{color:var(--concern)}
+.example h3{font-size:1.15rem}
+.example table{border-collapse:collapse; width:100%; font-size:.95rem; font-variant-numeric:tabular-nums}
+.example th,.example td{text-align:left; padding:.45rem .2rem; border-bottom:1px solid var(--rule); vertical-align:top}
+.example th{font-weight:700; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; color:var(--muted)}
+.example td:last-child,.example th:last-child{text-align:right; white-space:nowrap}
+.example .so{font-size:.95rem; color:var(--muted)}
+
+/* two sides */
+.sides{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.2rem,3vw,2.4rem); align-items:start}
+.side{display:grid; gap:1.1rem}
+.side-head{display:grid; gap:.35rem; padding-bottom:.9rem; border-bottom:3px solid}
+.side.change .side-head{border-color:var(--change)} .side.concern .side-head{border-color:var(--concern)}
+.side-head .kicker{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700}
+.side.change .kicker{color:var(--change)} .side.concern .kicker{color:var(--concern)}
+.side-head h3{font-size:1.5rem}
+.side-head p{color:var(--muted); font-size:.98rem}
+.side-jump{display:none; gap:.5rem; margin-bottom:1.2rem}
+.side-jump a{flex:1; text-align:center; padding:.6rem .8rem; border-radius:999px; font-weight:700; text-decoration:none; font-size:.92rem; border:1.5px solid}
+.side-jump a.to-change{color:var(--change); border-color:var(--change)} .side-jump a.to-concern{color:var(--concern); border-color:var(--concern)}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1.3rem 1.4rem 1.2rem; display:grid; gap:.8rem; box-shadow:var(--shadow)}
+.card .pub{display:flex; gap:.5rem; align-items:baseline; flex-wrap:wrap; font-size:.82rem; color:var(--muted); font-weight:700; letter-spacing:.02em}
+.card .pub .name{padding:.15rem .55rem; border-radius:4px; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase}
+.side.change .pub .name{background:var(--change-tint); color:var(--change-ink)} .side.concern .pub .name{background:var(--concern-tint); color:var(--concern-ink)}
+.card h4{font-family:var(--display); font-size:1.28rem; line-height:1.2; margin:0; font-weight:700; text-wrap:balance}
+.card h4 a{color:var(--ink); text-decoration:none} .card h4 a:hover{text-decoration:underline}
+.card .by{font-size:.92rem; color:var(--muted); margin-top:-.3rem}
+.card .sum{font-size:.98rem}
+.card .claims{margin:0; padding-left:1.1rem; font-size:.95rem; display:grid; gap:.35rem}
+.card .claims-label{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--muted); margin-bottom:-.35rem}
+.card .go{display:inline-flex; align-items:center; gap:.4rem; font-weight:700; font-size:.92rem; text-decoration:none; padding:.45rem 0 0}
+.side.change .go{color:var(--change)} .side.concern .go{color:var(--concern)}
+.card .go::after{content:"\2192"; transition:transform .15s}
+.card .go:hover::after{transform:translateX(3px)}
+.card .note{font-size:.85rem; color:var(--muted)}
+@media (max-width: 760px){
+  .sides{grid-template-columns:1fr}
+  .side-jump{display:flex}
+}
+
+/* research */
+.verdict{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--ink); border-radius:8px; padding:1.1rem 1.3rem; max-width:72ch; margin-bottom:1.8rem}
+.verdict p + p{margin-top:.7rem}
+.group{margin-top:2rem}
+.group h3{font-size:1.2rem; margin-bottom:.35rem}
+.group > p{color:var(--muted); font-size:.95rem; max-width:70ch; margin-bottom:1rem}
+.studies{list-style:none; margin:0; padding:0; display:grid; gap:0; border-top:1px solid var(--border)}
+.study{display:grid; grid-template-columns:150px 1fr; gap:1.2rem; padding:1.05rem 0; border-bottom:1px solid var(--rule); align-items:start}
+.study .lean{display:inline-block; padding:.28rem .6rem; border-radius:4px; font-size:.74rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; line-height:1.2; text-align:center}
+.lean.change{background:var(--change-tint); color:var(--change-ink)}
+.lean.concern{background:var(--concern-tint); color:var(--concern-ink)}
+.lean.mixed{background:var(--mixed-tint); color:var(--mixed-ink)}
+.lean.neutral{background:var(--neutral-tint); color:var(--neutral-ink)}
+.study .body{display:grid; gap:.3rem; min-width:0}
+.study .cite{font-weight:700; font-size:1.02rem}
+.study .cite .venue{font-weight:400; color:var(--muted)}
+.study .what{font-size:.95rem}
+.study .what b{font-weight:700}
+.study .caveat{font-size:.9rem; color:var(--muted)}
+.study .links{font-size:.88rem; display:flex; gap:1rem; flex-wrap:wrap}
+@media (max-width: 640px){
+  .study{grid-template-columns:1fr; gap:.5rem}
+  .study .lean{justify-self:start}
+}
+
+/* agree / questions */
+.agree{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.2rem; margin-top:.5rem}
+.agree .box{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1.2rem 1.35rem; display:grid; gap:.6rem; align-content:start}
+.agree .box h3{font-size:1.1rem}
+.agree .box p{font-size:.96rem}
+.questions{counter-reset:q; list-style:none; margin:1.2rem 0 0; padding:0; display:grid; gap:.9rem; max-width:70ch}
+.questions li{counter-increment:q; display:grid; grid-template-columns:2.2rem 1fr; gap:.6rem; font-size:1.02rem}
+.questions li::before{content:counter(q); font-family:var(--display); font-weight:700; font-size:1.3rem; line-height:1.2; color:var(--muted)}
+
+footer{border-top:1px solid var(--rule); padding-block:2rem 3rem; color:var(--muted); font-size:.9rem}
+footer p + p{margin-top:.5rem}
+
+/* ============================================================
+   SITE CHROME — ties this page back to teach.mrbsocialstudies.org
+   ============================================================ */
+:root{ --brand:#8B2E2E; --brand-gold:#B8862F; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --brand:#E3A0A0; --brand-gold:#E5CF8F; }
+}
+:root[data-theme="dark"]{ --brand:#E3A0A0; --brand-gold:#E5CF8F; }
+
+.sitebar{background:var(--surface-2); border-bottom:1px solid var(--rule)}
+.sitebar .wrap{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding-block:.65rem}
+.sitebar .brand{font-family:var(--display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em; color:var(--brand); text-decoration:none; white-space:nowrap}
+.sitebar .brand em{font-style:italic; font-weight:400; color:var(--brand-gold)}
+.sitebar .brand:hover{text-decoration:underline}
+.sitebar .back{font-size:.85rem; font-weight:700; color:var(--muted); text-decoration:none; border:1px solid var(--border); border-radius:999px; padding:.35rem .85rem; white-space:nowrap}
+.sitebar .back::before{content:"\2190\00a0\00a0"; color:var(--brand-gold)}
+.sitebar .back:hover{color:var(--brand); border-color:var(--brand)}
+
+.foot-back{margin-top:1.2rem !important; padding-top:1.2rem; border-top:1px solid var(--rule)}
+.foot-back a{font-weight:700; color:var(--brand)}
+.foot-back .sep{color:var(--border); padding-inline:.5rem}
+
+/* ============================================================
+   PRINT — drop the chrome, keep the argument
+   ============================================================ */
+@media print{
+  :root{
+    --bg:#fff !important; --surface:#fff !important; --surface-2:#fff !important;
+    --ink:#000 !important; --muted:#333 !important;
+    --border:#999 !important; --rule:#ccc !important;
+    --link:#000 !important; --shadow:none !important;
+  }
+  .sitebar,.nav,.skip,.side-jump{display:none !important}
+  body{background:#fff; color:#000; font-size:10.5pt}
+  a{color:#000; text-decoration:underline}
+  .card,.example,.box,.verdict,.bar-block,.study,.questions li{break-inside:avoid}
+  .group h3,.sec-head{break-after:avoid}
+  section{padding-block:1.1rem}
+  .card .go{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#math">Skip to content</a>
+
+<div class="sitebar">
+  <div class="wrap">
+    <a class="brand" href="../">Teaching &middot; <em>Mr. B</em></a>
+    <a class="back" href="../">Back to the library</a>
+  </div>
+</div>
+
+<header class="masthead wrap">
+  <p class="eyebrow">A reading page for staff discussion</p>
+  <h1>Zeros and the 50 Floor</h1>
+  <p class="lede">Should a missing assignment go in the grade book as a 0 or as a 50? <strong>Three pieces argue for the floor, three raise concerns</strong>, and below them is what the peer-reviewed research does and doesn't show. Summaries are paraphrased; every title links to the original.</p>
+</header>
+
+<nav class="nav" aria-label="Page sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#math">The math</a></li>
+      <li><a href="#change" class="side-change">Make the change</a></li>
+      <li><a href="#concern" class="side-concern">Raise concerns</a></li>
+      <li><a href="#research">The research</a></li>
+      <li><a href="#agree">Where they agree</a></li>
+      <li><a href="#questions">Questions</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section id="math" class="wrap">
+  <div class="sec-head">
+    <p class="kicker">Start here</p>
+    <h2>The math both sides start from</h2>
+    <p>Everyone in this debate agrees on the arithmetic. They disagree about what students do once they understand it.</p>
+  </div>
+
+  <div class="scale" aria-label="How the 100-point scale allocates points to each letter grade">
+    <div class="bar-block">
+      <div class="bar-title"><h3>The 100-point scale as most grade books use it</h3><span>60 points of F, about 10 points for every other letter</span></div>
+      <div class="bar" role="img" aria-label="F spans 0 to 59, D 60 to 69, C 70 to 79, B 80 to 89, A 90 to 100">
+        <div class="f" style="flex:60">F</div><div class="d" style="flex:10">D</div><div class="c" style="flex:10">C</div><div class="b" style="flex:10">B</div><div class="a" style="flex:11">A</div>
+      </div>
+      <div class="ticks"><span>0</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span></div>
+    </div>
+    <div class="bar-block">
+      <div class="bar-title"><h3>The same scale with a 50 floor</h3><span>Every letter gets roughly 10 points; nothing below 50 is recorded</span></div>
+      <div class="bar" role="img" aria-label="With a 50 floor, 0 to 49 is unused, F spans 50 to 59, and D through A are unchanged">
+        <div class="dead" style="flex:50">not used</div><div class="f" style="flex:10">F</div><div class="d" style="flex:10">D</div><div class="c" style="flex:10">C</div><div class="b" style="flex:10">B</div><div class="a" style="flex:11">A</div>
+      </div>
+      <div class="ticks"><span>0</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span></div>
+    </div>
+  </div>
+
+  <div class="examples">
+    <div class="example change">
+      <p class="who">The example the "change" side uses</p>
+      <h3>A B student misses one assignment</h3>
+      <table>
+        <thead><tr><th>Two 85s, then a missing assignment</th><th>Average</th></tr></thead>
+        <tbody>
+          <tr><td>Recorded as a 0</td><td>57 (F)</td></tr>
+          <tr><td>Recorded as a 50</td><td>73 (C)</td></tr>
+          <tr><td>More 85s needed to get back to an 80, after a 0</td><td>14</td></tr>
+          <tr><td>More 85s needed to get back to an 80, after a 50</td><td>4</td></tr>
+        </tbody>
+      </table>
+      <p class="so">One zero can outweigh a semester of B work. This is Tamony's "kill grade" and Wormeli's "six or seven perfect 100s to reach a D."</p>
+    </div>
+    <div class="example concern">
+      <p class="who">The example the "concerns" side uses</p>
+      <h3>An A student stops turning things in</h3>
+      <table>
+        <thead><tr><th>Three 95s, then ten missing assignments</th><th>Average</th></tr></thead>
+        <tbody>
+          <tr><td>Missing work recorded as 0s</td><td>22 (F)</td></tr>
+          <tr><td>Missing work recorded as 50s</td><td>60 (D)</td></tr>
+          <tr><td>Share of assignments actually completed</td><td>23%</td></tr>
+        </tbody>
+      </table>
+      <p class="so">With a 50 floor, a student who does a quarter of the work can still pass. This is Rablin's example: three 95s, skip the next ten, and still pass.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sides" class="wrap">
+  <div class="sec-head">
+    <p class="kicker">Two sides, three pieces each</p>
+    <h2>The case for the floor, and the case against it</h2>
+    <p>Each card gives the argument in a few sentences and the claims you're most likely to hear repeated. Read the originals before quoting them.</p>
+  </div>
+  <div class="side-jump" aria-label="Jump to a side">
+    <a class="to-change" href="#change">Make the change</a>
+    <a class="to-concern" href="#concern">Raise concerns</a>
+  </div>
+
+  <div class="sides">
+
+    <div class="side change" id="change">
+      <div class="side-head">
+        <p class="kicker">Make the change</p>
+        <h3>Replace the zero with a 50</h3>
+        <p>The scale is the problem. A 50 is still an F; it just stops one missing assignment from erasing a semester.</p>
+      </div>
+
+      <article class="card">
+        <p class="pub"><span class="name">Washington Post</span> Answer Sheet, November 14, 2023</p>
+        <h4><a href="https://www.washingtonpost.com/education/2023/11/14/rethinking-way-teachers-assign-student-grades/">Rethinking the way teachers assign student grades</a></h4>
+        <p class="by">Guest essay by Rick Wormeli, in Valerie Strauss's column. Wormeli is a former National Board Certified teacher and the author of <em>Fair Isn't Always Equal</em>.</p>
+        <p class="sum">Wormeli's case is that a grade reports learning, not compensation, so "something for nothing" is the wrong frame. A 50 is a placeholder that says no proficiency was shown and no credit was earned. What a 0 does is mathematical: on a 100-point scale it can take six or seven perfect scores in a row to climb back to a D. He argues punitive grading has no research behind it as a way to build responsibility, and that missing work is often a signal of hardship rather than character.</p>
+        <p class="claims-label">Claims you'll hear</p>
+        <ul class="claims">
+          <li>A 50 does not mean "half the learning." It means failure, recorded on a scale where every letter gets the same room.</li>
+          <li>If you must average on a 100-point scale, turn zeros into 50s, or use the mode instead of the mean.</li>
+          <li>A recoverable grade teaches responsibility; an unrecoverable one teaches students to quit.</li>
+        </ul>
+        <a class="go" href="https://www.washingtonpost.com/education/2023/11/14/rethinking-way-teachers-assign-student-grades/">Read at the Washington Post</a>
+        <p class="note">Paywalled. The full essay is also posted at the <a href="https://nepc.colorado.edu/blog/rethinking">National Education Policy Center</a>.</p>
+      </article>
+
+      <article class="card">
+        <p class="pub"><span class="name">Edutopia</span> March 17, 2023</p>
+        <h4><a href="https://www.edutopia.org/article/why-the-100-point-grading-scale-is-a-stacked-deck">Why the 100-Point Grading Scale Is a Stacked Deck</a></h4>
+        <p class="by">Youki Terada, who covers education research for Edutopia.</p>
+        <p class="sum">A history of the scale: Harvard adopted 100-point grading in 1837 as a ranking tool centered on 50, and it was later merged with letter grades in a way that left 60 percent of the scale to failure. Terada argues a zero produces helplessness rather than correction, especially early in a term, and that the "real world" argument for hard deadlines is weaker than it sounds. He lays out alternatives: minimum grading, dropping the lowest score, allowing make-up work, 4-point standards-based scales, and delaying grades in favor of feedback.</p>
+        <p class="claims-label">Claims you'll hear</p>
+        <ul class="claims">
+          <li>The 100-point scale was never designed to measure learning; it was designed to rank.</li>
+          <li>Carifio and Carey's seven-year study found minimum grading went with higher state exam scores and graduation rates, not grade inflation.</li>
+          <li>A 2022 workplace study found more than half of real deadlines are flexible, so strict late penalties don't mirror adult life.</li>
+        </ul>
+        <a class="go" href="https://www.edutopia.org/article/why-the-100-point-grading-scale-is-a-stacked-deck">Read at Edutopia</a>
+      </article>
+
+      <article class="card">
+        <p class="pub"><span class="name">Edutopia</span> October 6, 2021</p>
+        <h4><a href="https://www.edutopia.org/article/case-against-zeros-grading/">The Case Against Zeros in Grading</a></h4>
+        <p class="by">Alexis Tamony, a math teacher in Sonoma, California, then in her 19th year.</p>
+        <p class="sum">A teacher's account of changing her own practice. Tamony calls the zero a "K grade": if each letter got ten points, a 0 would sit four letters below F. She walks through the B student who misses one assignment (57 with a zero, 73 with a 50) and reframes the floor as a conversion of the 0 to 4 scale onto 50 to 100. She is candid about the pushback, mostly from parents who see a "7/14" next to a missing assignment, and argues that defending the practice to colleagues was the best professional development she has done.</p>
+        <p class="claims-label">Claims you'll hear</p>
+        <ul class="claims">
+          <li>A student can have fifteen 85s and one zero and still end with a C.</li>
+          <li>A 50 floor makes each grade band worth the same, so failure isn't weighted more than success.</li>
+          <li>The online grade book, not the policy, is what confuses families; communicate the rationale.</li>
+        </ul>
+        <a class="go" href="https://www.edutopia.org/article/case-against-zeros-grading/">Read at Edutopia</a>
+      </article>
+    </div>
+
+    <div class="side concern" id="concern">
+      <div class="side-head">
+        <p class="kicker">Raise concerns</p>
+        <h3>The floor fixes the math, not the problem</h3>
+        <p>Students respond to the new arithmetic too. Take away the zero without replacing what it did, and effort drops.</p>
+      </div>
+
+      <article class="card">
+        <p class="pub"><span class="name">Edutopia</span> March 28, 2025</p>
+        <h4><a href="https://www.edutopia.org/article/problem-50-percent-minimum-grade">Getting Rid of Zeros Won't Fix the Grade Book</a></h4>
+        <p class="by">Tyler Rablin, a teacher who has written a book on grading and motivation.</p>
+        <p class="sum">Rablin grants the case for the floor, then describes what teachers in 50-floor schools report: once students work out the math, some stop turning things in. A student with three 95s can skip the next ten assignments and still pass. His answer is not to restore the zero but to replace it with a real accountability lever. He used a late-work contract: an incomplete, two required tutoring sessions, and a consequence matched to the behavior behind the missing work, with no lasting grade penalty once completed. He argues the deeper problem is averaging over time.</p>
+        <p class="claims-label">Claims you'll hear</p>
+        <ul class="claims">
+          <li>Without a new accountability measure, a 50 floor lowers engagement and eventually learning.</li>
+          <li>Any system that removes a lever has to put another one in its place, ideally one that builds habits.</li>
+          <li>The 50 treats a symptom; the disease is averaging.</li>
+        </ul>
+        <a class="go" href="https://www.edutopia.org/article/problem-50-percent-minimum-grade">Read at Edutopia</a>
+      </article>
+
+      <article class="card">
+        <p class="pub"><span class="name">School Administrator</span> AASA, December 2024</p>
+        <h4><a href="https://www.aasa.org/resources/resource/unintended-effects-of-equitable-grading">Unintended Effects of 'Equitable' Grading</a></h4>
+        <p class="by">Adam Tyner, national research director at the Thomas B. Fordham Institute.</p>
+        <p class="sum">Written for superintendents. Tyner uses Fairfax County, Virginia, which adopted a package of reforms in 2022 (a 50 floor, no late penalties, retakes, limits on homework) as his case study, drawing on teacher accounts. A veteran high school teacher estimates that at least 30 percent of her students visibly reduced their effort once the rules changed. His argument is that reforms meant to level the field instead lower the expectations placed on the students they were meant to help, and that districts adopt them faster than the evidence warrants.</p>
+        <p class="claims-label">Claims you'll hear</p>
+        <ul class="claims">
+          <li>Post-pandemic interest in "equitable grading" has run ahead of evidence that it works.</li>
+          <li>Teachers in reform districts describe too much leniency and less student effort.</li>
+          <li>Lower expectations are not equity, even when the intent is.</li>
+        </ul>
+        <a class="go" href="https://www.aasa.org/resources/resource/unintended-effects-of-equitable-grading">Read at AASA</a>
+      </article>
+
+      <article class="card">
+        <p class="pub"><span class="name">Educational Leadership</span> ASCD, October 2024</p>
+        <h4><a href="https://www.ascd.org/el/articles/the-unwinnable-battle-over-minimum-grades">The Unwinnable Battle Over Minimum Grades</a></h4>
+        <p class="by">Thomas R. Guskey, Douglas Fisher, and Nancy Frey. Guskey is professor emeritus at the University of Kentucky and a longtime grading researcher.</p>
+        <p class="sum">The concern here is different: minimum grades are a fight nobody wins because they treat a symptom. Teachers resist recording credit that wasn't earned, families see social promotion, some students game the floor, and even with it in place a teacher is still sorting work into 51 flavors of F. The authors' fix is to leave the 100-point scale behind: grade in four to seven categories, stop averaging, base the grade on the most current evidence of what a student can do, and write down what a grade is supposed to mean.</p>
+        <p class="claims-label">Claims you'll hear</p>
+        <ul class="claims">
+          <li>The percentage scale creates an illusion of precision and makes teacher agreement harder.</li>
+          <li>Averaging punishes risk-taking because everything counts forever.</li>
+          <li>Adopt a floor and you have changed the arithmetic; you have not changed what the grade means.</li>
+        </ul>
+        <a class="go" href="https://www.ascd.org/el/articles/the-unwinnable-battle-over-minimum-grades">Read at ASCD</a>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section id="research" class="wrap">
+  <div class="sec-head">
+    <p class="kicker">Peer-reviewed and near it</p>
+    <h2>What the research actually says</h2>
+    <p>Each entry names the design so you can weigh it. The chip shows which side the finding tends to support, not which side the authors are on.</p>
+  </div>
+
+  <div class="verdict">
+    <p><strong>The short version.</strong> There is no meta-analysis of minimum grading, and no peer-reviewed study that puts a 50-floor school and a zero school side by side with a real comparison design. The one direct study is a single school that already used the floor. The strongest studies in the area test something adjacent: what happens to effort when grades get easier to earn, or when a teacher grades more strictly.</p>
+    <p>Read together, the evidence supports two claims at once. Zeros do mathematical damage that a floor repairs, and easier grading does reduce effort among some students unless something else holds them to the work.</p>
+  </div>
+
+  <div class="group">
+    <h3>Direct studies of the 50 floor</h3>
+    <p>All from one research team and one Massachusetts high school, so treat them as a case, not a verdict.</p>
+    <ul class="studies">
+      <li class="study">
+        <span class="lean change">Supports the floor</span>
+        <div class="body">
+          <p class="cite">Carey &amp; Carifio (2012) <span class="venue">Educational Researcher 41(6), 201–208</span></p>
+          <p class="what">Seven years of records (2004–2010) from one large urban high school that already used a 50 floor: 343,425 quarterly grades from 851 teachers. About 8.5% of grade sets began with a minimum grade, and only 0.3% of all grade sets ended in a passing course grade because of it. <b>No evidence of grade inflation or social promotion.</b> This is the study Rablin means when he says "there's research claiming" the floor doesn't inflate grades.</p>
+          <p class="caveat">One school, no comparison school, observational. The authors are open advocates of the policy.</p>
+          <p class="links"><a href="https://journals.sagepub.com/doi/10.3102/0013189X12453309">Journal page</a> <a href="https://eric.ed.gov/?id=EJ977459">ERIC record</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean neutral">Theory only</span>
+        <div class="body">
+          <p class="cite">Carifio &amp; Carey (2009) <span class="venue">The High School Journal 93(1), 23–37</span></p>
+          <p class="what">The argument for minimum grading built from motivation theory (locus of control, self-efficacy). <b>Concedes the benefits are largely theoretical</b> and calls for empirical tests; suggests the students most likely to benefit are those in high-risk courses.</p>
+          <p class="links"><a href="https://eric.ed.gov/?id=EJ868637">ERIC record</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean change">Supports the floor</span>
+        <div class="body">
+          <p class="cite">Carifio &amp; Carey (2013, 2015) <span class="venue">follow-up papers on the same data</span></p>
+          <p class="what">Re-analyses of the same school's records. Students who received minimum grades did as well or better on the state exam once GPA was controlled; about 142 students a year passed a course they would otherwise have failed. <b>Terada's article cites this as "29,000 students"; in the paper, 29,187 is the number of quarterly grade sets that began with a minimum grade.</b></p>
+          <p class="caveat">Same single-school data as the 2012 study.</p>
+          <p class="links"><a href="https://www.mwera.org/MWER/volumes/v25/issue4/v25n4-Carifio-Carey-POINT-COUNTERPOINT-SECTION.pdf">2013 point-counterpoint (PDF)</a> <a href="http://jespnet.com/journals/Vol_2_No_4_October_2015/12.pdf">2015 paper (PDF)</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean change">Supports the floor</span>
+        <div class="body">
+          <p class="cite">Morris &amp; Johnson (2024) <span class="venue">Education Policy Analysis Archives 32</span></p>
+          <p class="what">A simulation, not a trial: what a statewide ninth-grade minimum grade would have done for the Arkansas class that started high school in 2015–16. Estimates it would touch 1 to 3% of students and convert roughly 10% of failing grades to passing, at no added cost. <b>Models a policy; does not test one.</b></p>
+          <p class="links"><a href="https://epaa.asu.edu/index.php/epaa/article/view/8496">Journal page (open access)</a></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="group">
+    <h3>Causal studies of grading leniency and standards</h3>
+    <p>These don't test a 50 floor. They test the mechanism the concerns side is worried about: what students do when grades get easier or harder to earn. The designs are stronger.</p>
+    <ul class="studies">
+      <li class="study">
+        <span class="lean concern">Raises concern</span>
+        <div class="body">
+          <p class="cite">Bowden, Rodriguez &amp; Weingarten (forthcoming) <span class="venue">American Economic Journal: Economic Policy</span></p>
+          <p class="what">"The Unintended Consequences of Academic Leniency." When North Carolina moved every high school from a 7-point to a 10-point scale (an A dropped from 93 to 90, passing from 70 to 60), the authors compared the last cohort under the old scale with the first under the new one. <b>GPAs rose about 0.27 points, end-of-course test scores stayed flat, lower-performing students' attendance fell, and achievement gaps were wider by the ACT.</b> The cleanest evidence that easier grades reduce effort among the students the change is meant to help.</p>
+          <p class="caveat">A scale change, not a floor. Statewide, cohort comparison.</p>
+          <p class="links"><a href="https://aeaweb.org/articles?from=f&amp;id=10.1257%2Fpol.20240582">Journal page</a> <a href="https://edworkingpapers.com/ai23-836">Working paper (free)</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean concern">Raises concern</span>
+        <div class="body">
+          <p class="cite">Gershenson, Holt &amp; Tyner (2024) <span class="venue">Contemporary Economic Policy 42(2), 305–318</span></p>
+          <p class="what">A decade of statewide Algebra I records (2006–2016) linking students to teachers. <b>Students assigned to teachers with tougher grading standards learned more, in that course and in later math, with slightly fewer absences.</b> Effects were similar across racial and income groups. Tyner is the author of the AASA piece above.</p>
+          <p class="links"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/coep.12637">Journal page</a> <a href="https://edworkingpapers.com/ai22-644">Working paper (free)</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean concern">Raises concern</span>
+        <div class="body">
+          <p class="cite">Figlio &amp; Lucas (2004) <span class="venue">Journal of Public Economics 88(9–10), 1815–1834</span></p>
+          <p class="what">Grades 3 to 5 in Alachua County, Florida, 1995–1999. <b>Teachers with higher grading standards produced larger test-score gains in reading and math and fewer discipline problems.</b> Gains depended on classroom mix; the first study to measure standards at the teacher level.</p>
+          <p class="links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0047272703000392">Journal page</a> <a href="https://www.nber.org/papers/w7985">NBER working paper</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean mixed">Cuts both ways</span>
+        <div class="body">
+          <p class="cite">Betts &amp; Grogger (2003) <span class="venue">Economics of Education Review 22(4), 343–352</span></p>
+          <p class="what">National High School and Beyond data. <b>Higher school-level grading standards raised test scores, mostly at the top, but did nothing for educational attainment and were associated with lower graduation rates for Black and Hispanic students.</b> The concerns side's mechanism and the change side's worry, in one dataset.</p>
+          <p class="links"><a href="https://ideas.repec.org/a/eee/ecoedu/v22y2003i4p343-352.html">Abstract</a></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="group">
+    <h3>Reviews and syntheses</h3>
+    <ul class="studies">
+      <li class="study">
+        <span class="lean neutral">Background</span>
+        <div class="body">
+          <p class="cite">Brookhart, Guskey et al. (2016) <span class="venue">Review of Educational Research 86(4), 803–848</span></p>
+          <p class="what">"A Century of Grading Research." The closest thing to a comprehensive synthesis. It doesn't address minimum grades, but it establishes why the debate exists: <b>grades consistently measure a mix of achievement and non-cognitive factors like effort and compliance.</b></p>
+          <p class="links"><a href="https://eric.ed.gov/?id=EJ1121566">ERIC record</a> <a href="https://tguskey.com/wp-content/uploads/RER-16-Research-on-Grading.pdf">Author copy (PDF)</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean neutral">States the gap</span>
+        <div class="body">
+          <p class="cite">Hutt (2025) <span class="venue">AEFP Live Handbook, "Grading Policies"</span></p>
+          <p class="what">A research synthesis for policymakers from the Association for Education Finance and Policy. Walks through the studies above and <b>says plainly that the "no zeroes" push rests on a true observation about the scale but that there is no direct evidence on whether the policy works.</b></p>
+          <p class="links"><a href="https://livehandbook.org/k-12-education/standards-and-accountability/grading-policies/">Read the chapter</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean concern">Raises concern</span>
+        <div class="body">
+          <p class="cite">Coffey &amp; Tyner (2024) <span class="venue">Thomas B. Fordham Institute, "Think Again"</span></p>
+          <p class="what">A think-tank review, not peer-reviewed, and Fordham has a position. Useful because it gathers the standards research in one place and <b>admits it has no direct evidence on 50-percent floors either</b>; its case against them is reasoned from the leniency studies.</p>
+          <p class="links"><a href="https://fordhaminstitute.org/national/research/think-again-does-equitable-grading-benefit-students">Read the report</a></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="group">
+    <h3>The only head-to-head comparisons are dissertations</h3>
+    <p>Not peer-reviewed, both confounded, and they point in opposite directions. Included because they are the only studies that compare a floor school with a zero school.</p>
+    <ul class="studies">
+      <li class="study">
+        <span class="lean concern">Raises concern</span>
+        <div class="body">
+          <p class="cite">Dennis (2018) <span class="venue">Ed.D. dissertation, Walden University</span></p>
+          <p class="what">Followed 1,396 high school students from two feeder middle schools, one with a no-zero policy and one without. <b>Students from the no-zero middle school earned somewhat lower high school grades in math, science, and English</b> (small to medium effects).</p>
+          <p class="links"><a href="https://scholarworks.waldenu.edu/dissertations/5694">Dissertation record</a></p>
+        </div>
+      </li>
+      <li class="study">
+        <span class="lean change">Supports the floor</span>
+        <div class="body">
+          <p class="cite">Mariani (2023) <span class="venue">Ed.D. dissertation, Liberty University</span></p>
+          <p class="what">One suburban Pennsylvania high school (about 1,250 students) before and after adopting a 50 floor. <b>Final grades and biology and literature Keystone scores rose; algebra did not change significantly.</b></p>
+          <p class="links"><a href="https://digitalcommons.liberty.edu/doctoral/4663">Dissertation record</a></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="agree" class="wrap">
+  <div class="sec-head">
+    <p class="kicker">Common ground</p>
+    <h2>Where the two sides agree, and where they don't</h2>
+  </div>
+  <div class="agree">
+    <div class="box">
+      <h3>Both sides say the scale is skewed</h3>
+      <p>None of the six defends the zero's arithmetic. Tamony, Terada, and Wormeli lead with it; Rablin concedes it in his opening; Guskey, Fisher, and Frey want the percentage scale gone altogether.</p>
+    </div>
+    <div class="box">
+      <h3>Both sides say averaging is the deeper problem</h3>
+      <p>Rablin ends with it, Guskey builds his whole argument on it, and Wormeli's "use the mode" is a version of the same point. A floor is a patch for averaging; several authors on both sides would rather stop averaging.</p>
+    </div>
+    <div class="box">
+      <h3>They disagree about what students do next</h3>
+      <p>The change side expects a recoverable grade to keep students working. The concerns side expects some students to do the new math and work less, unless something other than the grade holds them to it.</p>
+    </div>
+    <div class="box">
+      <h3>They disagree about what replaces the zero</h3>
+      <p>For Tamony and Wormeli, communication with families. For Rablin, a contract and an intervention period keyed to missing work. For Guskey, Fisher, and Frey, a different scale entirely. Tyner doubts the reforms deliver what they promise.</p>
+    </div>
+  </div>
+</section>
+
+<section id="questions" class="wrap">
+  <div class="sec-head">
+    <p class="kicker">For the conversation</p>
+    <h2>Questions worth bringing to the table</h2>
+  </div>
+  <ol class="questions">
+    <li>In our grade books, what is a missing assignment supposed to communicate: no evidence yet, or a refusal? Do our numbers say that?</li>
+    <li>If we adopted a floor, what would replace the zero as the reason to turn work in? Who would run it, and when?</li>
+    <li>Which of our students are the ones a floor would actually touch? The Massachusetts data says mostly working-class boys; is that true here?</li>
+    <li>Is the argument really about 0 versus 50, or about whether we keep averaging on a 100-point scale at all?</li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Compiled September 2026 for staff discussion. Article summaries are paraphrased and shortened; the claims lists are the arguments as the authors make them, not endorsements. Research entries were checked against the published abstracts and journal pages linked above.</p>
+  <p>The two Edutopia pieces (Tamony and Rablin) are also available as a printable side-by-side handout.</p>
+  <p class="foot-back"><a href="../">Back to the teaching library</a><span class="sep">&middot;</span>teach.mrbsocialstudies.org</p>
+</footer>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var targets = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+  if (!('IntersectionObserver' in window) || !targets.length) return;
+  var current = null;
+  function setCurrent(id){
+    if (current === id) return; current = id;
+    links.forEach(function(a){
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+  }
+  var visible = {};
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    var best = null, bestRatio = 0;
+    targets.forEach(function(t){ if ((visible[t.id]||0) > bestRatio){ best = t.id; bestRatio = visible[t.id]; } });
+    if (best) setCurrent(best);
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: [0, .1, .25, .5, .75, 1] });
+  targets.forEach(function(t){ io.observe(t); });
+})();
+</script>
+</body>
+</html>

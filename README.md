@@ -13,9 +13,11 @@ teach/
 ├── index.html          ← landing page / directory
 ├── README.md           ← you are here
 ├── CNAME               ← teach.mrbsocialstudies.org
-└── discussion/         ← Resource #01 — the Discussion Hub
-    ├── index.html
-    └── walkthrus.html
+├── discussion/         ← Resource #01 — the Discussion Hub
+│   ├── index.html
+│   └── walkthrus.html
+└── grading/            ← Resource #02 — Zeros and the 50 Floor
+    └── index.html
 ```
 
 Every resource is a self-contained static HTML file (or small set of files) with embedded CSS and minimal inline JS. No build step, no bundler, no framework. Edit in any text editor, commit, push, Pages rebuilds.
