@@ -1,6 +1,6 @@
 # Teaching
 
-The teacher-facing companion site to [ams.mrbsocialstudies.org](https://ams.mrbsocialstudies.org). A slowly growing collection of research-backed classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, not for students.
+The teacher-facing companion site to [mrbsocialstudies.org](https://mrbsocialstudies.org). A slowly growing collection of research-backed classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, not for students.
 
 Lives at **[teach.mrbsocialstudies.org](https://teach.mrbsocialstudies.org)**.
 
