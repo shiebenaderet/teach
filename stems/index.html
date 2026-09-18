@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Five Moves &mdash; teach &middot; Mr. B</title>
+<meta name="description" content="Five academic conversation moves with sentence stems and classroom examples, plus printable 11x17 and 18x24 posters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,600&family=Nunito:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF6EC; --paper:#FFFEF9; --ink:#2A2018; --ink-muted:#665A4B; --ink-subtle:#8B7F6F;
+  --maroon:#8B2E2E; --maroon-dark:#6B1F1F; --gold:#B8862F; --border:#E5DDC8; --border-dark:#D2C2A6;
+  --font-display:'Playfair Display',Georgia,serif; --font-body:Nunito,system-ui,sans-serif;
+  /* the five moves, sampled from the poster itself */
+  --m1:#1F4D3A; --m2:#7E5A15; --m3:#1B2D45; --m4:#43285A; --m5:#7A2A28; --m6:#1F2124;
+  --tint:#EFE9DA;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --cream:#1A1613; --paper:#231E19; --ink:#F3EADA; --ink-muted:#C9BCA9; --ink-subtle:#95877A;
+    --maroon:#E39B8F; --maroon-dark:#F0B6AC; --gold:#E0B75E; --border:#3A322A; --border-dark:#4C4238;
+    --m1:#6FBF98; --m2:#D9AE52; --m3:#8FB0DA; --m4:#B99AD8; --m5:#E39B8F; --m6:#C9C9CC;
+    --tint:#2A241D;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:var(--font-body);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+a{color:var(--maroon);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--maroon-dark);text-decoration-thickness:2px}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;line-height:1.15}
+h1 em{font-style:italic;color:var(--maroon);font-weight:400}
+
+/* nav — same crumb as every other page on the site */
+.site-nav{position:sticky;top:0;z-index:20;background:var(--cream);
+  border-bottom:1px solid var(--border)}
+@supports (backdrop-filter:blur(12px)){
+  .site-nav{background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(12px)}
+}
+.site-nav .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+.crumb{display:flex;align-items:center;flex-wrap:wrap;min-width:0}
+.brand{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--maroon);
+  text-decoration:none;white-space:nowrap}
+.brand em{font-style:italic;color:var(--gold);font-weight:400}
+.brand-sep{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--gold);margin:0 9px}
+.brand-res{color:var(--ink);margin-right:12px}
+.nav-hub{margin-left:auto;font-size:13px;font-weight:700;color:var(--ink-subtle);text-decoration:none;
+  white-space:nowrap}
+.nav-hub:hover{color:var(--maroon)}
+@media (max-width:480px){.brand-sep{display:none}.brand-res{flex-basis:100%;margin-right:0}
+  .nav-hub{margin-left:0}}
+
+/* hero */
+.hero{padding:56px 0 8px}
+.eyebrow{font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
+h1{font-size:clamp(34px,7vw,56px);margin-bottom:16px}
+.lede{font-size:18px;color:var(--ink-muted);max-width:60ch}
+.kicker{font-family:var(--font-display);font-style:italic;font-size:19px;color:var(--ink);
+  margin-top:20px;padding-left:16px;border-left:3px solid var(--gold)}
+
+/* downloads */
+.get{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 8px}
+.btn{display:inline-flex;align-items:baseline;gap:9px;font-family:var(--font-body);font-size:15px;
+  font-weight:700;text-decoration:none;padding:13px 20px;border-radius:9px;
+  background:var(--maroon);color:#FFFEF9;border:1px solid var(--maroon)}
+.btn:hover{opacity:.92;color:#FFFEF9;text-decoration:none}
+.btn .sz{font-weight:400;font-size:13px;opacity:.85}
+.btn.ghost{background:transparent;color:var(--maroon);border-color:var(--border-dark)}
+.btn.ghost:hover{color:var(--maroon-dark);border-color:var(--maroon)}
+
+/* the swap note */
+.note{background:var(--paper);border:1px solid var(--border);border-left:4px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:18px 22px;margin:32px 0 8px}
+.note p{font-size:15.5px;color:var(--ink-muted);max-width:70ch}
+.note strong{color:var(--ink)}
+
+/* moves */
+.moves{padding:40px 0 8px;display:grid;gap:28px}
+.move{background:var(--paper);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  border-top:5px solid var(--accent)}
+.move-head{padding:20px 24px 16px}
+.move-tag{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--ink-subtle);margin-bottom:6px}
+.move-tag .num{color:var(--accent);font-weight:800}
+.move-tag .pairs{margin-left:auto;color:var(--ink-subtle);font-weight:700}
+.move h2{font-size:clamp(26px,5.5vw,34px);color:var(--accent);text-transform:uppercase;
+  letter-spacing:0.01em;margin-bottom:4px}
+.move .what{font-size:16.5px;color:var(--ink);font-weight:600}
+.move-body{padding:0 24px 22px}
+.when{font-size:15px;color:var(--ink-muted);margin:14px 0 18px;padding-top:14px;
+  border-top:1px solid var(--border)}
+.when b{font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:5px}
+.stems{list-style:none;display:grid;gap:9px}
+.stems li{position:relative;padding-left:20px;font-size:16.5px;color:var(--ink);max-width:62ch}
+.stems li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;
+  background:var(--accent);border-radius:2px}
+.blank{color:var(--ink-subtle);border-bottom:1.5px solid var(--border-dark);padding:0 14px}
+.eg{margin-top:20px;background:var(--tint);border-left:4px solid var(--accent);
+  border-radius:0 8px 8px 0;padding:15px 18px}
+.eg b{font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+.eg p{font-family:var(--font-display);font-style:italic;font-size:16.5px;color:var(--ink);max-width:64ch}
+
+/* footer */
+.foot{margin-top:52px;border-top:1px solid var(--border);padding:26px 0 56px;
+  font-size:14px;color:var(--ink-subtle)}
+.foot p{margin-bottom:8px;max-width:70ch}
+.foot a{color:var(--ink-muted)}
+
+@media print{
+  .site-nav,.get,.nav-hub{display:none!important}
+  body{background:#fff;color:#000}
+  .move{break-inside:avoid;border:1px solid #bbb;background:#fff}
+  .moves{gap:18px}
+  .note,.eg{background:#f4f4f4}
+  a{text-decoration:none;color:#000}
+  .hero{padding-top:0}
+}
+</style></head><body>
+
+<nav class="site-nav"><div class="wrap">
+  <div class="crumb">
+    <a class="brand" href="../">teach &middot; <em>Mr. B</em></a>
+    <span class="brand-sep" aria-hidden="true">/</span>
+    <a class="brand brand-res" href="index.html">Stems</a>
+  </div>
+  <a class="nav-hub" href="../discussion/">Discussion Hub &rarr;</a>
+</div></nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">How we talk in here</span>
+    <h1>The <em>Five Moves</em></h1>
+    <p class="lede">Five things a student can do to keep an academic conversation alive, each with the
+      words to do it. Print it for the wall, or read it here before the lesson where you plan to teach it.</p>
+    <p class="kicker">Use all five &mdash; then land it. That last move is synthesize.</p>
+
+    <div class="get">
+      <a class="btn" href="files/academic-conversation-stems-18x24.pdf" download>Poster, 18&times;24 <span class="sz">PDF &middot; 7 pages</span></a>
+      <a class="btn ghost" href="files/academic-conversation-stems-11x17.pdf" download>Poster, 11&times;17 <span class="sz">PDF &middot; 7 pages</span></a>
+    </div>
+
+    <div class="note">
+      <p><strong>The stems travel; the examples don't.</strong> Every sentence stem below works in any
+      subject &mdash; they're frames with blanks in them. The &ldquo;sounds like this in class&rdquo; lines
+      are 8th grade US history, because that's the room they came from. If you teach something else, keep
+      the stems and swap that last line for your own content.</p>
+    </div>
+  </header>
+
+  <main class="moves">
+
+    <article class="move" style="--accent:var(--m1)">
+      <div class="move-head">
+        <div class="move-tag"><span class="num">01</span><span>Conversation move</span></div>
+        <h2>Paraphrase</h2>
+        <p class="what">Say their idea back in your own words.</p>
+      </div>
+      <div class="move-body">
+        <p class="when"><b>Use it when</b>You need to be sure you heard the idea right.</p>
+        <ul class="stems">
+          <li>So you're saying <span class="blank"></span>.</li>
+          <li>In other words, <span class="blank"></span>. Did I get that right?</li>
+          <li>Your main point is <span class="blank"></span>.</li>
+          <li>So you think <span class="blank"></span> because <span class="blank"></span>.</li>
+          <li>What I hear you saying is <span class="blank"></span>.</li>
+        </ul>
+        <div class="eg"><b>Sounds like this in class</b>
+          <p>So you're saying the Constitution protected slavery without ever printing the word. Did I get that right?</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="move" style="--accent:var(--m2)">
+      <div class="move-head">
+        <div class="move-tag"><span class="num">02</span><span>Conversation move</span></div>
+        <h2>Clarify</h2>
+        <p class="what">Ask questions until the idea comes into focus.</p>
+      </div>
+      <div class="move-body">
+        <p class="when"><b>Use it when</b>An idea is fuzzy, too big, or only half-said.</p>
+        <ul class="stems">
+          <li>Can you say more about <span class="blank"></span>?</li>
+          <li>What do you mean by <span class="blank"></span>?</li>
+          <li>Can you give an example of <span class="blank"></span>?</li>
+          <li>How does <span class="blank"></span> connect to <span class="blank"></span>?</li>
+          <li>What makes you say that?</li>
+        </ul>
+        <div class="eg"><b>Sounds like this in class</b>
+          <p>You called the Revolution radical. What do you mean by radical &mdash; and radical for whom?</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="move" style="--accent:var(--m3)">
+      <div class="move-head">
+        <div class="move-tag"><span class="num">03</span><span>Conversation move</span><span class="pairs">Pairs with Challenge &middot; 05</span></div>
+        <h2>Build</h2>
+        <p class="what">Add to a partner's idea so it grows.</p>
+      </div>
+      <div class="move-body">
+        <p class="when"><b>Use it when</b>A partner's idea is going somewhere. Take it further.</p>
+        <ul class="stems">
+          <li>I want to build on what <span class="blank"></span> said.</li>
+          <li>Adding to that, <span class="blank"></span>.</li>
+          <li>That connects to <span class="blank"></span> because <span class="blank"></span>.</li>
+          <li>If that's true, then <span class="blank"></span>.</li>
+          <li>Another example of that is <span class="blank"></span>.</li>
+        </ul>
+        <div class="eg"><b>Sounds like this in class</b>
+          <p>Building on that &mdash; if the government kept promising land it did not control, then the treaties were written to be broken.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="move" style="--accent:var(--m4)">
+      <div class="move-head">
+        <div class="move-tag"><span class="num">04</span><span>Conversation move</span></div>
+        <h2>Evidence</h2>
+        <p class="what">Back the idea with something you can point to.</p>
+      </div>
+      <div class="move-body">
+        <p class="when"><b>Use it when</b>You have made a claim. Every claim needs a receipt.</p>
+        <ul class="stems">
+          <li>The text shows this when it says <span class="blank"></span>.</li>
+          <li>One example from history is <span class="blank"></span>.</li>
+          <li>According to <span class="blank"></span>, <span class="blank"></span>.</li>
+          <li>That shows <span class="blank"></span> because <span class="blank"></span>.</li>
+          <li>This matters because <span class="blank"></span>.</li>
+        </ul>
+        <div class="eg"><b>Sounds like this in class</b>
+          <p>Document C says the mill hired girls as young as ten, which shows the opportunity Lowell advertised ran on the cheapest labor it could find.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="move" style="--accent:var(--m5)">
+      <div class="move-head">
+        <div class="move-tag"><span class="num">05</span><span>Conversation move</span><span class="pairs">Pairs with Build &middot; 03</span></div>
+        <h2>Challenge</h2>
+        <p class="what">Push on the idea. Never on the person.</p>
+      </div>
+      <div class="move-body">
+        <p class="when"><b>Use it when</b>You see it differently, or the evidence is thin.</p>
+        <ul class="stems">
+          <li>I see it differently because <span class="blank"></span>.</li>
+          <li>That's true, but what about <span class="blank"></span>?</li>
+          <li>Have you considered <span class="blank"></span>?</li>
+          <li>What evidence supports that?</li>
+          <li>Another way to look at it is <span class="blank"></span>.</li>
+        </ul>
+        <div class="eg"><b>Sounds like this in class</b>
+          <p>I see it differently. Jefferson wrote that all men are created equal and enslaved more than six hundred people. So what did he mean by men?</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="move" style="--accent:var(--m6)">
+      <div class="move-head">
+        <div class="move-tag"><span class="num">01&ndash;05</span><span>How a conversation ends</span></div>
+        <h2>Synthesize</h2>
+        <p class="what">Pull the whole conversation into one idea.</p>
+      </div>
+      <div class="move-body">
+        <p class="when"><b>Use it at the end</b>The talk is winding down. Land it somewhere.</p>
+        <ul class="stems">
+          <li>The big idea we landed on is <span class="blank"></span>.</li>
+          <li>We agreed that <span class="blank"></span>.</li>
+          <li>We disagreed about <span class="blank"></span>, but <span class="blank"></span>.</li>
+          <li>Our conversation showed <span class="blank"></span>.</li>
+          <li>So overall, <span class="blank"></span>.</li>
+        </ul>
+        <div class="eg"><b>Sounds like this in class</b>
+          <p>We disagreed about whether the Constitution was proslavery, but we both landed here: the men who wrote it chose not to settle the question.</p>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="foot">
+    <p>Academic conversation skills, after Jeff Zwiers &amp; Marie Crawford, <em>Academic Conversations</em>
+      (Stenhouse, 2011). The five moves are Zwiers&rsquo; conversation skills; the routine for teaching them
+      through guided oral practice comes from Project GLAD.</p>
+    <p>Teaching the moves is <a href="../discussion/walkthrus.html#glad-stems">WalkThru 04 in the Discussion
+      Hub</a> &mdash; how to introduce them, what to do when students recite the stem without doing the
+      thinking, and what it looks like when it&rsquo;s working.</p>
+    <p><a href="../">Back to the library</a> &middot; teach.mrbsocialstudies.org</p>
+  </footer>
+
+</div>
+</body></html>

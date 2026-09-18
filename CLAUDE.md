@@ -20,7 +20,7 @@ that label.
 
 ## Current state
 
-Four resources are live. Three live in this repo; the fourth has its own.
+Five resources are live. Four live in this repo; the Intervention Toolkit has its own.
 
 ```
 teach/
@@ -32,14 +32,17 @@ teach/
 │   └── walkthrus.html
 ├── grading/                ← 02 · Zeros and the 50 Floor
 │   └── index.html
-└── outcomes/               ← 03 · Standards Outcomes Toolkit
+├── outcomes/               ← 03 · Standards Outcomes Toolkit
+│   ├── index.html
+│   ├── outcomes-grade-7.html
+│   ├── outcomes-grade-8.html
+│   ├── outcomes-sti.html
+│   ├── outcomes-how-to.html
+│   ├── build-site.mjs      ← generator; NOT runnable here (see below)
+│   └── files/              ← Canvas outcome CSVs
+└── stems/                  ← 05 · The Five Moves
     ├── index.html
-    ├── outcomes-grade-7.html
-    ├── outcomes-grade-8.html
-    ├── outcomes-sti.html
-    ├── outcomes-how-to.html
-    ├── build-site.mjs      ← generator; NOT runnable here (see below)
-    └── files/              ← Canvas outcome CSVs
+    └── files/              ← poster PDFs, 18x24 and 11x17
 ```
 
 **04 · AMS Intervention Toolkit** is not in this repo — it's at
@@ -47,9 +50,15 @@ teach/
 The landing page links out to it. When a resource outgrows a single folder, it gets its own repo
 and the directory just points at it.
 
-**05 · GLAD sentence-stem poster** is listed as pending, but only half of it is: the stems already
-exist as WalkThru 04 in `discussion/walkthrus.html#glad-stems`. What's missing is the large-format
-printable. Don't rebuild the stems from scratch.
+**05 · The Five Moves** is the academic-conversation stems resource. The page restates all six
+moves as text; `stems/files/` holds the printable posters at 18x24 and 11x17. The stems are
+Zwiers & Crawford's conversation skills — GLAD is the routine for *teaching* them, which is
+WalkThru 04 in `discussion/walkthrus.html#glad-stems`. Credit Zwiers on the resource itself.
+
+The poster PDFs are ReportLab output and **their generator is not in this repo**, so revising a
+poster is a rebuild, not an edit. The classroom examples are deliberately 8th grade US history —
+the stems are the subject-neutral layer, and genericising the examples would make them redundant
+with the stems. The page says so in a note; keep that note if you touch the page.
 
 ## Navigation — a site-wide invariant
 
@@ -147,7 +156,6 @@ No build step and no test suite, so verification is manual but should be actual,
 
 ## Future additions
 
-- **GLAD sentence-stem printable** — the stems exist (WalkThru 04); only the large-format poster is missing
 - **Parent communication templates** (`parent-comms/`) — drafts and damage-control examples, teacher-to-teacher
 - **Unit planning templates** (`planning/`) — the skeleton I use for unit design
 

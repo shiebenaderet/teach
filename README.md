@@ -18,17 +18,22 @@ teach/
 │   └── walkthrus.html
 ├── grading/                ← Resource #02 — Zeros and the 50 Floor
 │   └── index.html
-└── outcomes/               ← Resource #03 — Standards Outcomes Toolkit
-    ├── index.html          ← start here
-    ├── outcomes-grade-7.html
-    ├── outcomes-grade-8.html
-    ├── outcomes-sti.html
-    ├── outcomes-how-to.html
-    ├── build-site.mjs      ← generator (see note below)
-    └── files/              ← Canvas outcome CSVs, linked from the pages
-        ├── canvas-outcomes-wa-grade7.csv
-        ├── canvas-outcomes-grade8.csv
-        └── canvas-outcomes-sti.csv
+├── outcomes/               ← Resource #03 — Standards Outcomes Toolkit
+│   ├── index.html          ← start here
+│   ├── outcomes-grade-7.html
+│   ├── outcomes-grade-8.html
+│   ├── outcomes-sti.html
+│   ├── outcomes-how-to.html
+│   ├── build-site.mjs      ← generator (see note below)
+│   └── files/              ← Canvas outcome CSVs, linked from the pages
+│       ├── canvas-outcomes-wa-grade7.csv
+│       ├── canvas-outcomes-grade8.csv
+│       └── canvas-outcomes-sti.csv
+└── stems/                  ← Resource #05 — The Five Moves
+    ├── index.html          ← the moves and stems, readable on screen
+    └── files/              ← printable posters
+        ├── academic-conversation-stems-18x24.pdf
+        └── academic-conversation-stems-11x17.pdf
 
 Resource #04 — AMS Intervention Toolkit — is not here; it has its own repo.
 See "Resource #04 lives elsewhere" below.
@@ -46,6 +51,19 @@ site and its own repository:
 
 The landing page links out to it as entry 04. When a resource is good enough to stand on
 its own, it gets its own repo and the directory just points at it.
+
+### `stems/` carries a PDF, and the web page restates it
+
+`stems/index.html` reproduces all six moves as text — stems, when-to-use, and the classroom
+examples — so the material is usable on a phone mid-lesson without opening a PDF. The two poster
+PDFs in `stems/files/` are the printable artifact.
+
+That means the same content lives in two places. **The PDFs are ReportLab output and their
+generator script is not in this repo**, so revising a poster means rebuilding it, not editing it.
+If you ever do revise them, update the HTML to match or the two will drift.
+
+The move colours in the page (`--m1` … `--m6`) were sampled from the PDF itself, so the screen
+and the print version agree.
 
 ### Navigation is shared
 
