@@ -29,9 +29,41 @@ teach/
         ├── canvas-outcomes-wa-grade7.csv
         ├── canvas-outcomes-grade8.csv
         └── canvas-outcomes-sti.csv
+
+Resource #04 — AMS Intervention Toolkit — is not here; it has its own repo.
+See "Resource #04 lives elsewhere" below.
 ```
 
 Every resource is a self-contained static HTML file (or small set of files) with embedded CSS and minimal inline JS. No build step, no bundler, no framework. Edit in any text editor, commit, push, Pages rebuilds.
+
+### Resource #04 lives elsewhere
+
+The **AMS Intervention Toolkit** (MTSS, Tier 1/2/3) is not in this repo. It has its own
+site and its own repository:
+
+- Site: <https://shiebenaderet.github.io/ams-interventions/>
+- Repo: <https://github.com/shiebenaderet/ams-interventions>
+
+The landing page links out to it as entry 04. When a resource is good enough to stand on
+its own, it gets its own repo and the directory just points at it.
+
+### Navigation is shared
+
+Every page carries the same crumb in the same slot, so no page is a dead end:
+
+```
+teach · Mr. B  /  <Resource>
+      ↓              ↓
+  always "../"   that resource's index
+```
+
+The left half is invariant across the whole site and is the way home. Each resource keeps
+its own links beside it (the hub's section anchors and path badge, the toolkit's grade
+tabs) because those navigate genuinely different content. The landing page is the crumb's
+left half only, plus direct links to each resource.
+
+The site is named **teach**, matching the domain. Don't reintroduce "Teaching" as a
+brand label — it read as a second site and caused real confusion.
 
 ### One exception: `outcomes/` is generated
 

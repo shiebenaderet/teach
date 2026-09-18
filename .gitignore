@@ -11,3 +11,7 @@ texts/
 
 # Subagent-driven-development scratch
 .superpowers/
+
+# Superpowers design scaffolding — belongs with the skill it describes,
+# not in the website repo. See ~/.claude/skills/<skill>/ (its own git repo).
+docs/superpowers/

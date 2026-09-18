@@ -1,59 +1,74 @@
-# Cowork handoff — `teach` repo
+# `teach` — project guide
 
-Copy-paste this whole document into a Cowork chat (or keep it in the repo as `HANDOFF.md` for future you / future contributors). It contains everything needed to pick up development without prior context.
+The teacher-facing site at **[teach.mrbsocialstudies.org](https://teach.mrbsocialstudies.org)**.
+Read this before changing anything; then read `discussion/index.html` and
+`outcomes/index.html`, which establish the visual language and tone.
 
 ---
 
 ## Context
 
-I'm Shie Benaderet, 8th grade Social Studies teacher at Alderwood Middle School. I maintain a small ecosystem of GitHub Pages sites under `mrbsocialstudies.org` — the main public site at the apex domain `mrbsocialstudies.org`, plus `ss8`, `scotus`, and `current`, each for a different audience. This repo, `teach`, is the **teacher-facing** companion: a growing collection of research-backed classroom resources aimed at me and fellow educators, not at students.
+I'm Shie Benaderet, 8th grade Social Studies teacher at Alderwood Middle School. I maintain a
+small ecosystem of GitHub Pages sites under `mrbsocialstudies.org` — the main public site at the
+apex domain, plus `ss8`, `scotus`, and `current`, each for a different audience. This repo,
+`teach`, is the **teacher-facing** companion: research-backed classroom resources aimed at me and
+fellow educators, not at students.
 
-It lives at `teach.mrbsocialstudies.org`.
-
-The repo is designed to grow. The first resource is a Discussion Hub. Future tenants will likely include a GLAD sentence-stem poster, an MTSS intervention toolkit, and other pedagogy references. Each resource gets its own subfolder; the root `index.html` is the directory.
+The site is named **teach**, matching its domain. It used to call itself "Teaching" in the nav
+brand and page titles, which read as a second site and caused real confusion. Don't reintroduce
+that label.
 
 ## Current state
 
-The repo is initialized on GitHub and contains the Discussion Hub files. Target folder structure:
+Four resources are live. Three live in this repo; the fourth has its own.
 
 ```
 teach/
-├── README.md                ← repo-level
-├── index.html               ← top-level landing page
-├── CNAME                    ← contains: teach.mrbsocialstudies.org
-└── discussion/
-    ├── index.html           ← the Discussion Hub (exists, works)
-    └── walkthrus.html       ← the WalkThrus reference page (exists, works)
+├── index.html              ← landing page / directory (the only file that knows them all)
+├── README.md
+├── CNAME                   ← teach.mrbsocialstudies.org
+├── discussion/             ← 01 · Discussion Hub
+│   ├── index.html
+│   └── walkthrus.html
+├── grading/                ← 02 · Zeros and the 50 Floor
+│   └── index.html
+└── outcomes/               ← 03 · Standards Outcomes Toolkit
+    ├── index.html
+    ├── outcomes-grade-7.html
+    ├── outcomes-grade-8.html
+    ├── outcomes-sti.html
+    ├── outcomes-how-to.html
+    ├── build-site.mjs      ← generator; NOT runnable here (see below)
+    └── files/              ← Canvas outcome CSVs
 ```
 
-**Read these first** before doing anything: `discussion/index.html` and `discussion/walkthrus.html`. They establish the visual language, typography, palette, and tone for the whole repo. Anything new should feel like it belongs to the same family.
+**04 · AMS Intervention Toolkit** is not in this repo — it's at
+<https://shiebenaderet.github.io/ams-interventions/> (repo: `shiebenaderet/ams-interventions`).
+The landing page links out to it. When a resource outgrows a single folder, it gets its own repo
+and the directory just points at it.
 
-## What I need you to do
+**05 · GLAD sentence-stem poster** is listed as pending, but only half of it is: the stems already
+exist as WalkThru 04 in `discussion/walkthrus.html#glad-stems`. What's missing is the large-format
+printable. Don't rebuild the stems from scratch.
 
-### Task 1 — Build the top-level `index.html`
+## Navigation — a site-wide invariant
 
-This is the landing page for `teach.mrbsocialstudies.org`. It should:
+Every page carries the same crumb in the same slot, so no page is a dead end:
 
-- Introduce the site in one paragraph (teacher-facing research-backed resources, companion to `mrbsocialstudies.org`)
-- Introduce me briefly — 8th grade Social Studies teacher, Alderwood MS — in my own voice, not marketing-speak
-- List the Discussion Hub as the first (currently only) resource, with a short description and a clear link to `/discussion/`
-- Include a "more coming" note or empty state so it's obvious the site is meant to grow
-- Link out to my other sites for context: `ss8.mrbsocialstudies.org`, `scotus.mrbsocialstudies.org`, `current.mrbsocialstudies.org`
-- Match the brand (see design system below) but feel distinct from the Discussion Hub — this is a directory, not another hub. Lean lighter, more editorial, more whitespace. Think "journal's table of contents" not "product landing."
+```
+teach · Mr. B  /  <Resource>
+      ↓                ↓
+ always "../"    that resource's index
+```
 
-Single HTML file, embedded CSS, no build step. Same no-framework approach as the Discussion Hub.
+The left half is invariant across the whole site and is the route home. Each resource keeps its own
+links beside the crumb — the hub's section anchors and path badge, the toolkit's grade tabs —
+because those navigate genuinely different content. The landing page is the crumb's left half only,
+plus direct links to each resource.
 
-### Task 2 — Rewrite the top-level `README.md`
-
-The current README describes only the Discussion Hub. Replace it with a repo-level README that:
-
-- Describes `teach` as a multi-resource teacher-facing site
-- Documents the folder-per-resource pattern (each resource is self-contained in its own subfolder)
-- Explains how to add a new resource (drop a folder at root, add it to the top-level `index.html`)
-- Points to the GitHub Pages setup and CNAME
-- Keeps the tone practical and short
-
-Delete `discussion/README.md` if it exists — the repo-level README replaces it.
+Class names differ by resource (`.nav-brand`/`.nav-crumb` on the landing and discussion pages,
+`.brand`/`.brand-sep`/`.brand-res` in `outcomes/` and `grading/`). That's deliberate — each file is
+self-contained. Keep the *shape* consistent, not the selectors.
 
 ## Design system — tokens to preserve across everything
 
@@ -73,6 +88,10 @@ Delete `discussion/README.md` if it exists — the repo-level README replaces it
 --green: #3d7a3d;        /* used for "signs it's working" and "start here" */
 --border: #E5DDC8;
 ```
+
+`outcomes/` runs slightly different values (`--maroon: #7B2D26`, `--cream: #FBF5EA`) and is the only
+resource with a full dark-mode palette. Known drift, deliberately left alone; reconcile only on
+purpose.
 
 ### Typography
 - **Display:** Playfair Display (700/900, italic for numerals and emphasis)
@@ -107,23 +126,28 @@ Delete `discussion/README.md` if it exists — the repo-level README replaces it
 ## Maintenance notes — don't break these
 
 - `discussion/index.html` uses `localStorage` inside a try/catch to remember the selected path. Don't wrap it in anything that breaks the try/catch.
-- Internal links between `discussion/index.html` and `discussion/walkthrus.html` are relative (`href="walkthrus.html"`). They work because both files sit in the same folder.
+- Internal links between `discussion/index.html` and `discussion/walkthrus.html` are relative (`href="walkthrus.html"`). They work because both files sit in the same folder. The hub is `discussion/index.html`; walkthrus' "Back to the hub" correctly points at `index.html`, its sibling — not the top-level landing.
 - The `CNAME` file at root contains exactly one line: `teach.mrbsocialstudies.org`. No quotes, no trailing slash, no `https://`. Don't rename or move it.
 - The hub links out to many external resources (videos, articles, books). If one rots, just update the link — don't remove the resource entry.
+- **`outcomes/build-site.mjs` will not run here.** Its inputs (`standards.json`, `descriptors*.mjs`, `sti.mjs`, `wa-*.csv`) live outside the repo. It's committed as the record of how those pages were generated. If you edit an outcomes page by hand, mirror the change in the generator or the next rebuild silently reverts it.
+- **Grid tracks must collapse below 400px.** Use `minmax(min(380px, 100%), 1fr)`, never a bare `minmax(380px, 1fr)` — a fixed minimum wider than the available column causes sideways scroll on a phone. This bit `.strategy-grid` once already.
+- The landing page's "Source on GitHub" link must point at `shiebenaderet/teach`. It once pointed at `shiebenaderet/Teaching`, an empty private repo, and 404'd for every visitor.
 
-## Verify when done
+## Verifying a change
 
-1. Open `teach/index.html` locally — it should render, look on-brand, and link correctly to `/discussion/`.
-2. Open `discussion/index.html` — still works, path selector still works, links to `walkthrus.html` still work.
-3. Open `discussion/walkthrus.html` — still works, "Back to the hub" link resolves to `../index.html` **NOT** the hub's internal index. Actually — check this: if the existing back-link in `walkthrus.html` points to `index.html`, it now resolves to the new top-level landing, not the hub. That's probably wrong. The back-link should point to the hub, which is now at `index.html` in the same folder (still `index.html` from walkthrus's perspective since they're siblings). Verify this still works as expected.
-4. Commit with a clear message (`Add top-level landing + rewritten README`) and push. GitHub Pages rebuilds automatically.
+No build step and no test suite, so verification is manual but should be actual, not assumed:
 
-## Future additions (not urgent — just context for design decisions)
+1. Serve the repo (`python3 -m http.server`) rather than opening `file://` — folder URLs like `/outcomes/` only resolve over HTTP.
+2. Every relative `href`/`src` must resolve. Check folder links (`./outcomes/`) land on a real `index.html`.
+3. Every sub-page must have a link that resolves to the site root, and carry the crumb.
+4. No horizontal overflow at 400px viewport width. Measure `documentElement.scrollWidth`; don't eyeball it.
+5. `discussion/index.html`: the path selector must still set `body[data-path]`, update the nav badge, and persist to `localStorage`.
+6. `@media print` present on every page.
+7. GitHub Pages serves the **`main`** branch. Work on a feature branch is not live; merge to `main` and confirm the Pages build reports `built` at your commit.
 
-Likely next resources, in rough priority order:
+## Future additions
 
-- **GLAD sentence-stem poster** (`stems/`) — printable, color-coded by discourse skill, large-format
-- **MTSS intervention toolkit** (`mtss/`) — Tier 1/2/3 guide I've built before, needs a home
+- **GLAD sentence-stem printable** — the stems exist (WalkThru 04); only the large-format poster is missing
 - **Parent communication templates** (`parent-comms/`) — drafts and damage-control examples, teacher-to-teacher
 - **Unit planning templates** (`planning/`) — the skeleton I use for unit design
 
@@ -131,4 +155,5 @@ When any of these gets built, the top-level `index.html` gets a new card and tha
 
 ---
 
-*Questions while working? Read the existing `discussion/index.html` and `discussion/walkthrus.html` first — the answers are usually in there. The design vocabulary is consistent and intentional.*
+*Questions while working? Read `discussion/index.html` and `outcomes/index.html` first — the design
+vocabulary is consistent and intentional.*
