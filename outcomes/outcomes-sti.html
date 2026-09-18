@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Since Time Immemorial Outcomes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF5EA; --cream-2:#F5EDDD; --surface:#FFFDF8; --ink:#2A2320; --ink-2:#5A4F47;
+  --ink-3:#8B7F74; --line:#E4D8C3; --line-2:#D2C2A6;
+  --maroon:#7B2D26; --maroon-soft:#F3E6E3; --gold:#B8862B; --gold-soft:#FAF0D9;
+  --skills:#7B2D26; --history:#8a4a1f; --civics:#3f5470; --geography:#4a6b46; --economics:#8a6a1f;
+  --big5:#7B2D26; --eq:#6a4a86;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --cream:#1A1613; --cream-2:#221D18; --surface:#241F1A; --ink:#F3EADA; --ink-2:#C9BCA9;
+  --ink-3:#95877A; --line:#3A322A; --line-2:#4C4238;
+  --maroon:#E39B8F; --maroon-soft:#33211E; --gold:#E0B75E; --gold-soft:#2E2519;
+  --skills:#E39B8F; --history:#DCA477; --civics:#9FB4D4; --geography:#9CC79A; --economics:#DCC07A;
+  --big5:#E39B8F; --eq:#BFA3DC;
+}}
+:root[data-theme="dark"]{
+  --cream:#1A1613; --cream-2:#221D18; --surface:#241F1A; --ink:#F3EADA; --ink-2:#C9BCA9;
+  --ink-3:#95877A; --line:#3A322A; --line-2:#4C4238;
+  --maroon:#E39B8F; --maroon-soft:#33211E; --gold:#E0B75E; --gold-soft:#2E2519;
+  --skills:#E39B8F; --history:#DCA477; --civics:#9FB4D4; --geography:#9CC79A; --economics:#DCC07A;
+  --big5:#E39B8F; --eq:#BFA3DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+a{color:var(--maroon)}
+/* nav */
+.site-nav{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.site-nav .wrap{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:17px;margin-right:0;
+  text-decoration:none;color:var(--maroon)}
+.brand em{font-style:italic;color:var(--gold);font-weight:400}
+.brand-sep{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:17px;
+  color:var(--gold);margin:0 9px}
+.brand-res{color:var(--ink);margin-right:12px}
+@media (max-width:480px){.brand-sep{display:none}.brand-res{flex-basis:100%;margin-right:0}}
+.site-nav a.nl{font-size:14px;font-weight:700;text-decoration:none;color:var(--ink-2);
+  padding:6px 11px;border-radius:999px}
+.site-nav a.nl:hover{background:var(--cream-2);color:var(--ink)}
+.site-nav a.nl[aria-current="page"]{background:var(--maroon);color:#fff}
+/* hero */
+.hero{padding:34px 0 8px}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,4vw,38px);font-weight:700;
+  line-height:1.15;margin:6px 0 10px}
+h2{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;margin:26px 0 10px}
+h3{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700}
+.lede{font-size:16.5px;color:var(--ink-2);max-width:66ch}
+p{max-width:70ch}
+.body p + p{margin-top:12px}
+.body ul,.body ol{margin:10px 0 10px 22px}
+.body li{margin-bottom:7px;max-width:68ch}
+/* buttons */
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14.5px;font-weight:700;
+  text-decoration:none;padding:11px 18px;border-radius:9px;background:var(--maroon);color:#fff;
+  border:1px solid var(--maroon)}
+.btn:hover{opacity:.92}
+.btn.ghost{background:transparent;color:var(--maroon)}
+.btn .sz{font-weight:400;opacity:.8;font-size:13px}
+/* cards grid (hub) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.hubcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
+  text-decoration:none;color:inherit;display:block}
+.hubcard:hover{border-color:var(--line-2)}
+.hubcard .n{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.hubcard h3{margin:5px 0 7px}
+.hubcard p{font-size:14.5px;color:var(--ink-2)}
+/* controls */
+.controls{position:sticky;top:53px;z-index:10;background:var(--cream);padding:14px 0 12px;
+  border-bottom:1px solid var(--line);margin-bottom:18px}
+#q{width:100%;padding:12px 15px;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);
+  border:1px solid var(--line-2);border-radius:9px}
+#q::placeholder{color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
+.filt{font:inherit;font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:999px;cursor:pointer;
+  background:var(--surface);color:var(--ink-2);border:1px solid var(--line-2)}
+.filt[aria-pressed="true"]{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+.count{margin-left:auto;font-size:12.5px;color:var(--ink-3)}
+/* outcome cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;padding-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:17px 17px 13px}
+.card-h{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.code{font-size:12px;font-weight:700;color:var(--ink-3);letter-spacing:.03em}
+.chip{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;
+  border-radius:999px;border:1px solid currentColor}
+.chip-skills{color:var(--skills)} .chip-history{color:var(--history)} .chip-civics{color:var(--civics)}
+.chip-geography{color:var(--geography)} .chip-economics{color:var(--economics)}
+.chip-big5{color:var(--big5)} .chip-eq{color:var(--eq)}
+.name{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;line-height:1.3;margin-bottom:11px}
+.lines{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
+.line,.lvl{display:flex;gap:9px;width:100%;text-align:left;font:inherit;cursor:pointer;background:none;
+  border:none;padding:6px 7px;border-radius:7px;color:inherit}
+.line:hover,.lvl:hover{background:var(--gold-soft)}
+.lbl{flex:none;width:44px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--gold);padding-top:3px}
+.txt{font-size:14px;color:var(--ink-2)}
+.levels{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:10px}
+.num{flex:none;width:21px;height:21px;border-radius:5px;display:grid;place-items:center;
+  font-family:'Playfair Display',Georgia,serif;font-size:12px;font-weight:700;
+  background:var(--maroon-soft);color:var(--maroon)}
+.lvl-3 .num{outline:2px solid var(--maroon);outline-offset:1px}
+.lvl-name{display:block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
+.lvl-txt{display:block;font-size:13.5px;color:var(--ink-2)}
+.official{margin-top:10px;border-top:1px solid var(--line);padding-top:9px}
+.official summary{font-size:12px;font-weight:700;color:var(--ink-3);cursor:pointer;list-style:none}
+.official summary::-webkit-details-marker{display:none}
+.official summary::before{content:"+ "}
+.official[open] summary::before{content:"\2212 "}
+.official p{font-size:13px;color:var(--ink-2);margin-top:7px}
+.official .grp{font-size:11.5px;color:var(--ink-3)}
+/* callouts */
+.note{background:var(--surface);border-left:4px solid var(--gold);border-radius:0 9px 9px 0;
+  padding:14px 18px;margin:18px 0}
+.note.strong{border-left-color:var(--maroon)}
+.note h3{font-size:16px;margin-bottom:5px}
+.note p{font-size:14.5px;color:var(--ink-2)}
+.steps{counter-reset:s;list-style:none;margin:14px 0 0}
+.steps li{counter-increment:s;position:relative;padding-left:40px;margin-bottom:16px;max-width:68ch}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:27px;height:27px;border-radius:7px;
+  background:var(--maroon);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.steps h3{margin-bottom:3px}
+.steps p{font-size:14.5px;color:var(--ink-2)}
+table{border-collapse:collapse;margin:14px 0;font-size:14.5px;width:100%}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+th{background:var(--cream-2);font-weight:700}
+.empty{padding:40px 0;text-align:center;color:var(--ink-3)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--cream);font-size:13px;font-weight:700;padding:9px 17px;border-radius:999px;
+  transition:opacity .16s,transform .16s;z-index:30}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+footer.site{margin-top:40px;border-top:1px solid var(--line);background:var(--surface)}
+footer.site .wrap{padding-top:20px;padding-bottom:30px}
+footer.site p{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+@media print{.site-nav,.controls,#toast,footer.site{display:none}.grid{grid-template-columns:1fr 1fr}
+  .card{break-inside:avoid}}
+</style></head><body>
+<nav class="site-nav"><div class="wrap">
+  <a class="brand" href="../">Teaching &middot; <em>Mr. B</em></a>
+  <span class="brand-sep" aria-hidden="true">/</span>
+  <a class="brand brand-res" href="index.html">Outcomes</a>
+  <a class="nl" href="index.html">Start here</a>
+  <a class="nl" href="outcomes-grade-7.html">Grade 7</a>
+  <a class="nl" href="outcomes-grade-8.html">Grade 8</a>
+  <a class="nl" href="outcomes-sti.html" aria-current="page">STI</a>
+  <a class="nl" href="outcomes-how-to.html">How to use it</a>
+</div></nav>
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Tribal sovereignty, all middle school grades</p>
+    <h1>Since Time Immemorial Outcomes</h1>
+    <p class="lede">The five Big Five middle school outcomes and the five Essential Questions, each with a WALT, an I can statement, and four levels in student language. Import these as their own group so they stay separate from the state standards.</p>
+    <div class="btnrow">
+      <a class="btn" href="files/canvas-outcomes-sti.csv" download>Download STI outcomes <span class="sz">CSV</span></a>
+      <a class="btn ghost" href="outcomes-how-to.html">How to import and use it</a>
+    </div>
+  </section>
+  
+<div class="note strong">
+  <h3>About this set</h3>
+  <p>These outcomes come from the John McCoy (lulila&scaron;) Since Time Immemorial: Tribal Sovereignty in
+     Washington State curriculum, published by the OSPI Office of Native Education in partnership with
+     Washington&rsquo;s federally recognized tribes and licensed
+     <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Teaching it is required in all
+     Washington common schools under RCW 28A.320.170. The
+     <a href="https://ospi.k12.wa.us/student-success/resources-subject-area/john-mccoy-lulilas-time-immemorial-tribal-sovereignty-washington-state">curriculum
+     itself lives at OSPI</a> and is free.</p>
+  <p>The Big Five are the outcomes OSPI sets for the end of middle school. The five Essential Questions
+     frame inquiry across a unit rather than grading a single task, so treat them as unit level.</p>
+  <p>The four level descriptors below are local wording, not OSPI&rsquo;s. STI is place based by design, so
+     the strongest version of these names the tribes nearest our schools. Talk with your building or
+     district STI lead before using them to grade.</p>
+</div>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search a word, a code, or an idea" autocomplete="off">
+    <div class="chips">
+      <button class="filt" data-f="all" aria-pressed="true">All</button>
+      <button class="filt" data-f="big5" aria-pressed="false">Big Five</button>
+      <button class="filt" data-f="eq" aria-pressed="false">Essential Questions</button>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+  <main class="grid" id="grid">
+<article class="card" data-strand="big5" data-search="sti.ms.1 understanding why treaty rights outrank state law understand that, according to the u.s. constitution, treaties are &quot;the supreme law of the land&quot;; consequently treaty rights supersede most state laws. you explain why treaties outrank most state laws, and use a court case to show what that means today. you explain that treaties are the supreme law of the land, so treaty rights come before most state laws. you say treaties are important without explaining where their power comes from. you can name treaty rights without knowing what backs them yet.">
+  <header class="card-h"><span class="code">STI.MS.1</span><span class="chip chip-big5">Big Five</span></header>
+  <h3 class="name">Understanding why treaty rights outrank state law</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to understand why treaty rights outrank state law"><span class="lbl">WALT</span><span class="txt">We are learning to understand why treaty rights outrank state law</span></button>
+    <button class="line" data-copy="I can understand why treaty rights outrank state law."><span class="lbl">I can</span><span class="txt">I can understand why treaty rights outrank state law.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain why treaties outrank most state laws, and use a court case to show what that means today."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain why treaties outrank most state laws, and use a court case to show what that means today.</span></span></button><button class="lvl lvl-3" data-copy="You explain that treaties are the supreme law of the land, so treaty rights come before most state laws."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain that treaties are the supreme law of the land, so treaty rights come before most state laws.</span></span></button><button class="lvl lvl-2" data-copy="You say treaties are important without explaining where their power comes from."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You say treaties are important without explaining where their power comes from.</span></span></button><button class="lvl lvl-1" data-copy="You can name treaty rights without knowing what backs them yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name treaty rights without knowing what backs them yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Understand that, according to the U.S. Constitution, treaties are &quot;the supreme law of the land&quot;; consequently treaty rights supersede most state laws.</p><p class="grp">The Big Five, by the end of middle school</p></details>
+</article>
+
+<article class="card" data-strand="big5" data-search="sti.ms.2 explaining what tribal sovereignty rests on understand that tribal sovereignty has cultural, political, and economic bases. you explain the cultural, political, and economic sides of sovereignty, and how they hold each other up. you explain that tribal sovereignty has cultural, political, and economic bases, with an example of each. you define sovereignty but explain only one of the things it rests on. you can use the word sovereignty without explaining what it rests on yet.">
+  <header class="card-h"><span class="code">STI.MS.2</span><span class="chip chip-big5">Big Five</span></header>
+  <h3 class="name">Explaining what tribal sovereignty rests on</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain what tribal sovereignty rests on"><span class="lbl">WALT</span><span class="txt">We are learning to explain what tribal sovereignty rests on</span></button>
+    <button class="line" data-copy="I can explain what tribal sovereignty rests on."><span class="lbl">I can</span><span class="txt">I can explain what tribal sovereignty rests on.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain the cultural, political, and economic sides of sovereignty, and how they hold each other up."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain the cultural, political, and economic sides of sovereignty, and how they hold each other up.</span></span></button><button class="lvl lvl-3" data-copy="You explain that tribal sovereignty has cultural, political, and economic bases, with an example of each."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain that tribal sovereignty has cultural, political, and economic bases, with an example of each.</span></span></button><button class="lvl lvl-2" data-copy="You define sovereignty but explain only one of the things it rests on."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You define sovereignty but explain only one of the things it rests on.</span></span></button><button class="lvl lvl-1" data-copy="You can use the word sovereignty without explaining what it rests on yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can use the word sovereignty without explaining what it rests on yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Understand that Tribal sovereignty has cultural, political, and economic bases.</p><p class="grp">The Big Five, by the end of middle school</p></details>
+</article>
+
+<article class="card" data-strand="big5" data-search="sti.ms.3 explaining which laws reach tribal nations understand that tribes are subject to federal law and taxes, as well as some state regulations. you explain which laws reach tribal nations and which do not, and use an example to show where the line falls. you explain that tribal nations are subject to federal law and taxes, and to some state regulations. you say tribal nations have their own laws without explaining what else applies. you can name tribal governments without knowing which laws reach them yet.">
+  <header class="card-h"><span class="code">STI.MS.3</span><span class="chip chip-big5">Big Five</span></header>
+  <h3 class="name">Explaining which laws reach tribal nations</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain which laws reach tribal nations"><span class="lbl">WALT</span><span class="txt">We are learning to explain which laws reach tribal nations</span></button>
+    <button class="line" data-copy="I can explain which laws reach tribal nations."><span class="lbl">I can</span><span class="txt">I can explain which laws reach tribal nations.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain which laws reach tribal nations and which do not, and use an example to show where the line falls."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain which laws reach tribal nations and which do not, and use an example to show where the line falls.</span></span></button><button class="lvl lvl-3" data-copy="You explain that tribal nations are subject to federal law and taxes, and to some state regulations."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain that tribal nations are subject to federal law and taxes, and to some state regulations.</span></span></button><button class="lvl lvl-2" data-copy="You say tribal nations have their own laws without explaining what else applies."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You say tribal nations have their own laws without explaining what else applies.</span></span></button><button class="lvl lvl-1" data-copy="You can name tribal governments without knowing which laws reach them yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name tribal governments without knowing which laws reach them yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Understand that Tribes are subject to federal law and taxes, as well as some state regulations.</p><p class="grp">The Big Five, by the end of middle school</p></details>
+</article>
+
+<article class="card" data-strand="big5" data-search="sti.ms.4 recognizing that sovereignty differs from nation to nation understand that tribal sovereignty is ever-evolving and therefore levels of sovereignty and status vary from tribe to tribe. you explain how sovereignty differs between tribal nations, and what has changed it over time. you explain that tribal sovereignty keeps changing, and that its level varies from nation to nation. you treat all tribal nations as having the same status. you can name tribal nations without comparing their status yet.">
+  <header class="card-h"><span class="code">STI.MS.4</span><span class="chip chip-big5">Big Five</span></header>
+  <h3 class="name">Recognizing that sovereignty differs from nation to nation</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to recognize that sovereignty differs from nation to nation"><span class="lbl">WALT</span><span class="txt">We are learning to recognize that sovereignty differs from nation to nation</span></button>
+    <button class="line" data-copy="I can recognize that sovereignty differs from nation to nation."><span class="lbl">I can</span><span class="txt">I can recognize that sovereignty differs from nation to nation.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain how sovereignty differs between tribal nations, and what has changed it over time."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain how sovereignty differs between tribal nations, and what has changed it over time.</span></span></button><button class="lvl lvl-3" data-copy="You explain that tribal sovereignty keeps changing, and that its level varies from nation to nation."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain that tribal sovereignty keeps changing, and that its level varies from nation to nation.</span></span></button><button class="lvl lvl-2" data-copy="You treat all tribal nations as having the same status."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You treat all tribal nations as having the same status.</span></span></button><button class="lvl lvl-1" data-copy="You can name tribal nations without comparing their status yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name tribal nations without comparing their status yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Understand that Tribal sovereignty is ever-evolving and therefore levels of sovereignty and status vary from Tribe to Tribe.</p><p class="grp">The Big Five, by the end of middle school</p></details>
+</article>
+
+<article class="card" data-strand="big5" data-search="sti.ms.5 tracing how tribal nations defend sovereignty in court understand that there were and are frequent and continued threats to tribal sovereignty that are mostly addressed through the courts. you trace a threat to sovereignty through the courts, and explain what the ruling changed. you explain that threats to tribal sovereignty continue, and that they are mostly answered in court. you name a threat to sovereignty without explaining how it was answered. you can say sovereignty is challenged without examples yet.">
+  <header class="card-h"><span class="code">STI.MS.5</span><span class="chip chip-big5">Big Five</span></header>
+  <h3 class="name">Tracing how tribal nations defend sovereignty in court</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to trace how tribal nations defend sovereignty in court"><span class="lbl">WALT</span><span class="txt">We are learning to trace how tribal nations defend sovereignty in court</span></button>
+    <button class="line" data-copy="I can trace how tribal nations defend sovereignty in court."><span class="lbl">I can</span><span class="txt">I can trace how tribal nations defend sovereignty in court.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You trace a threat to sovereignty through the courts, and explain what the ruling changed."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You trace a threat to sovereignty through the courts, and explain what the ruling changed.</span></span></button><button class="lvl lvl-3" data-copy="You explain that threats to tribal sovereignty continue, and that they are mostly answered in court."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain that threats to tribal sovereignty continue, and that they are mostly answered in court.</span></span></button><button class="lvl lvl-2" data-copy="You name a threat to sovereignty without explaining how it was answered."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name a threat to sovereignty without explaining how it was answered.</span></span></button><button class="lvl lvl-1" data-copy="You can say sovereignty is challenged without examples yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can say sovereignty is challenged without examples yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Understand that there were and are frequent and continued threats to Tribal sovereignty that are mostly addressed through the courts.</p><p class="grp">The Big Five, by the end of middle school</p></details>
+</article>
+
+<article class="card" data-strand="eq" data-search="sti.eq.1 investigating how geography shapes northwest tribal life how does the physical geography affect northwest tribes' culture, economy, and where they choose to settle and trade? you explain how geography shaped culture, economy, and trade together for a specific tribal nation. you explain how the physical geography of a place shaped a tribal nation's culture, economy, and trade. you describe the land or the culture, but you don't connect them. you can locate tribal homelands without explaining what the land made possible yet.">
+  <header class="card-h"><span class="code">STI.EQ.1</span><span class="chip chip-eq">Essential Question</span></header>
+  <h3 class="name">Investigating how geography shapes Northwest tribal life</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to investigate how geography shapes Northwest tribal life"><span class="lbl">WALT</span><span class="txt">We are learning to investigate how geography shapes Northwest tribal life</span></button>
+    <button class="line" data-copy="I can investigate how geography shapes Northwest tribal life."><span class="lbl">I can</span><span class="txt">I can investigate how geography shapes Northwest tribal life.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain how geography shaped culture, economy, and trade together for a specific tribal nation."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain how geography shaped culture, economy, and trade together for a specific tribal nation.</span></span></button><button class="lvl lvl-3" data-copy="You explain how the physical geography of a place shaped a tribal nation's culture, economy, and trade."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain how the physical geography of a place shaped a tribal nation's culture, economy, and trade.</span></span></button><button class="lvl lvl-2" data-copy="You describe the land or the culture, but you don't connect them."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe the land or the culture, but you don't connect them.</span></span></button><button class="lvl lvl-1" data-copy="You can locate tribal homelands without explaining what the land made possible yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can locate tribal homelands without explaining what the land made possible yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>How does the physical geography affect Northwest Tribes' culture, economy, and where they choose to settle and trade?</p><p class="grp">The Five Essential Questions</p></details>
+</article>
+
+<article class="card" data-strand="eq" data-search="sti.eq.2 comparing the legal status of tribal nations what is the legal status of the tribes who negotiated or who did not enter into united states treaties? you compare the status of nations that entered treaties and those that did not, and explain what follows from each. you explain how a tribal nation’s legal status depends on whether it entered a treaty with the united states. you say some nations signed treaties without explaining what that changed. you can name treaties without connecting them to legal status yet.">
+  <header class="card-h"><span class="code">STI.EQ.2</span><span class="chip chip-eq">Essential Question</span></header>
+  <h3 class="name">Comparing the legal status of tribal nations</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to compare the legal status of tribal nations"><span class="lbl">WALT</span><span class="txt">We are learning to compare the legal status of tribal nations</span></button>
+    <button class="line" data-copy="I can compare the legal status of tribal nations."><span class="lbl">I can</span><span class="txt">I can compare the legal status of tribal nations.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You compare the status of nations that entered treaties and those that did not, and explain what follows from each."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You compare the status of nations that entered treaties and those that did not, and explain what follows from each.</span></span></button><button class="lvl lvl-3" data-copy="You explain how a tribal nation’s legal status depends on whether it entered a treaty with the United States."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain how a tribal nation’s legal status depends on whether it entered a treaty with the United States.</span></span></button><button class="lvl lvl-2" data-copy="You say some nations signed treaties without explaining what that changed."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You say some nations signed treaties without explaining what that changed.</span></span></button><button class="lvl lvl-1" data-copy="You can name treaties without connecting them to legal status yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name treaties without connecting them to legal status yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>What is the legal status of the Tribes who negotiated or who did not enter into United States treaties?</p><p class="grp">The Five Essential Questions</p></details>
+</article>
+
+<article class="card" data-strand="eq" data-search="sti.eq.3 explaining what forced the treaties what were the political, economic, and cultural forces that led to the treaties? you explain the political, economic, and cultural pressures behind a treaty, and which pressed hardest. you explain the political, economic, and cultural forces that led to a treaty. you name one reason for a treaty without the others. you can say treaties happened without explaining why yet.">
+  <header class="card-h"><span class="code">STI.EQ.3</span><span class="chip chip-eq">Essential Question</span></header>
+  <h3 class="name">Explaining what forced the treaties</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain what forced the treaties"><span class="lbl">WALT</span><span class="txt">We are learning to explain what forced the treaties</span></button>
+    <button class="line" data-copy="I can explain what forced the treaties."><span class="lbl">I can</span><span class="txt">I can explain what forced the treaties.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain the political, economic, and cultural pressures behind a treaty, and which pressed hardest."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain the political, economic, and cultural pressures behind a treaty, and which pressed hardest.</span></span></button><button class="lvl lvl-3" data-copy="You explain the political, economic, and cultural forces that led to a treaty."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain the political, economic, and cultural forces that led to a treaty.</span></span></button><button class="lvl lvl-2" data-copy="You name one reason for a treaty without the others."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name one reason for a treaty without the others.</span></span></button><button class="lvl lvl-1" data-copy="You can say treaties happened without explaining why yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can say treaties happened without explaining why yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>What were the political, economic, and cultural forces that led to the treaties?</p><p class="grp">The Five Essential Questions</p></details>
+</article>
+
+<article class="card" data-strand="eq" data-search="sti.eq.4 explaining how tribal nations protect their ways of life what are the ways in which tribes respond to the threats and outside pressure to extinguish their cultures and independence? you explain several ways a nation protected its culture and independence, and what each one cost or won. you explain ways tribal nations have responded to pressure to give up their cultures and independence. you name a threat without explaining how the nation responded. you can say cultures were threatened without examples of how nations answered yet.">
+  <header class="card-h"><span class="code">STI.EQ.4</span><span class="chip chip-eq">Essential Question</span></header>
+  <h3 class="name">Explaining how tribal nations protect their ways of life</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain how tribal nations protect their ways of life"><span class="lbl">WALT</span><span class="txt">We are learning to explain how tribal nations protect their ways of life</span></button>
+    <button class="line" data-copy="I can explain how tribal nations protect their ways of life."><span class="lbl">I can</span><span class="txt">I can explain how tribal nations protect their ways of life.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain several ways a nation protected its culture and independence, and what each one cost or won."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain several ways a nation protected its culture and independence, and what each one cost or won.</span></span></button><button class="lvl lvl-3" data-copy="You explain ways tribal nations have responded to pressure to give up their cultures and independence."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain ways tribal nations have responded to pressure to give up their cultures and independence.</span></span></button><button class="lvl lvl-2" data-copy="You name a threat without explaining how the nation responded."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name a threat without explaining how the nation responded.</span></span></button><button class="lvl lvl-1" data-copy="You can say cultures were threatened without examples of how nations answered yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can say cultures were threatened without examples of how nations answered yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>What are the ways in which Tribes respond to the threats and outside pressure to extinguish their cultures and independence?</p><p class="grp">The Five Essential Questions</p></details>
+</article>
+
+<article class="card" data-strand="eq" data-search="sti.eq.5 explaining how tribal nations meet their communities’ needs today what do local tribes do to meet the challenges of reservation life; and, as sovereign nations, to meet the economic and cultural needs of their tribal communities? you explain how a nation meets economic and cultural needs today, and connect that work to its sovereignty. you explain what a tribal nation does today to meet the economic and cultural needs of its community. you describe reservation life without what the nation is doing about it. you can name a reservation without knowing what its government does yet.">
+  <header class="card-h"><span class="code">STI.EQ.5</span><span class="chip chip-eq">Essential Question</span></header>
+  <h3 class="name">Explaining how tribal nations meet their communities’ needs today</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain how tribal nations meet their communities’ needs today"><span class="lbl">WALT</span><span class="txt">We are learning to explain how tribal nations meet their communities’ needs today</span></button>
+    <button class="line" data-copy="I can explain how tribal nations meet their communities’ needs today."><span class="lbl">I can</span><span class="txt">I can explain how tribal nations meet their communities’ needs today.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain how a nation meets economic and cultural needs today, and connect that work to its sovereignty."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain how a nation meets economic and cultural needs today, and connect that work to its sovereignty.</span></span></button><button class="lvl lvl-3" data-copy="You explain what a tribal nation does today to meet the economic and cultural needs of its community."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain what a tribal nation does today to meet the economic and cultural needs of its community.</span></span></button><button class="lvl lvl-2" data-copy="You describe reservation life without what the nation is doing about it."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe reservation life without what the nation is doing about it.</span></span></button><button class="lvl lvl-1" data-copy="You can name a reservation without knowing what its government does yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name a reservation without knowing what its government does yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>What do local Tribes do to meet the challenges of reservation life; and, as sovereign nations, to meet the economic and cultural needs of their Tribal communities?</p><p class="grp">The Five Essential Questions</p></details>
+</article></main>
+  <p class="empty" id="empty" hidden>Nothing matches that. Try a shorter word.</p>
+</div>
+<footer class="site"><div class="wrap">
+  <p>Built for the Edmonds School District social studies team. Standards text is from the Washington
+     State Social Studies Learning Standards (OSPI, 2019).</p>
+  <p>The four level descriptors, WALT lines, and I can statements are local wording written for our
+     4 / 3 / 2 / 1 scale. They are not published by OSPI.</p>
+  <p>mrbsocialstudies.org</p>
+</div></footer>
+<div id="toast">Copied</div>
+<script>
+(function(){
+  var grid=document.getElementById('grid'); if(!grid)return;
+  var cards=[].slice.call(grid.children), q=document.getElementById('q'),
+      count=document.getElementById('count'), empty=document.getElementById('empty'),
+      toast=document.getElementById('toast'), filt='all', t;
+  function apply(){
+    var term=(q?q.value:'').trim().toLowerCase(), n=0;
+    cards.forEach(function(c){
+      var ok=(filt==='all'||c.dataset.strand===filt)&&(!term||c.dataset.search.indexOf(term)>-1);
+      c.hidden=!ok; if(ok)n++;
+    });
+    if(count)count.textContent=n+(n===1?' outcome':' outcomes');
+    if(empty)empty.hidden=n>0;
+  }
+  if(q)q.addEventListener('input',apply);
+  [].forEach.call(document.querySelectorAll('.filt'),function(b){
+    b.addEventListener('click',function(){
+      filt=b.dataset.f;
+      [].forEach.call(document.querySelectorAll('.filt'),function(o){o.setAttribute('aria-pressed',String(o===b));});
+      apply();
+    });
+  });
+  grid.addEventListener('click',function(e){
+    var el=e.target.closest('[data-copy]'); if(!el)return;
+    var text=el.getAttribute('data-copy');
+    function done(){clearTimeout(t);toast.classList.add('on');t=setTimeout(function(){toast.classList.remove('on');},1100);}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';
+      ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');}catch(err){}document.body.removeChild(ta);done();}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+  });
+  apply();
+})();
+</script></body></html>

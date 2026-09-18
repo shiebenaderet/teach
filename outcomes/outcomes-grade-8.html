@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade 8 Outcomes, United States History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF5EA; --cream-2:#F5EDDD; --surface:#FFFDF8; --ink:#2A2320; --ink-2:#5A4F47;
+  --ink-3:#8B7F74; --line:#E4D8C3; --line-2:#D2C2A6;
+  --maroon:#7B2D26; --maroon-soft:#F3E6E3; --gold:#B8862B; --gold-soft:#FAF0D9;
+  --skills:#7B2D26; --history:#8a4a1f; --civics:#3f5470; --geography:#4a6b46; --economics:#8a6a1f;
+  --big5:#7B2D26; --eq:#6a4a86;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --cream:#1A1613; --cream-2:#221D18; --surface:#241F1A; --ink:#F3EADA; --ink-2:#C9BCA9;
+  --ink-3:#95877A; --line:#3A322A; --line-2:#4C4238;
+  --maroon:#E39B8F; --maroon-soft:#33211E; --gold:#E0B75E; --gold-soft:#2E2519;
+  --skills:#E39B8F; --history:#DCA477; --civics:#9FB4D4; --geography:#9CC79A; --economics:#DCC07A;
+  --big5:#E39B8F; --eq:#BFA3DC;
+}}
+:root[data-theme="dark"]{
+  --cream:#1A1613; --cream-2:#221D18; --surface:#241F1A; --ink:#F3EADA; --ink-2:#C9BCA9;
+  --ink-3:#95877A; --line:#3A322A; --line-2:#4C4238;
+  --maroon:#E39B8F; --maroon-soft:#33211E; --gold:#E0B75E; --gold-soft:#2E2519;
+  --skills:#E39B8F; --history:#DCA477; --civics:#9FB4D4; --geography:#9CC79A; --economics:#DCC07A;
+  --big5:#E39B8F; --eq:#BFA3DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+a{color:var(--maroon)}
+/* nav */
+.site-nav{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.site-nav .wrap{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:17px;margin-right:0;
+  text-decoration:none;color:var(--maroon)}
+.brand em{font-style:italic;color:var(--gold);font-weight:400}
+.brand-sep{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:17px;
+  color:var(--gold);margin:0 9px}
+.brand-res{color:var(--ink);margin-right:12px}
+@media (max-width:480px){.brand-sep{display:none}.brand-res{flex-basis:100%;margin-right:0}}
+.site-nav a.nl{font-size:14px;font-weight:700;text-decoration:none;color:var(--ink-2);
+  padding:6px 11px;border-radius:999px}
+.site-nav a.nl:hover{background:var(--cream-2);color:var(--ink)}
+.site-nav a.nl[aria-current="page"]{background:var(--maroon);color:#fff}
+/* hero */
+.hero{padding:34px 0 8px}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,4vw,38px);font-weight:700;
+  line-height:1.15;margin:6px 0 10px}
+h2{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;margin:26px 0 10px}
+h3{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700}
+.lede{font-size:16.5px;color:var(--ink-2);max-width:66ch}
+p{max-width:70ch}
+.body p + p{margin-top:12px}
+.body ul,.body ol{margin:10px 0 10px 22px}
+.body li{margin-bottom:7px;max-width:68ch}
+/* buttons */
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14.5px;font-weight:700;
+  text-decoration:none;padding:11px 18px;border-radius:9px;background:var(--maroon);color:#fff;
+  border:1px solid var(--maroon)}
+.btn:hover{opacity:.92}
+.btn.ghost{background:transparent;color:var(--maroon)}
+.btn .sz{font-weight:400;opacity:.8;font-size:13px}
+/* cards grid (hub) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.hubcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
+  text-decoration:none;color:inherit;display:block}
+.hubcard:hover{border-color:var(--line-2)}
+.hubcard .n{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.hubcard h3{margin:5px 0 7px}
+.hubcard p{font-size:14.5px;color:var(--ink-2)}
+/* controls */
+.controls{position:sticky;top:53px;z-index:10;background:var(--cream);padding:14px 0 12px;
+  border-bottom:1px solid var(--line);margin-bottom:18px}
+#q{width:100%;padding:12px 15px;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);
+  border:1px solid var(--line-2);border-radius:9px}
+#q::placeholder{color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
+.filt{font:inherit;font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:999px;cursor:pointer;
+  background:var(--surface);color:var(--ink-2);border:1px solid var(--line-2)}
+.filt[aria-pressed="true"]{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+.count{margin-left:auto;font-size:12.5px;color:var(--ink-3)}
+/* outcome cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;padding-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:17px 17px 13px}
+.card-h{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.code{font-size:12px;font-weight:700;color:var(--ink-3);letter-spacing:.03em}
+.chip{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;
+  border-radius:999px;border:1px solid currentColor}
+.chip-skills{color:var(--skills)} .chip-history{color:var(--history)} .chip-civics{color:var(--civics)}
+.chip-geography{color:var(--geography)} .chip-economics{color:var(--economics)}
+.chip-big5{color:var(--big5)} .chip-eq{color:var(--eq)}
+.name{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;line-height:1.3;margin-bottom:11px}
+.lines{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
+.line,.lvl{display:flex;gap:9px;width:100%;text-align:left;font:inherit;cursor:pointer;background:none;
+  border:none;padding:6px 7px;border-radius:7px;color:inherit}
+.line:hover,.lvl:hover{background:var(--gold-soft)}
+.lbl{flex:none;width:44px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--gold);padding-top:3px}
+.txt{font-size:14px;color:var(--ink-2)}
+.levels{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:10px}
+.num{flex:none;width:21px;height:21px;border-radius:5px;display:grid;place-items:center;
+  font-family:'Playfair Display',Georgia,serif;font-size:12px;font-weight:700;
+  background:var(--maroon-soft);color:var(--maroon)}
+.lvl-3 .num{outline:2px solid var(--maroon);outline-offset:1px}
+.lvl-name{display:block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
+.lvl-txt{display:block;font-size:13.5px;color:var(--ink-2)}
+.official{margin-top:10px;border-top:1px solid var(--line);padding-top:9px}
+.official summary{font-size:12px;font-weight:700;color:var(--ink-3);cursor:pointer;list-style:none}
+.official summary::-webkit-details-marker{display:none}
+.official summary::before{content:"+ "}
+.official[open] summary::before{content:"\2212 "}
+.official p{font-size:13px;color:var(--ink-2);margin-top:7px}
+.official .grp{font-size:11.5px;color:var(--ink-3)}
+/* callouts */
+.note{background:var(--surface);border-left:4px solid var(--gold);border-radius:0 9px 9px 0;
+  padding:14px 18px;margin:18px 0}
+.note.strong{border-left-color:var(--maroon)}
+.note h3{font-size:16px;margin-bottom:5px}
+.note p{font-size:14.5px;color:var(--ink-2)}
+.steps{counter-reset:s;list-style:none;margin:14px 0 0}
+.steps li{counter-increment:s;position:relative;padding-left:40px;margin-bottom:16px;max-width:68ch}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:27px;height:27px;border-radius:7px;
+  background:var(--maroon);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.steps h3{margin-bottom:3px}
+.steps p{font-size:14.5px;color:var(--ink-2)}
+table{border-collapse:collapse;margin:14px 0;font-size:14.5px;width:100%}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+th{background:var(--cream-2);font-weight:700}
+.empty{padding:40px 0;text-align:center;color:var(--ink-3)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--cream);font-size:13px;font-weight:700;padding:9px 17px;border-radius:999px;
+  transition:opacity .16s,transform .16s;z-index:30}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+footer.site{margin-top:40px;border-top:1px solid var(--line);background:var(--surface)}
+footer.site .wrap{padding-top:20px;padding-bottom:30px}
+footer.site p{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+@media print{.site-nav,.controls,#toast,footer.site{display:none}.grid{grid-template-columns:1fr 1fr}
+  .card{break-inside:avoid}}
+</style></head><body>
+<nav class="site-nav"><div class="wrap">
+  <a class="brand" href="../">Teaching &middot; <em>Mr. B</em></a>
+  <span class="brand-sep" aria-hidden="true">/</span>
+  <a class="brand brand-res" href="index.html">Outcomes</a>
+  <a class="nl" href="index.html">Start here</a>
+  <a class="nl" href="outcomes-grade-7.html">Grade 7</a>
+  <a class="nl" href="outcomes-grade-8.html" aria-current="page">Grade 8</a>
+  <a class="nl" href="outcomes-sti.html">STI</a>
+  <a class="nl" href="outcomes-how-to.html">How to use it</a>
+</div></nav>
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Grade 8, United States History</p>
+    <h1>Grade 8 Outcomes</h1>
+    <p class="lede">The 36 Washington State Social Studies Learning Standards in scope for 8th grade United States History, each with a WALT, an I can statement, and the four levels of our proficiency scale written in student language. Click any line to copy it.</p>
+    <div class="btnrow">
+      <a class="btn" href="files/canvas-outcomes-grade8.csv" download>Download Grade 8 outcomes <span class="sz">CSV</span></a>
+      <a class="btn ghost" href="outcomes-how-to.html">How to import and use it</a>
+    </div>
+  </section>
+  
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search a word, a code, or an idea" autocomplete="off">
+    <div class="chips">
+      <button class="filt" data-f="all" aria-pressed="true">All</button>
+      <button class="filt" data-f="skills" aria-pressed="false">Skills</button>
+      <button class="filt" data-f="history" aria-pressed="false">History</button>
+      <button class="filt" data-f="civics" aria-pressed="false">Civics</button>
+      <button class="filt" data-f="geography" aria-pressed="false">Geography</button>
+      <button class="filt" data-f="economics" aria-pressed="false">Economics</button>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+  <main class="grid" id="grid">
+<article class="card" data-strand="skills" data-search="sss1.6-8.1 analyzing positions and the evidence behind them analyze positions and evidence supporting an issue or an event. you analyze a position and its evidence, and explain how it argues against other positions. you analyze a position and the evidence given for it, using specifics from the source. you describe a position and mention evidence, but you don't separate the two. you retell what a source says without finding the position yet.">
+  <header class="card-h"><span class="code">SSS1.6-8.1</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Analyzing positions and the evidence behind them</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze positions and the evidence behind them"><span class="lbl">WALT</span><span class="txt">We are learning to analyze positions and the evidence behind them</span></button>
+    <button class="line" data-copy="I can analyze positions and the evidence behind them."><span class="lbl">I can</span><span class="txt">I can analyze positions and the evidence behind them.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze a position and its evidence, and explain how it argues against other positions."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze a position and its evidence, and explain how it argues against other positions.</span></span></button><button class="lvl lvl-3" data-copy="You analyze a position and the evidence given for it, using specifics from the source."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze a position and the evidence given for it, using specifics from the source.</span></span></button><button class="lvl lvl-2" data-copy="You describe a position and mention evidence, but you don't separate the two."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe a position and mention evidence, but you don't separate the two.</span></span></button><button class="lvl lvl-1" data-copy="You retell what a source says without finding the position yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You retell what a source says without finding the position yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze positions and evidence supporting an issue or an event.</p><p class="grp">SSS1: Uses critical reasoning skills to analyze and evaluate claims.</p></details>
+</article>
+
+<article class="card" data-strand="skills" data-search="sss1.6-8.2 judging whether reasons hold up evaluate the logic of reasons for a position on an issue or event. you decide if the reasons really back up the position, and you look at more than one side before deciding. you decide if the reasons back up the position, and you point to evidence for why you think so. you say what you think about the reasons, but you don't show much evidence for it. you give your opinion without looking at the reasons yet.">
+  <header class="card-h"><span class="code">SSS1.6-8.2</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Judging whether reasons hold up</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to judge whether reasons hold up"><span class="lbl">WALT</span><span class="txt">We are learning to judge whether reasons hold up</span></button>
+    <button class="line" data-copy="I can judge whether reasons hold up."><span class="lbl">I can</span><span class="txt">I can judge whether reasons hold up.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You decide if the reasons really back up the position, and you look at more than one side before deciding."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You decide if the reasons really back up the position, and you look at more than one side before deciding.</span></span></button><button class="lvl lvl-3" data-copy="You decide if the reasons back up the position, and you point to evidence for why you think so."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You decide if the reasons back up the position, and you point to evidence for why you think so.</span></span></button><button class="lvl lvl-2" data-copy="You say what you think about the reasons, but you don't show much evidence for it."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You say what you think about the reasons, but you don't show much evidence for it.</span></span></button><button class="lvl lvl-1" data-copy="You give your opinion without looking at the reasons yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You give your opinion without looking at the reasons yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Evaluate the logic of reasons for a position on an issue or event.</p><p class="grp">SSS1: Uses critical reasoning skills to analyze and evaluate claims.</p></details>
+</article>
+
+<article class="card" data-strand="skills" data-search="sss2.6-8.1 asking questions that drive research create and use research questions to guide inquiry on an issue or event. you write questions that open real research, and you change them as you find new information. you write focused research questions and use them to guide your search. you write questions, but they're too big, too small, or you set them aside once you start. you name a topic without turning it into a question yet.">
+  <header class="card-h"><span class="code">SSS2.6-8.1</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Asking questions that drive research</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to ask questions that drive research"><span class="lbl">WALT</span><span class="txt">We are learning to ask questions that drive research</span></button>
+    <button class="line" data-copy="I can ask questions that drive research."><span class="lbl">I can</span><span class="txt">I can ask questions that drive research.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You write questions that open real research, and you change them as you find new information."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You write questions that open real research, and you change them as you find new information.</span></span></button><button class="lvl lvl-3" data-copy="You write focused research questions and use them to guide your search."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You write focused research questions and use them to guide your search.</span></span></button><button class="lvl lvl-2" data-copy="You write questions, but they're too big, too small, or you set them aside once you start."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You write questions, but they're too big, too small, or you set them aside once you start.</span></span></button><button class="lvl lvl-1" data-copy="You name a topic without turning it into a question yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name a topic without turning it into a question yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Create and use research questions to guide inquiry on an issue or event.</p><p class="grp">SSS2: Uses inquiry-based research.</p></details>
+</article>
+
+<article class="card" data-strand="skills" data-search="sss2.6-8.2 judging whether sources can be trusted evaluate the breadth, reliability, and credibility of primary and secondary sources to determine the need for new or additional information when researching an issue or event. you judge whether a source can be trusted, and you notice what's missing or one-sided in what you found. you judge whether a source can be trusted, and whether you need to find more. you say something about your sources, but you judge them by how they look, not by who made them. you use sources without asking where they came from yet.">
+  <header class="card-h"><span class="code">SSS2.6-8.2</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Judging whether sources can be trusted</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to judge whether sources can be trusted"><span class="lbl">WALT</span><span class="txt">We are learning to judge whether sources can be trusted</span></button>
+    <button class="line" data-copy="I can judge whether sources can be trusted."><span class="lbl">I can</span><span class="txt">I can judge whether sources can be trusted.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You judge whether a source can be trusted, and you notice what's missing or one-sided in what you found."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You judge whether a source can be trusted, and you notice what's missing or one-sided in what you found.</span></span></button><button class="lvl lvl-3" data-copy="You judge whether a source can be trusted, and whether you need to find more."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You judge whether a source can be trusted, and whether you need to find more.</span></span></button><button class="lvl lvl-2" data-copy="You say something about your sources, but you judge them by how they look, not by who made them."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You say something about your sources, but you judge them by how they look, not by who made them.</span></span></button><button class="lvl lvl-1" data-copy="You use sources without asking where they came from yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You use sources without asking where they came from yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Evaluate the breadth, reliability, and credibility of primary and secondary sources to determine the need for new or additional information when researching an issue or event.</p><p class="grp">SSS2: Uses inquiry-based research.</p></details>
+</article>
+
+<article class="card" data-strand="skills" data-search="sss3.6-8.1 discussing an issue from more than one side engage in discussion, analyzing multiple viewpoints on public issues. you analyze several viewpoints in discussion and build on what others say, including views unlike yours. you analyze more than one viewpoint on the issue while discussing it. you take part in discussion, mostly restating one viewpoint. you share an opinion without taking on the other views raised yet.">
+  <header class="card-h"><span class="code">SSS3.6-8.1</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Discussing an issue from more than one side</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to discuss an issue from more than one side"><span class="lbl">WALT</span><span class="txt">We are learning to discuss an issue from more than one side</span></button>
+    <button class="line" data-copy="I can discuss an issue from more than one side."><span class="lbl">I can</span><span class="txt">I can discuss an issue from more than one side.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze several viewpoints in discussion and build on what others say, including views unlike yours."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze several viewpoints in discussion and build on what others say, including views unlike yours.</span></span></button><button class="lvl lvl-3" data-copy="You analyze more than one viewpoint on the issue while discussing it."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze more than one viewpoint on the issue while discussing it.</span></span></button><button class="lvl lvl-2" data-copy="You take part in discussion, mostly restating one viewpoint."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You take part in discussion, mostly restating one viewpoint.</span></span></button><button class="lvl lvl-1" data-copy="You share an opinion without taking on the other views raised yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You share an opinion without taking on the other views raised yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Engage in discussion, analyzing multiple viewpoints on public issues.</p><p class="grp">SSS3: Deliberates public issues.</p></details>
+</article>
+
+<article class="card" data-strand="skills" data-search="sss4.6-8.1 building a product that makes a claim analyze multiple factors, make generalizations, and interpret sources to formulate a thesis in a paper or presentation, while observing rules related to plagiarism and copyright. all the parts build one idea together, and your idea says something people wouldn't guess right away. every part of your work supports the same clear claim. your parts connect to your claim, but some repeat or drift off it. your parts don't add up to a claim yet.">
+  <header class="card-h"><span class="code">SSS4.6-8.1</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Building a product that makes a claim</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to build a product that makes a claim"><span class="lbl">WALT</span><span class="txt">We are learning to build a product that makes a claim</span></button>
+    <button class="line" data-copy="I can build a product that makes a claim."><span class="lbl">I can</span><span class="txt">I can build a product that makes a claim.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="All the parts build one idea together, and your idea says something people wouldn't guess right away."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">All the parts build one idea together, and your idea says something people wouldn't guess right away.</span></span></button><button class="lvl lvl-3" data-copy="Every part of your work supports the same clear claim."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">Every part of your work supports the same clear claim.</span></span></button><button class="lvl lvl-2" data-copy="Your parts connect to your claim, but some repeat or drift off it."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">Your parts connect to your claim, but some repeat or drift off it.</span></span></button><button class="lvl lvl-1" data-copy="Your parts don't add up to a claim yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">Your parts don't add up to a claim yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze multiple factors, make generalizations, and interpret sources to formulate a thesis in a paper or presentation, while observing rules related to plagiarism and copyright.</p><p class="grp">SSS4: Creates a product that uses social studies content to support a thesis, and presents the product in an appropriate manner to a meaningful audience.</p></details>
+</article>
+
+<article class="card" data-strand="skills" data-search="sss4.6-8.2 crediting sources correctly use appropriate format to cite sources within an essay, presentation, and reference page. you cite sources the same way all the way through, and your citations make each source easy to find. you cite your sources in the right format, both in your work and on your reference page. you credit sources, but the format changes or your reference page is missing pieces. you use other people's words or ideas without crediting them yet.">
+  <header class="card-h"><span class="code">SSS4.6-8.2</span><span class="chip chip-skills">Skills</span></header>
+  <h3 class="name">Crediting sources correctly</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to credit sources correctly"><span class="lbl">WALT</span><span class="txt">We are learning to credit sources correctly</span></button>
+    <button class="line" data-copy="I can credit sources correctly."><span class="lbl">I can</span><span class="txt">I can credit sources correctly.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You cite sources the same way all the way through, and your citations make each source easy to find."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You cite sources the same way all the way through, and your citations make each source easy to find.</span></span></button><button class="lvl lvl-3" data-copy="You cite your sources in the right format, both in your work and on your reference page."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You cite your sources in the right format, both in your work and on your reference page.</span></span></button><button class="lvl lvl-2" data-copy="You credit sources, but the format changes or your reference page is missing pieces."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You credit sources, but the format changes or your reference page is missing pieces.</span></span></button><button class="lvl lvl-1" data-copy="You use other people's words or ideas without crediting them yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You use other people's words or ideas without crediting them yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Use appropriate format to cite sources within an essay, presentation, and reference page.</p><p class="grp">SSS4: Creates a product that uses social studies content to support a thesis, and presents the product in an appropriate manner to a meaningful audience.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h1.6-8.6 explaining what makes an era an era explain how themes and developments help to define eras in united states history from 1763 to 1877, including: fighting for independence (1763-1783); establishing the new nation (1781-1815); slavery, expansion, removal, and reform (1801-1850); civil war and reconstruction (1850-1877) you explain what defines an era, and show where one era bleeds into the next. you explain how themes and events define an era in u.s. history between 1763 and 1877. you place events in time but don't explain what ties an era together. you can name events without placing them in an era yet.">
+  <header class="card-h"><span class="code">H1.6-8.6</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Explaining what makes an era an era</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain what makes an era an era"><span class="lbl">WALT</span><span class="txt">We are learning to explain what makes an era an era</span></button>
+    <button class="line" data-copy="I can explain what makes an era an era."><span class="lbl">I can</span><span class="txt">I can explain what makes an era an era.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain what defines an era, and show where one era bleeds into the next."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain what defines an era, and show where one era bleeds into the next.</span></span></button><button class="lvl lvl-3" data-copy="You explain how themes and events define an era in U.S. history between 1763 and 1877."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain how themes and events define an era in U.S. history between 1763 and 1877.</span></span></button><button class="lvl lvl-2" data-copy="You place events in time but don't explain what ties an era together."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You place events in time but don't explain what ties an era together.</span></span></button><button class="lvl lvl-1" data-copy="You can name events without placing them in an era yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name events without placing them in an era yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain how themes and developments help to define eras in United States history from 1763 to 1877, including: Fighting for independence (1763-1783); Establishing the new nation (1781-1815); Slavery, expansion, removal, and reform (1801-1850); Civil War and Reconstruction (1850-1877)</p><p class="grp">H1: Understands historical chronology.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h2.6-8.5 analyzing how people and movements changed history explain and analyze how individuals and movements have shaped united states history (1763-1877). you analyze how a person or a movement changed history, and weigh how much they changed against what was already moving. you explain and analyze how an individual or a movement shaped u.s. history. you describe what a person or movement did without showing what changed because of it. you name people or movements without their impact yet.">
+  <header class="card-h"><span class="code">H2.6-8.5</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Analyzing how people and movements changed history</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze how people and movements changed history"><span class="lbl">WALT</span><span class="txt">We are learning to analyze how people and movements changed history</span></button>
+    <button class="line" data-copy="I can analyze how people and movements changed history."><span class="lbl">I can</span><span class="txt">I can analyze how people and movements changed history.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how a person or a movement changed history, and weigh how much they changed against what was already moving."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how a person or a movement changed history, and weigh how much they changed against what was already moving.</span></span></button><button class="lvl lvl-3" data-copy="You explain and analyze how an individual or a movement shaped U.S. history."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain and analyze how an individual or a movement shaped U.S. history.</span></span></button><button class="lvl lvl-2" data-copy="You describe what a person or movement did without showing what changed because of it."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe what a person or movement did without showing what changed because of it.</span></span></button><button class="lvl lvl-1" data-copy="You name people or movements without their impact yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name people or movements without their impact yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain and analyze how individuals and movements have shaped United States history (1763-1877).</p><p class="grp">H2: Understands and analyzes causal factors that have shaped major events in history.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h2.6-8.6 analyzing what different groups contributed explain and analyze how cultures and cultural and ethnic groups have contributed to united states history (1763-1877). you analyze what a cultural or ethnic group contributed, and explain why that contribution is often left out. you explain and analyze how a cultural or ethnic group shaped u.s. history. you name a group’s contribution without analyzing its effect. you name groups without their contributions yet.">
+  <header class="card-h"><span class="code">H2.6-8.6</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Analyzing what different groups contributed</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze what different groups contributed"><span class="lbl">WALT</span><span class="txt">We are learning to analyze what different groups contributed</span></button>
+    <button class="line" data-copy="I can analyze what different groups contributed."><span class="lbl">I can</span><span class="txt">I can analyze what different groups contributed.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze what a cultural or ethnic group contributed, and explain why that contribution is often left out."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze what a cultural or ethnic group contributed, and explain why that contribution is often left out.</span></span></button><button class="lvl lvl-3" data-copy="You explain and analyze how a cultural or ethnic group shaped U.S. history."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain and analyze how a cultural or ethnic group shaped U.S. history.</span></span></button><button class="lvl lvl-2" data-copy="You name a group’s contribution without analyzing its effect."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name a group’s contribution without analyzing its effect.</span></span></button><button class="lvl lvl-1" data-copy="You name groups without their contributions yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name groups without their contributions yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain and analyze how cultures and cultural and ethnic groups have contributed to United States history (1763-1877).</p><p class="grp">H2: Understands and analyzes causal factors that have shaped major events in history.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h2.6-8.7 analyzing how technology and ideas changed history explain and analyze how technology and ideas have impacted united states history (1763-1877). you analyze how a technology or an idea changed history, and follow effects people didn't expect. you explain and analyze how a technology or an idea changed u.s. history. you describe a technology or an idea without showing what it changed. you name inventions or ideas without their impact yet.">
+  <header class="card-h"><span class="code">H2.6-8.7</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Analyzing how technology and ideas changed history</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze how technology and ideas changed history"><span class="lbl">WALT</span><span class="txt">We are learning to analyze how technology and ideas changed history</span></button>
+    <button class="line" data-copy="I can analyze how technology and ideas changed history."><span class="lbl">I can</span><span class="txt">I can analyze how technology and ideas changed history.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how a technology or an idea changed history, and follow effects people didn't expect."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how a technology or an idea changed history, and follow effects people didn't expect.</span></span></button><button class="lvl lvl-3" data-copy="You explain and analyze how a technology or an idea changed U.S. history."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain and analyze how a technology or an idea changed U.S. history.</span></span></button><button class="lvl lvl-2" data-copy="You describe a technology or an idea without showing what it changed."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe a technology or an idea without showing what it changed.</span></span></button><button class="lvl lvl-1" data-copy="You name inventions or ideas without their impact yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name inventions or ideas without their impact yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain and analyze how technology and ideas have impacted United States history (1763-1877).</p><p class="grp">H2: Understands and analyzes causal factors that have shaped major events in history.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h3.6-8.4 reading history from more than one perspective analyze and interpret historical materials from a variety of perspectives in united states history (1763-1877). you interpret sources from several perspectives, and explain why the same event looks different to each. you analyze historical sources from more than one perspective. you read sources but stay inside one perspective. you retell what a source says without asking whose view it is yet.">
+  <header class="card-h"><span class="code">H3.6-8.4</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Reading history from more than one perspective</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to read history from more than one perspective"><span class="lbl">WALT</span><span class="txt">We are learning to read history from more than one perspective</span></button>
+    <button class="line" data-copy="I can read history from more than one perspective."><span class="lbl">I can</span><span class="txt">I can read history from more than one perspective.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You interpret sources from several perspectives, and explain why the same event looks different to each."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You interpret sources from several perspectives, and explain why the same event looks different to each.</span></span></button><button class="lvl lvl-3" data-copy="You analyze historical sources from more than one perspective."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze historical sources from more than one perspective.</span></span></button><button class="lvl lvl-2" data-copy="You read sources but stay inside one perspective."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You read sources but stay inside one perspective.</span></span></button><button class="lvl lvl-1" data-copy="You retell what a source says without asking whose view it is yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You retell what a source says without asking whose view it is yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze and interpret historical materials from a variety of perspectives in United States history (1763-1877).</p><p class="grp">H3: Understands that there are multiple perspectives and interpretations of historical events.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h3.6-8.5 taking a position using more than one cause analyze multiple causal factors to create positions on major events in united states history (1763-1877). you take a position using several causes, and judge which mattered most and why. you analyze more than one cause of a major event and take a position based on them. you name causes but your position rests on only one. you state a position without causes behind it yet.">
+  <header class="card-h"><span class="code">H3.6-8.5</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Taking a position using more than one cause</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to take a position using more than one cause"><span class="lbl">WALT</span><span class="txt">We are learning to take a position using more than one cause</span></button>
+    <button class="line" data-copy="I can take a position using more than one cause."><span class="lbl">I can</span><span class="txt">I can take a position using more than one cause.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You take a position using several causes, and judge which mattered most and why."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You take a position using several causes, and judge which mattered most and why.</span></span></button><button class="lvl lvl-3" data-copy="You analyze more than one cause of a major event and take a position based on them."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze more than one cause of a major event and take a position based on them.</span></span></button><button class="lvl lvl-2" data-copy="You name causes but your position rests on only one."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name causes but your position rests on only one.</span></span></button><button class="lvl lvl-1" data-copy="You state a position without causes behind it yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You state a position without causes behind it yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze multiple causal factors to create positions on major events in United States history (1763-1877).</p><p class="grp">H3: Understands that there are multiple perspectives and interpretations of historical events.</p></details>
+</article>
+
+<article class="card" data-strand="history" data-search="h4.6-8.3 using the past to understand today analyze how a historical event in united states history helps us to understand contemporary issues and events. you analyze how a past event helps explain an issue today, and name where the comparison stops working. you analyze how an event in u.s. history helps you understand an issue happening now. you connect past and present, but the link stays on the surface. you describe a past event without connecting it to today yet.">
+  <header class="card-h"><span class="code">H4.6-8.3</span><span class="chip chip-history">History</span></header>
+  <h3 class="name">Using the past to understand today</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to use the past to understand today"><span class="lbl">WALT</span><span class="txt">We are learning to use the past to understand today</span></button>
+    <button class="line" data-copy="I can use the past to understand today."><span class="lbl">I can</span><span class="txt">I can use the past to understand today.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how a past event helps explain an issue today, and name where the comparison stops working."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how a past event helps explain an issue today, and name where the comparison stops working.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how an event in U.S. history helps you understand an issue happening now."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how an event in U.S. history helps you understand an issue happening now.</span></span></button><button class="lvl lvl-2" data-copy="You connect past and present, but the link stays on the surface."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You connect past and present, but the link stays on the surface.</span></span></button><button class="lvl lvl-1" data-copy="You describe a past event without connecting it to today yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You describe a past event without connecting it to today yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze how a historical event in United States history helps us to understand contemporary issues and events.</p><p class="grp">H4: Understands how historical events inform analysis of contemporary issues and events.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c1.6-8.3 explaining america's founding ideals explain key ideals and principles outlined in the declaration of independence, including life, liberty, and the pursuit of happiness; the u.s. constitution, including the rule of law, separation of powers, representative government, and popular sovereignty; and, the bill of rights, including due process and freedom of expression. you explain what the founding ideals mean and show how they connect to each other. you explain what key ideals like liberty, rule of law, and due process mean, using the documents. you name founding ideals but explain only some of them, or mix them up. you can list words from the documents but not say what they mean yet.">
+  <header class="card-h"><span class="code">C1.6-8.3</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Explaining America's founding ideals</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain America's founding ideals"><span class="lbl">WALT</span><span class="txt">We are learning to explain America's founding ideals</span></button>
+    <button class="line" data-copy="I can explain America's founding ideals."><span class="lbl">I can</span><span class="txt">I can explain America's founding ideals.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain what the founding ideals mean and show how they connect to each other."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain what the founding ideals mean and show how they connect to each other.</span></span></button><button class="lvl lvl-3" data-copy="You explain what key ideals like liberty, rule of law, and due process mean, using the documents."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain what key ideals like liberty, rule of law, and due process mean, using the documents.</span></span></button><button class="lvl lvl-2" data-copy="You name founding ideals but explain only some of them, or mix them up."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name founding ideals but explain only some of them, or mix them up.</span></span></button><button class="lvl lvl-1" data-copy="You can list words from the documents but not say what they mean yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can list words from the documents but not say what they mean yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain key ideals and principles outlined in the Declaration of Independence, including life, liberty, and the pursuit of happiness; the U.S. Constitution, including the rule of law, separation of powers, representative government, and popular sovereignty; and, the Bill of Rights, including due process and freedom of expression.</p><p class="grp">C1: Understands key ideals and principles of the United States, including those in the Declaration of Independence, Constitution, and other foundational documents.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c1.6-8.4 judging how far america has closed the gap between promise and reality evaluate efforts to reduce discrepancies between key ideals and reality in the united states. you judge how much an effort closed the gap between an ideal and real life, and weigh what it did and didn't fix. you judge how well an effort closed the gap between an american ideal and real life, using evidence. you describe an effort and the gap, but you don't judge how well it worked. you name an ideal or a problem without connecting the two yet.">
+  <header class="card-h"><span class="code">C1.6-8.4</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Judging how far America has closed the gap between promise and reality</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to judge how far America has closed the gap between promise and reality"><span class="lbl">WALT</span><span class="txt">We are learning to judge how far America has closed the gap between promise and reality</span></button>
+    <button class="line" data-copy="I can judge how far America has closed the gap between promise and reality."><span class="lbl">I can</span><span class="txt">I can judge how far America has closed the gap between promise and reality.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You judge how much an effort closed the gap between an ideal and real life, and weigh what it did and didn't fix."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You judge how much an effort closed the gap between an ideal and real life, and weigh what it did and didn't fix.</span></span></button><button class="lvl lvl-3" data-copy="You judge how well an effort closed the gap between an American ideal and real life, using evidence."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You judge how well an effort closed the gap between an American ideal and real life, using evidence.</span></span></button><button class="lvl lvl-2" data-copy="You describe an effort and the gap, but you don't judge how well it worked."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe an effort and the gap, but you don't judge how well it worked.</span></span></button><button class="lvl lvl-1" data-copy="You name an ideal or a problem without connecting the two yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name an ideal or a problem without connecting the two yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Evaluate efforts to reduce discrepancies between key ideals and reality in the United States.</p><p class="grp">C1: Understands key ideals and principles of the United States, including those in the Declaration of Independence, Constitution, and other foundational documents.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c2.6-8.3 analyzing how the national government is built analyze the structure and powers of government at the national level. you analyze how the branches are built and powered, and explain how their powers depend on each other. you analyze the structure of the national government and what powers each part holds. you name the branches and some powers, but the analysis stays general. you can name parts of the government but not what they do yet.">
+  <header class="card-h"><span class="code">C2.6-8.3</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Analyzing how the national government is built</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze how the national government is built"><span class="lbl">WALT</span><span class="txt">We are learning to analyze how the national government is built</span></button>
+    <button class="line" data-copy="I can analyze how the national government is built."><span class="lbl">I can</span><span class="txt">I can analyze how the national government is built.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how the branches are built and powered, and explain how their powers depend on each other."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how the branches are built and powered, and explain how their powers depend on each other.</span></span></button><button class="lvl lvl-3" data-copy="You analyze the structure of the national government and what powers each part holds."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze the structure of the national government and what powers each part holds.</span></span></button><button class="lvl lvl-2" data-copy="You name the branches and some powers, but the analysis stays general."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name the branches and some powers, but the analysis stays general.</span></span></button><button class="lvl lvl-1" data-copy="You can name parts of the government but not what they do yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name parts of the government but not what they do yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze the structure and powers of government at the national level.</p><p class="grp">C2: Understands the purposes, organization, and function of governments, laws, and political systems.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c2.6-8.4 using how government works to tackle an issue use knowledge of the function of government to analyze and address a political issue. you analyze an issue using how government works, and propose a step that fits the part of government that can actually act. you use what you know about how government works to analyze a political issue and suggest a response. you describe the issue, but you don't connect it to how government works. you state an opinion on the issue without using how government works yet.">
+  <header class="card-h"><span class="code">C2.6-8.4</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Using how government works to tackle an issue</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to use how government works to tackle an issue"><span class="lbl">WALT</span><span class="txt">We are learning to use how government works to tackle an issue</span></button>
+    <button class="line" data-copy="I can use how government works to tackle an issue."><span class="lbl">I can</span><span class="txt">I can use how government works to tackle an issue.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze an issue using how government works, and propose a step that fits the part of government that can actually act."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze an issue using how government works, and propose a step that fits the part of government that can actually act.</span></span></button><button class="lvl lvl-3" data-copy="You use what you know about how government works to analyze a political issue and suggest a response."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You use what you know about how government works to analyze a political issue and suggest a response.</span></span></button><button class="lvl lvl-2" data-copy="You describe the issue, but you don't connect it to how government works."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe the issue, but you don't connect it to how government works.</span></span></button><button class="lvl lvl-1" data-copy="You state an opinion on the issue without using how government works yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You state an opinion on the issue without using how government works yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Use knowledge of the function of government to analyze and address a political issue.</p><p class="grp">C2: Understands the purposes, organization, and function of governments, laws, and political systems.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c2.6-8.5 judging whether checks and balances worked evaluate the effectiveness of the system of checks and balances in the united states based on an event. you judge how well checks and balances worked in an event, and weigh more than one view of the result. you judge how well checks and balances worked in a real event, using evidence from it. you describe the event and name a check, but you don't judge how well it worked. you can name checks and balances but not apply them to an event yet.">
+  <header class="card-h"><span class="code">C2.6-8.5</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Judging whether checks and balances worked</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to judge whether checks and balances worked"><span class="lbl">WALT</span><span class="txt">We are learning to judge whether checks and balances worked</span></button>
+    <button class="line" data-copy="I can judge whether checks and balances worked."><span class="lbl">I can</span><span class="txt">I can judge whether checks and balances worked.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You judge how well checks and balances worked in an event, and weigh more than one view of the result."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You judge how well checks and balances worked in an event, and weigh more than one view of the result.</span></span></button><button class="lvl lvl-3" data-copy="You judge how well checks and balances worked in a real event, using evidence from it."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You judge how well checks and balances worked in a real event, using evidence from it.</span></span></button><button class="lvl lvl-2" data-copy="You describe the event and name a check, but you don't judge how well it worked."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe the event and name a check, but you don't judge how well it worked.</span></span></button><button class="lvl lvl-1" data-copy="You can name checks and balances but not apply them to an event yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name checks and balances but not apply them to an event yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Evaluate the effectiveness of the system of checks and balances in the United States based on an event.</p><p class="grp">C2: Understands the purposes, organization, and function of governments, laws, and political systems.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c2.6-8.6 showing the u.s. is both a democracy and a republic demonstrate that the u.s. government includes concepts of both a democracy and a republic. you show where the government is democratic and where it is a republic, and explain why it was built with both. you show, with examples, how the u.s. government works as both a democracy and a republic. you define the terms but give examples for only one of them. you can name the terms but not show them in the government yet.">
+  <header class="card-h"><span class="code">C2.6-8.6</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Showing the U.S. is both a democracy and a republic</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to show the U.S. is both a democracy and a republic"><span class="lbl">WALT</span><span class="txt">We are learning to show the U.S. is both a democracy and a republic</span></button>
+    <button class="line" data-copy="I can show the U.S. is both a democracy and a republic."><span class="lbl">I can</span><span class="txt">I can show the U.S. is both a democracy and a republic.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You show where the government is democratic and where it is a republic, and explain why it was built with both."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You show where the government is democratic and where it is a republic, and explain why it was built with both.</span></span></button><button class="lvl lvl-3" data-copy="You show, with examples, how the U.S. government works as both a democracy and a republic."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You show, with examples, how the U.S. government works as both a democracy and a republic.</span></span></button><button class="lvl lvl-2" data-copy="You define the terms but give examples for only one of them."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You define the terms but give examples for only one of them.</span></span></button><button class="lvl lvl-1" data-copy="You can name the terms but not show them in the government yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name the terms but not show them in the government yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Demonstrate that the U.S. government includes concepts of both a democracy and a republic.</p><p class="grp">C2: Understands the purposes, organization, and function of governments, laws, and political systems.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c3.6-8.5 identifying early u.s. foreign policy identify early examples of foreign policy between the united states and other nations. you identify early foreign policy examples and explain what the young nation was trying to protect. you identify early examples of how the united states dealt with other nations. you name an event involving another country but not the policy behind it. you can name other countries but not how the u.s. dealt with them yet.">
+  <header class="card-h"><span class="code">C3.6-8.5</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Identifying early U.S. foreign policy</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to identify early U.S. foreign policy"><span class="lbl">WALT</span><span class="txt">We are learning to identify early U.S. foreign policy</span></button>
+    <button class="line" data-copy="I can identify early U.S. foreign policy."><span class="lbl">I can</span><span class="txt">I can identify early U.S. foreign policy.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You identify early foreign policy examples and explain what the young nation was trying to protect."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You identify early foreign policy examples and explain what the young nation was trying to protect.</span></span></button><button class="lvl lvl-3" data-copy="You identify early examples of how the United States dealt with other nations."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You identify early examples of how the United States dealt with other nations.</span></span></button><button class="lvl lvl-2" data-copy="You name an event involving another country but not the policy behind it."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name an event involving another country but not the policy behind it.</span></span></button><button class="lvl lvl-1" data-copy="You can name other countries but not how the U.S. dealt with them yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name other countries but not how the U.S. dealt with them yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Identify early examples of foreign policy between the United States and other nations.</p><p class="grp">C3: Understands the purposes and organization of tribal and international relationships and U.S. foreign policy.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c3.6-8.6 analyzing how the u.s. deals with other countries analyze how the united states has interacted with other countries. you analyze how the u.s. interacted with another country, and explain how both sides were affected. you analyze how the united states interacted with another country, using evidence. you describe an interaction but stop before explaining why it happened or what changed. you name countries the u.s. dealt with without explaining how yet.">
+  <header class="card-h"><span class="code">C3.6-8.6</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Analyzing how the U.S. deals with other countries</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze how the U.S. deals with other countries"><span class="lbl">WALT</span><span class="txt">We are learning to analyze how the U.S. deals with other countries</span></button>
+    <button class="line" data-copy="I can analyze how the U.S. deals with other countries."><span class="lbl">I can</span><span class="txt">I can analyze how the U.S. deals with other countries.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how the U.S. interacted with another country, and explain how both sides were affected."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how the U.S. interacted with another country, and explain how both sides were affected.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how the United States interacted with another country, using evidence."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how the United States interacted with another country, using evidence.</span></span></button><button class="lvl lvl-2" data-copy="You describe an interaction but stop before explaining why it happened or what changed."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe an interaction but stop before explaining why it happened or what changed.</span></span></button><button class="lvl lvl-1" data-copy="You name countries the U.S. dealt with without explaining how yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name countries the U.S. dealt with without explaining how yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze how the United States has interacted with other countries.</p><p class="grp">C3: Understands the purposes and organization of tribal and international relationships and U.S. foreign policy.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c4.6-8.4 analyzing rights versus the common good analyze how a claim on an issue attempts to balance individual rights and the common good. you analyze how a claim balances individual rights and the common good, and explain what it costs each side. you analyze how a claim tries to balance individual rights with the good of everyone. you name the rights or the common good, but you don't show the balance between them. you give an opinion on the issue without weighing rights against the common good yet.">
+  <header class="card-h"><span class="code">C4.6-8.4</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Analyzing rights versus the common good</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze rights versus the common good"><span class="lbl">WALT</span><span class="txt">We are learning to analyze rights versus the common good</span></button>
+    <button class="line" data-copy="I can analyze rights versus the common good."><span class="lbl">I can</span><span class="txt">I can analyze rights versus the common good.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how a claim balances individual rights and the common good, and explain what it costs each side."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how a claim balances individual rights and the common good, and explain what it costs each side.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how a claim tries to balance individual rights with the good of everyone."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how a claim tries to balance individual rights with the good of everyone.</span></span></button><button class="lvl lvl-2" data-copy="You name the rights or the common good, but you don't show the balance between them."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name the rights or the common good, but you don't show the balance between them.</span></span></button><button class="lvl lvl-1" data-copy="You give an opinion on the issue without weighing rights against the common good yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You give an opinion on the issue without weighing rights against the common good yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze how a claim on an issue attempts to balance individual rights and the common good.</p><p class="grp">C4: Understands civic involvement.</p></details>
+</article>
+
+<article class="card" data-strand="civics" data-search="c4.6-8.5 taking civic action on a national issue employ strategies for civic involvement that address a national issue. you use a strategy for civic action and explain why it fits this issue and this audience. you use a real strategy for civic involvement to address a national issue. you name a way to get involved but don't connect it to the issue. you describe a national issue without a plan to act on it yet.">
+  <header class="card-h"><span class="code">C4.6-8.5</span><span class="chip chip-civics">Civics</span></header>
+  <h3 class="name">Taking civic action on a national issue</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to take civic action on a national issue"><span class="lbl">WALT</span><span class="txt">We are learning to take civic action on a national issue</span></button>
+    <button class="line" data-copy="I can take civic action on a national issue."><span class="lbl">I can</span><span class="txt">I can take civic action on a national issue.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You use a strategy for civic action and explain why it fits this issue and this audience."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You use a strategy for civic action and explain why it fits this issue and this audience.</span></span></button><button class="lvl lvl-3" data-copy="You use a real strategy for civic involvement to address a national issue."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You use a real strategy for civic involvement to address a national issue.</span></span></button><button class="lvl lvl-2" data-copy="You name a way to get involved but don't connect it to the issue."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name a way to get involved but don't connect it to the issue.</span></span></button><button class="lvl lvl-1" data-copy="You describe a national issue without a plan to act on it yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You describe a national issue without a plan to act on it yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Employ strategies for civic involvement that address a national issue.</p><p class="grp">C4: Understands civic involvement.</p></details>
+</article>
+
+<article class="card" data-strand="geography" data-search="g1.6-8.5 explaining what makes a place what it is explain and analyze physical and cultural characteristics of places and regions in the united states. you analyze the physical and cultural features of a region, and explain how they shape each other. you explain and analyze the physical and cultural features of a u.s. place or region. you describe features of a place but treat physical and cultural ones separately. you name places without describing what makes them different yet.">
+  <header class="card-h"><span class="code">G1.6-8.5</span><span class="chip chip-geography">Geography</span></header>
+  <h3 class="name">Explaining what makes a place what it is</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain what makes a place what it is"><span class="lbl">WALT</span><span class="txt">We are learning to explain what makes a place what it is</span></button>
+    <button class="line" data-copy="I can explain what makes a place what it is."><span class="lbl">I can</span><span class="txt">I can explain what makes a place what it is.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze the physical and cultural features of a region, and explain how they shape each other."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze the physical and cultural features of a region, and explain how they shape each other.</span></span></button><button class="lvl lvl-3" data-copy="You explain and analyze the physical and cultural features of a U.S. place or region."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain and analyze the physical and cultural features of a U.S. place or region.</span></span></button><button class="lvl lvl-2" data-copy="You describe features of a place but treat physical and cultural ones separately."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe features of a place but treat physical and cultural ones separately.</span></span></button><button class="lvl lvl-1" data-copy="You name places without describing what makes them different yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name places without describing what makes them different yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain and analyze physical and cultural characteristics of places and regions in the United States.</p><p class="grp">G1: Understands the physical characteristics, cultural characteristics, and location of places, regions, and spatial patterns on the Earth’s surface.</p></details>
+</article>
+
+<article class="card" data-strand="geography" data-search="g1.6-8.6 reading maps to explain why location matters use maps, satellite images, photographs, and other representations to explain relationships between the locations of places and regions and their political, cultural, and economic dynamics. you use maps and images to explain how location shaped politics, culture, or money, and you notice what the map leaves out. you use maps, images, or other sources to explain how a place's location affects life there. you read information off a map but don't connect location to what happens there. you can find places on a map but not explain why location matters yet.">
+  <header class="card-h"><span class="code">G1.6-8.6</span><span class="chip chip-geography">Geography</span></header>
+  <h3 class="name">Reading maps to explain why location matters</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to read maps to explain why location matters"><span class="lbl">WALT</span><span class="txt">We are learning to read maps to explain why location matters</span></button>
+    <button class="line" data-copy="I can read maps to explain why location matters."><span class="lbl">I can</span><span class="txt">I can read maps to explain why location matters.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You use maps and images to explain how location shaped politics, culture, or money, and you notice what the map leaves out."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You use maps and images to explain how location shaped politics, culture, or money, and you notice what the map leaves out.</span></span></button><button class="lvl lvl-3" data-copy="You use maps, images, or other sources to explain how a place's location affects life there."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You use maps, images, or other sources to explain how a place's location affects life there.</span></span></button><button class="lvl lvl-2" data-copy="You read information off a map but don't connect location to what happens there."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You read information off a map but don't connect location to what happens there.</span></span></button><button class="lvl lvl-1" data-copy="You can find places on a map but not explain why location matters yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can find places on a map but not explain why location matters yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Use maps, satellite images, photographs, and other representations to explain relationships between the locations of places and regions and their political, cultural, and economic dynamics.</p><p class="grp">G1: Understands the physical characteristics, cultural characteristics, and location of places, regions, and spatial patterns on the Earth’s surface.</p></details>
+</article>
+
+<article class="card" data-strand="geography" data-search="g2.6-8.6 analyzing how people and the environment change each other analyze how the environment has affected people and how people have affected the environment in the united states in the past or present. you analyze how the environment shaped people and how people changed the environment, and you connect the two directions. you analyze how the environment affected people and how people affected the environment. you analyze one direction of the relationship, not both. you name an environmental feature without connecting it to people yet.">
+  <header class="card-h"><span class="code">G2.6-8.6</span><span class="chip chip-geography">Geography</span></header>
+  <h3 class="name">Analyzing how people and the environment change each other</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze how people and the environment change each other"><span class="lbl">WALT</span><span class="txt">We are learning to analyze how people and the environment change each other</span></button>
+    <button class="line" data-copy="I can analyze how people and the environment change each other."><span class="lbl">I can</span><span class="txt">I can analyze how people and the environment change each other.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how the environment shaped people and how people changed the environment, and you connect the two directions."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how the environment shaped people and how people changed the environment, and you connect the two directions.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how the environment affected people and how people affected the environment."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how the environment affected people and how people affected the environment.</span></span></button><button class="lvl lvl-2" data-copy="You analyze one direction of the relationship, not both."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You analyze one direction of the relationship, not both.</span></span></button><button class="lvl lvl-1" data-copy="You name an environmental feature without connecting it to people yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name an environmental feature without connecting it to people yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze how the environment has affected people and how people have affected the environment in the United States in the past or present.</p><p class="grp">G2: Understands human interaction with the environment.</p></details>
+</article>
+
+<article class="card" data-strand="geography" data-search="g2.6-8.7 explaining how culture spreads explain cultural diffusion in the united states from the past or in the present. you explain how a cultural practice spread, and what changed about it along the way. you explain how a cultural practice, idea, or product spread from one group to another. you name cultures in contact but don't trace what spread. you name cultural practices without explaining how they traveled yet.">
+  <header class="card-h"><span class="code">G2.6-8.7</span><span class="chip chip-geography">Geography</span></header>
+  <h3 class="name">Explaining how culture spreads</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain how culture spreads"><span class="lbl">WALT</span><span class="txt">We are learning to explain how culture spreads</span></button>
+    <button class="line" data-copy="I can explain how culture spreads."><span class="lbl">I can</span><span class="txt">I can explain how culture spreads.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain how a cultural practice spread, and what changed about it along the way."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain how a cultural practice spread, and what changed about it along the way.</span></span></button><button class="lvl lvl-3" data-copy="You explain how a cultural practice, idea, or product spread from one group to another."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain how a cultural practice, idea, or product spread from one group to another.</span></span></button><button class="lvl lvl-2" data-copy="You name cultures in contact but don't trace what spread."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You name cultures in contact but don't trace what spread.</span></span></button><button class="lvl lvl-1" data-copy="You name cultural practices without explaining how they traveled yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name cultural practices without explaining how they traveled yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain cultural diffusion in the United States from the past or in the present.</p><p class="grp">G2: Understands human interaction with the environment.</p></details>
+</article>
+
+<article class="card" data-strand="geography" data-search="g2.6-8.8 analyzing how migration grew the country explain and analyze migration as a catalyst for the growth of the united states in the past or present. you analyze how migration drove growth, and explain what it cost the people who moved and the people already there. you explain and analyze how migration helped the united states grow. you describe people moving without connecting it to growth. you name groups who migrated without explaining the effect yet.">
+  <header class="card-h"><span class="code">G2.6-8.8</span><span class="chip chip-geography">Geography</span></header>
+  <h3 class="name">Analyzing how migration grew the country</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze how migration grew the country"><span class="lbl">WALT</span><span class="txt">We are learning to analyze how migration grew the country</span></button>
+    <button class="line" data-copy="I can analyze how migration grew the country."><span class="lbl">I can</span><span class="txt">I can analyze how migration grew the country.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how migration drove growth, and explain what it cost the people who moved and the people already there."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how migration drove growth, and explain what it cost the people who moved and the people already there.</span></span></button><button class="lvl lvl-3" data-copy="You explain and analyze how migration helped the United States grow."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain and analyze how migration helped the United States grow.</span></span></button><button class="lvl lvl-2" data-copy="You describe people moving without connecting it to growth."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe people moving without connecting it to growth.</span></span></button><button class="lvl lvl-1" data-copy="You name groups who migrated without explaining the effect yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name groups who migrated without explaining the effect yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain and analyze migration as a catalyst for the growth of the United States in the past or present.</p><p class="grp">G2: Understands human interaction with the environment.</p></details>
+</article>
+
+<article class="card" data-strand="geography" data-search="g3.6-8.3 connecting u.s. geography to global issues explain how learning about the geography of the united states helps us understand global issues such as diversity, trade, and sustainability. you explain how u.s. geography helps make sense of a global issue, and where the comparison breaks down. you explain how learning u.s. geography helps you understand a global issue like trade, diversity, or sustainability. you describe a global issue without connecting it to geography. you name global issues without linking them to place yet.">
+  <header class="card-h"><span class="code">G3.6-8.3</span><span class="chip chip-geography">Geography</span></header>
+  <h3 class="name">Connecting U.S. geography to global issues</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to connect U.S. geography to global issues"><span class="lbl">WALT</span><span class="txt">We are learning to connect U.S. geography to global issues</span></button>
+    <button class="line" data-copy="I can connect U.S. geography to global issues."><span class="lbl">I can</span><span class="txt">I can connect U.S. geography to global issues.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain how U.S. geography helps make sense of a global issue, and where the comparison breaks down."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain how U.S. geography helps make sense of a global issue, and where the comparison breaks down.</span></span></button><button class="lvl lvl-3" data-copy="You explain how learning U.S. geography helps you understand a global issue like trade, diversity, or sustainability."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain how learning U.S. geography helps you understand a global issue like trade, diversity, or sustainability.</span></span></button><button class="lvl lvl-2" data-copy="You describe a global issue without connecting it to geography."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe a global issue without connecting it to geography.</span></span></button><button class="lvl lvl-1" data-copy="You name global issues without linking them to place yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name global issues without linking them to place yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain how learning about the geography of the United States helps us understand global issues such as diversity, trade, and sustainability.</p><p class="grp">G3: Understands the geographic context of global issues and events.</p></details>
+</article>
+
+<article class="card" data-strand="economics" data-search="e1.6-8.3 analyzing money-versus-values choices analyze examples of how groups and individuals have considered profit and personal values in making economic choices in the past or present. you analyze an economic choice and explain how profit and personal values pulled against each other. you analyze an economic choice, showing how profit and personal values shaped it. you describe the choice but account for only profit or only values. you name an economic choice without explaining what shaped it yet.">
+  <header class="card-h"><span class="code">E1.6-8.3</span><span class="chip chip-economics">Economics</span></header>
+  <h3 class="name">Analyzing money-versus-values choices</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze money-versus-values choices"><span class="lbl">WALT</span><span class="txt">We are learning to analyze money-versus-values choices</span></button>
+    <button class="line" data-copy="I can analyze money-versus-values choices."><span class="lbl">I can</span><span class="txt">I can analyze money-versus-values choices.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze an economic choice and explain how profit and personal values pulled against each other."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze an economic choice and explain how profit and personal values pulled against each other.</span></span></button><button class="lvl lvl-3" data-copy="You analyze an economic choice, showing how profit and personal values shaped it."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze an economic choice, showing how profit and personal values shaped it.</span></span></button><button class="lvl lvl-2" data-copy="You describe the choice but account for only profit or only values."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe the choice but account for only profit or only values.</span></span></button><button class="lvl lvl-1" data-copy="You name an economic choice without explaining what shaped it yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name an economic choice without explaining what shaped it yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze examples of how groups and individuals have considered profit and personal values in making economic choices in the past or present.</p><p class="grp">E1: Understands that people have to make choices between wants and needs and evaluates the outcomes of those choices.</p></details>
+</article>
+
+<article class="card" data-strand="economics" data-search="e2.6-8.5 analyzing supply and demand analyze how the forces of supply and demand have affected the production, distribution, and consumption of goods, services, and resources in the united states in the past or present. you analyze how supply and demand changed what was made, moved, or bought, and trace the chain of effects. you analyze how supply and demand affected what was produced, sold, or used. you define supply and demand but apply them only loosely to the example. you name a product or a price without connecting it to supply and demand yet.">
+  <header class="card-h"><span class="code">E2.6-8.5</span><span class="chip chip-economics">Economics</span></header>
+  <h3 class="name">Analyzing supply and demand</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze supply and demand"><span class="lbl">WALT</span><span class="txt">We are learning to analyze supply and demand</span></button>
+    <button class="line" data-copy="I can analyze supply and demand."><span class="lbl">I can</span><span class="txt">I can analyze supply and demand.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how supply and demand changed what was made, moved, or bought, and trace the chain of effects."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how supply and demand changed what was made, moved, or bought, and trace the chain of effects.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how supply and demand affected what was produced, sold, or used."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how supply and demand affected what was produced, sold, or used.</span></span></button><button class="lvl lvl-2" data-copy="You define supply and demand but apply them only loosely to the example."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You define supply and demand but apply them only loosely to the example.</span></span></button><button class="lvl lvl-1" data-copy="You name a product or a price without connecting it to supply and demand yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name a product or a price without connecting it to supply and demand yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze how the forces of supply and demand have affected the production, distribution, and consumption of goods, services, and resources in the United States in the past or present.</p><p class="grp">E2: Understands how economic systems function.</p></details>
+</article>
+
+<article class="card" data-strand="economics" data-search="e2.6-8.6 analyzing supply and demand in trade between nations analyze how the forces of supply and demand have affected international trade in the united states in the past or present. you analyze how supply and demand shaped trade between nations, and explain who gained and who lost. you analyze how supply and demand affected u.s. trade with other countries. you describe trade between countries without showing supply and demand at work. you name traded goods without explaining what drove the trade yet.">
+  <header class="card-h"><span class="code">E2.6-8.6</span><span class="chip chip-economics">Economics</span></header>
+  <h3 class="name">Analyzing supply and demand in trade between nations</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze supply and demand in trade between nations"><span class="lbl">WALT</span><span class="txt">We are learning to analyze supply and demand in trade between nations</span></button>
+    <button class="line" data-copy="I can analyze supply and demand in trade between nations."><span class="lbl">I can</span><span class="txt">I can analyze supply and demand in trade between nations.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how supply and demand shaped trade between nations, and explain who gained and who lost."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how supply and demand shaped trade between nations, and explain who gained and who lost.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how supply and demand affected U.S. trade with other countries."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how supply and demand affected U.S. trade with other countries.</span></span></button><button class="lvl lvl-2" data-copy="You describe trade between countries without showing supply and demand at work."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe trade between countries without showing supply and demand at work.</span></span></button><button class="lvl lvl-1" data-copy="You name traded goods without explaining what drove the trade yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name traded goods without explaining what drove the trade yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze how the forces of supply and demand have affected international trade in the United States in the past or present.</p><p class="grp">E2: Understands how economic systems function.</p></details>
+</article>
+
+<article class="card" data-strand="economics" data-search="e3.6-8.3 analyzing taxes, money, and tariffs analyze the influence of the u.s. government’s taxation, creation of currency, and tariffs in the past or present. you analyze how taxes, currency, or tariffs changed people's lives, and explain who they helped and who they hurt. you analyze how a government decision about taxes, money, or tariffs affected the economy. you describe a tax or a tariff without showing its effects. you can name taxes, currency, or tariffs but not their impact yet.">
+  <header class="card-h"><span class="code">E3.6-8.3</span><span class="chip chip-economics">Economics</span></header>
+  <h3 class="name">Analyzing taxes, money, and tariffs</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze taxes, money, and tariffs"><span class="lbl">WALT</span><span class="txt">We are learning to analyze taxes, money, and tariffs</span></button>
+    <button class="line" data-copy="I can analyze taxes, money, and tariffs."><span class="lbl">I can</span><span class="txt">I can analyze taxes, money, and tariffs.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how taxes, currency, or tariffs changed people's lives, and explain who they helped and who they hurt."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how taxes, currency, or tariffs changed people's lives, and explain who they helped and who they hurt.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how a government decision about taxes, money, or tariffs affected the economy."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how a government decision about taxes, money, or tariffs affected the economy.</span></span></button><button class="lvl lvl-2" data-copy="You describe a tax or a tariff without showing its effects."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe a tax or a tariff without showing its effects.</span></span></button><button class="lvl lvl-1" data-copy="You can name taxes, currency, or tariffs but not their impact yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You can name taxes, currency, or tariffs but not their impact yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze the influence of the U.S. government’s taxation, creation of currency, and tariffs in the past or present.</p><p class="grp">E3: Understands the government’s role in the economy.</p></details>
+</article>
+
+<article class="card" data-strand="economics" data-search="e4.6-8.5 analyzing who has wealth and whether resources last analyze the distribution of wealth and sustainability of resources in the united states. you analyze how wealth and resources are shared, and explain what makes the pattern hold or change. you analyze how wealth is spread out and whether resources can last. you describe wealth or resources but not the pattern in how they're shared. you name rich and poor groups without analyzing the pattern yet.">
+  <header class="card-h"><span class="code">E4.6-8.5</span><span class="chip chip-economics">Economics</span></header>
+  <h3 class="name">Analyzing who has wealth and whether resources last</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to analyze who has wealth and whether resources last"><span class="lbl">WALT</span><span class="txt">We are learning to analyze who has wealth and whether resources last</span></button>
+    <button class="line" data-copy="I can analyze who has wealth and whether resources last."><span class="lbl">I can</span><span class="txt">I can analyze who has wealth and whether resources last.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You analyze how wealth and resources are shared, and explain what makes the pattern hold or change."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You analyze how wealth and resources are shared, and explain what makes the pattern hold or change.</span></span></button><button class="lvl lvl-3" data-copy="You analyze how wealth is spread out and whether resources can last."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You analyze how wealth is spread out and whether resources can last.</span></span></button><button class="lvl lvl-2" data-copy="You describe wealth or resources but not the pattern in how they're shared."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You describe wealth or resources but not the pattern in how they're shared.</span></span></button><button class="lvl lvl-1" data-copy="You name rich and poor groups without analyzing the pattern yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name rich and poor groups without analyzing the pattern yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Analyze the distribution of wealth and sustainability of resources in the United States.</p><p class="grp">E4: Understands the economic issues and problems that all societies face.</p></details>
+</article>
+
+<article class="card" data-strand="economics" data-search="e4.6-8.6 explaining what trade policies cost and give explain the costs and benefits of trade policies to individuals, businesses, and society in the united states. you explain the costs and the benefits of a trade policy, and show they land differently on different groups. you explain both the costs and the benefits of a trade policy for people, businesses, or society. you explain either the costs or the benefits, not both. you name a trade policy without its costs or benefits yet.">
+  <header class="card-h"><span class="code">E4.6-8.6</span><span class="chip chip-economics">Economics</span></header>
+  <h3 class="name">Explaining what trade policies cost and give</h3>
+  <div class="lines">
+    <button class="line" data-copy="We are learning to explain what trade policies cost and give"><span class="lbl">WALT</span><span class="txt">We are learning to explain what trade policies cost and give</span></button>
+    <button class="line" data-copy="I can explain what trade policies cost and give."><span class="lbl">I can</span><span class="txt">I can explain what trade policies cost and give.</span></button>
+  </div>
+  <div class="levels">
+    <button class="lvl lvl-4" data-copy="You explain the costs and the benefits of a trade policy, and show they land differently on different groups."><span class="num">4</span>
+      <span><span class="lvl-name">Exemplary</span><span class="lvl-txt">You explain the costs and the benefits of a trade policy, and show they land differently on different groups.</span></span></button><button class="lvl lvl-3" data-copy="You explain both the costs and the benefits of a trade policy for people, businesses, or society."><span class="num">3</span>
+      <span><span class="lvl-name">Proficient</span><span class="lvl-txt">You explain both the costs and the benefits of a trade policy for people, businesses, or society.</span></span></button><button class="lvl lvl-2" data-copy="You explain either the costs or the benefits, not both."><span class="num">2</span>
+      <span><span class="lvl-name">Progressing</span><span class="lvl-txt">You explain either the costs or the benefits, not both.</span></span></button><button class="lvl lvl-1" data-copy="You name a trade policy without its costs or benefits yet."><span class="num">1</span>
+      <span><span class="lvl-name">Beginning</span><span class="lvl-txt">You name a trade policy without its costs or benefits yet.</span></span></button>
+  </div>
+  <details class="official"><summary>Official standard text</summary>
+    <p>Explain the costs and benefits of trade policies to individuals, businesses, and society in the United States.</p><p class="grp">E4: Understands the economic issues and problems that all societies face.</p></details>
+</article></main>
+  <p class="empty" id="empty" hidden>Nothing matches that. Try a shorter word.</p>
+</div>
+<footer class="site"><div class="wrap">
+  <p>Built for the Edmonds School District social studies team. Standards text is from the Washington
+     State Social Studies Learning Standards (OSPI, 2019).</p>
+  <p>The four level descriptors, WALT lines, and I can statements are local wording written for our
+     4 / 3 / 2 / 1 scale. They are not published by OSPI.</p>
+  <p>mrbsocialstudies.org</p>
+</div></footer>
+<div id="toast">Copied</div>
+<script>
+(function(){
+  var grid=document.getElementById('grid'); if(!grid)return;
+  var cards=[].slice.call(grid.children), q=document.getElementById('q'),
+      count=document.getElementById('count'), empty=document.getElementById('empty'),
+      toast=document.getElementById('toast'), filt='all', t;
+  function apply(){
+    var term=(q?q.value:'').trim().toLowerCase(), n=0;
+    cards.forEach(function(c){
+      var ok=(filt==='all'||c.dataset.strand===filt)&&(!term||c.dataset.search.indexOf(term)>-1);
+      c.hidden=!ok; if(ok)n++;
+    });
+    if(count)count.textContent=n+(n===1?' outcome':' outcomes');
+    if(empty)empty.hidden=n>0;
+  }
+  if(q)q.addEventListener('input',apply);
+  [].forEach.call(document.querySelectorAll('.filt'),function(b){
+    b.addEventListener('click',function(){
+      filt=b.dataset.f;
+      [].forEach.call(document.querySelectorAll('.filt'),function(o){o.setAttribute('aria-pressed',String(o===b));});
+      apply();
+    });
+  });
+  grid.addEventListener('click',function(e){
+    var el=e.target.closest('[data-copy]'); if(!el)return;
+    var text=el.getAttribute('data-copy');
+    function done(){clearTimeout(t);toast.classList.add('on');t=setTimeout(function(){toast.classList.remove('on');},1100);}
+    function fb(){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';
+      ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');}catch(err){}document.body.removeChild(ta);done();}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fb);}else{fb();}
+  });
+  apply();
+})();
+</script></body></html>
