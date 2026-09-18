@@ -1,6 +1,6 @@
 # Teaching
 
-The teacher-facing companion site to [ams.mrbsocialstudies.org](https://ams.mrbsocialstudies.org). A slowly growing collection of research-backed classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, not for students.
+The teacher-facing companion site to [mrbsocialstudies.org](https://mrbsocialstudies.org). A slowly growing collection of research-backed classroom resources &mdash; plans, protocols, posters, references &mdash; written for colleagues, not for students.
 
 Lives at **[teach.mrbsocialstudies.org](https://teach.mrbsocialstudies.org)**.
 
@@ -16,7 +16,9 @@ teach/
 ├── discussion/             ← Resource #01 — the Discussion Hub
 │   ├── index.html
 │   └── walkthrus.html
-└── outcomes/               ← Resource #02 — Standards Outcomes Toolkit
+├── grading/                ← Resource #02 — Zeros and the 50 Floor
+│   └── index.html
+└── outcomes/               ← Resource #03 — Standards Outcomes Toolkit
     ├── index.html          ← start here
     ├── outcomes-grade-7.html
     ├── outcomes-grade-8.html

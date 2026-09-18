@@ -6,7 +6,7 @@ Copy-paste this whole document into a Cowork chat (or keep it in the repo as `HA
 
 ## Context
 
-I'm Shie Benaderet, 8th grade Social Studies teacher at Alderwood Middle School. I maintain a small ecosystem of GitHub Pages sites under `mrbsocialstudies.org` — `ams` (the main site), `ss8`, `scotus`, `current`, each for a different audience. This repo, `teach`, is the **teacher-facing** companion: a growing collection of research-backed classroom resources aimed at me and fellow educators, not at students.
+I'm Shie Benaderet, 8th grade Social Studies teacher at Alderwood Middle School. I maintain a small ecosystem of GitHub Pages sites under `mrbsocialstudies.org` — the main public site at the apex domain `mrbsocialstudies.org`, plus `ss8`, `scotus`, and `current`, each for a different audience. This repo, `teach`, is the **teacher-facing** companion: a growing collection of research-backed classroom resources aimed at me and fellow educators, not at students.
 
 It lives at `teach.mrbsocialstudies.org`.
 
@@ -34,7 +34,7 @@ teach/
 
 This is the landing page for `teach.mrbsocialstudies.org`. It should:
 
-- Introduce the site in one paragraph (teacher-facing research-backed resources, companion to `ams.mrbsocialstudies.org`)
+- Introduce the site in one paragraph (teacher-facing research-backed resources, companion to `mrbsocialstudies.org`)
 - Introduce me briefly — 8th grade Social Studies teacher, Alderwood MS — in my own voice, not marketing-speak
 - List the Discussion Hub as the first (currently only) resource, with a short description and a clear link to `/discussion/`
 - Include a "more coming" note or empty state so it's obvious the site is meant to grow
