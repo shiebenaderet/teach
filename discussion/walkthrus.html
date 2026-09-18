@@ -147,7 +147,7 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 
 .contents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
   gap: 2px;
   background: var(--border);
   border: 1px solid var(--border);

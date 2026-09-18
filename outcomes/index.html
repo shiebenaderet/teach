@@ -67,7 +67,7 @@ p{max-width:70ch}
 .btn.ghost{background:transparent;color:var(--maroon)}
 .btn .sz{font-weight:400;opacity:.8;font-size:13px}
 /* cards grid (hub) */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px, 100%), 1fr));gap:16px;margin-top:8px}
 .hubcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
   text-decoration:none;color:inherit;display:block}
 .hubcard:hover{border-color:var(--line-2)}
@@ -86,7 +86,7 @@ p{max-width:70ch}
 .filt[aria-pressed="true"]{background:var(--maroon);color:#fff;border-color:var(--maroon)}
 .count{margin-left:auto;font-size:12.5px;color:var(--ink-3)}
 /* outcome cards */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;padding-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px, 100%), 1fr));gap:16px;padding-bottom:20px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:17px 17px 13px}
 .card-h{display:flex;align-items:center;gap:9px;margin-bottom:6px}
 .code{font-size:12px;font-weight:700;color:var(--ink-3);letter-spacing:.03em}
@@ -129,7 +129,8 @@ p{max-width:70ch}
   background:var(--maroon);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
 .steps h3{margin-bottom:3px}
 .steps p{font-size:14.5px;color:var(--ink-2)}
-table{border-collapse:collapse;margin:14px 0;font-size:14.5px;width:100%}
+table{border-collapse:collapse;margin:0;font-size:14.5px;width:100%}
+.tablewrap{overflow-x:auto;margin:14px 0;-webkit-overflow-scrolling:touch}
 th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
 th{background:var(--cream-2);font-weight:700}
 .empty{padding:40px 0;text-align:center;color:var(--ink-3)}
@@ -187,6 +188,7 @@ footer.site p{font-size:13px;color:var(--ink-3);margin-bottom:6px}
       field and behind the Official standard text toggle on each card, but the four levels a student
       actually reads are in plain language. Level 3 is the target, so it doubles as the success criterion
       you put in front of them before they start.</p>
+    <div class="tablewrap">
     <table>
       <tr><th>Level</th><th>What it means</th><th>Score entered</th><th>Letter</th></tr>
       <tr><td>4 Exemplary</td><td>Exceeds the standard at this time</td><td>97</td><td>A</td></tr>
@@ -194,6 +196,7 @@ footer.site p{font-size:13px;color:var(--ink-3);margin-bottom:6px}
       <tr><td>2 Progressing</td><td>Approaching the standard at this time</td><td>77</td><td>C+</td></tr>
       <tr><td>1 Beginning</td><td>Below the standard at this time</td><td>67</td><td>D+</td></tr>
     </table>
+    </div>
     <p>These are even ten point steps against the Edmonds grade scale adopted this year, so combinations stay
       predictable and no rounding cliff decides a letter. A 4 and a 3 average to 92, an A minus. Two 3s stay at
       87. A 3 and a 2 give 82, a B minus. Two 2s give 77. The floor is a D plus rather than an F, because a 1
