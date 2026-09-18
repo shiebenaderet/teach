@@ -64,6 +64,14 @@ body[data-path] [data-no-path] { display: none; }
 .nav-brand { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--maroon); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
 .nav-brand:hover { color: var(--maroon-dark); text-decoration: none; }
 .nav-brand em { font-style: italic; color: var(--gold); font-weight: 400; }
+.nav-crumb-group { display: flex; align-items: center; flex-wrap: wrap; min-width: 0; }
+.nav-crumb-sep { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--gold); margin: 0 9px; }
+.nav-crumb { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.nav-crumb:hover { color: var(--maroon); text-decoration: none; }
+@media (max-width: 480px) {
+  .nav-crumb-sep { display: none; }
+  .nav-crumb { flex-basis: 100%; font-size: 16px; }
+}
 .nav-right { display: flex; align-items: center; gap: 20px; }
 .nav-links { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
 .nav-links li { margin: 0; }
@@ -257,7 +265,11 @@ body[data-path="D"] .strategy[data-start-for~="D"] .strategy-start { display: in
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand">Room 1610 &middot; <em>Discussion Hub</em></a>
+    <div class="nav-crumb-group">
+      <a href="../" class="nav-brand">Teaching &middot; <em>Mr. B</em></a>
+      <span class="nav-crumb-sep" aria-hidden="true">/</span>
+      <a href="#top" class="nav-crumb">Discussion Hub</a>
+    </div>
     <div class="nav-right">
       <button class="nav-path-badge" id="changePathBtn" aria-label="Change path">
         <span class="tag">Path:</span>

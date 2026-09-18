@@ -71,6 +71,14 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 }
 .nav-brand:hover { color: var(--maroon-dark); text-decoration: none; }
 .nav-brand em { font-style: italic; color: var(--gold); font-weight: 400; }
+.nav-crumb-group { display: flex; align-items: center; flex-wrap: wrap; min-width: 0; }
+.nav-crumb-sep { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--gold); margin: 0 9px; }
+.nav-crumb { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.nav-crumb:hover { color: var(--maroon); text-decoration: none; }
+@media (max-width: 480px) {
+  .nav-crumb-sep { display: none; }
+  .nav-crumb { flex-basis: 100%; font-size: 16px; }
+}
 .nav-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .nav-back {
   font-family: var(--font-body); font-weight: 600; font-size: 13px;
@@ -491,7 +499,11 @@ p { margin-bottom: 1em; } p:last-child { margin-bottom: 0; }
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">Room 1610 &middot; <em>Discussion Hub</em></a>
+    <div class="nav-crumb-group">
+      <a href="../" class="nav-brand">Teaching &middot; <em>Mr. B</em></a>
+      <span class="nav-crumb-sep" aria-hidden="true">/</span>
+      <a href="index.html" class="nav-crumb">Discussion Hub</a>
+    </div>
     <div class="nav-right">
       <a href="index.html" class="nav-back">Back to the hub</a>
     </div>
