@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Zeros and the 50 Floor &mdash; Teaching &middot; Mr. B</title>
+<title>Zeros and the 50 Floor &mdash; teach &middot; Mr. B</title>
 <meta name="description" content="Two sides of the minimum-grade debate, the math both sides start from, and what the research actually shows. Compiled for staff discussion.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,6 +200,10 @@ footer p + p{margin-top:.5rem}
 .sitebar .brand{font-family:var(--display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em; color:var(--brand); text-decoration:none; white-space:nowrap}
 .sitebar .brand em{font-style:italic; font-weight:400; color:var(--brand-gold)}
 .sitebar .brand:hover{text-decoration:underline}
+.sitebar .crumb{display:flex; align-items:center; flex-wrap:wrap; min-width:0}
+.sitebar .brand-sep{font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--brand-gold); margin:0 .55rem}
+.sitebar .brand-res{color:var(--ink)}
+@media (max-width:480px){.sitebar .brand-sep{display:none} .sitebar .brand-res{flex-basis:100%}}
 .sitebar .back{font-size:.85rem; font-weight:700; color:var(--muted); text-decoration:none; border:1px solid var(--border); border-radius:999px; padding:.35rem .85rem; white-space:nowrap}
 .sitebar .back::before{content:"\2190\00a0\00a0"; color:var(--brand-gold)}
 .sitebar .back:hover{color:var(--brand); border-color:var(--brand)}
@@ -233,7 +237,11 @@ footer p + p{margin-top:.5rem}
 
 <div class="sitebar">
   <div class="wrap">
-    <a class="brand" href="../">Teaching &middot; <em>Mr. B</em></a>
+    <div class="crumb">
+      <a class="brand" href="../">teach &middot; <em>Mr. B</em></a>
+      <span class="brand-sep" aria-hidden="true">/</span>
+      <a class="brand brand-res" href="index.html">Grading</a>
+    </div>
     <a class="back" href="../">Back to the library</a>
   </div>
 </div>
@@ -621,7 +629,7 @@ footer p + p{margin-top:.5rem}
 <footer class="wrap">
   <p>Compiled September 2026 for staff discussion. Article summaries are paraphrased and shortened; the claims lists are the arguments as the authors make them, not endorsements. Research entries were checked against the published abstracts and journal pages linked above.</p>
   <p>The two Edutopia pieces (Tamony and Rablin) are also available as a printable side-by-side handout.</p>
-  <p class="foot-back"><a href="../">Back to the teaching library</a><span class="sep">&middot;</span>teach.mrbsocialstudies.org</p>
+  <p class="foot-back"><a href="../">Back to the library</a><span class="sep">&middot;</span>teach.mrbsocialstudies.org</p>
 </footer>
 <script>
 (function(){
